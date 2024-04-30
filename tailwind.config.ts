@@ -15,6 +15,8 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        overlayVideoCitat: 'url("img/heros/dinko-vidovic-bg-video-citat.svg")',
+        overlayIskustva: 'url("img/heros/dinko-vidovic-iskustva-pacijenata-bg.png")',
       },
 
       colors: {
@@ -22,6 +24,7 @@ const config: Config = {
         'dinko-tamnoplava': '#092A4C',
         tekstovi: 'rgba(0, 0, 0, 0.8)',
         articleNovostiBg: '#fafafa',
+        'alt-bila': '#F5FAFF',
       },
       screens: {
         xs: '360px', // Extra small devices (phones, less than 576px)

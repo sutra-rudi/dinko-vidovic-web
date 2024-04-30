@@ -4,7 +4,7 @@ import Image from 'next/image';
 import dinkoLinijeEfektAlt from '../img/svg/dinko-vidovic-linije-efekt-alt.svg';
 const Novosti = () => {
   return (
-    <section className='mt-28 relative z-10 block'>
+    <section className='mt-28 relative z-10 block overflow-x-hidden'>
       <Image src={dinkoLinijeEfektAlt} alt='lines deco' className='absolute -right-12 top-12 z-[-1] block' />
       <h1 className='text-dinko-tamnoplava text-heroText leading-baseLineHeight mx-auto my-0 w-full text-center'>
         Novosti
