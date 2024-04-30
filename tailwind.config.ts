@@ -21,15 +21,42 @@ const config: Config = {
         'dinko-plava': '#17AEC2',
         'dinko-tamnoplava': '#092A4C',
         tekstovi: 'rgba(0, 0, 0, 0.8)',
+        articleNovostiBg: '#fafafa',
       },
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1280px',
-        xl: '1820px',
+        xs: '360px', // Extra small devices (phones, less than 576px)
+        sm: '576px', // Small devices (phones, 576px and up)
+        md: '768px', // Medium devices (tablets, 768px and up)
+        lg: '992px', // Large devices (desktops, 992px and up)
+        xl: '1200px', // Extra large devices (large desktops, 1200px and up)
+        '2xl': '1440px', // 2X large devices
+        '3xl': '1920px', // 3X large devices
+      },
+      fontSize: {
+        xs: '0.75rem', // 0.75rem * 16px/rem = 12px
+        sm: '0.875rem', // 0.875rem * 16px/rem = 14px
+        base: '1rem', // 1rem * 16px/rem = 16px
+        lg: '1.125rem', // 1.125rem * 16px/rem = 18px
+        xl: '1.25rem', // 1.25rem * 16px/rem = 20px
+        '2xl': '1.5rem', // 1.5rem * 16px/rem = 24px
+        '3xl': '1.875rem', // 1.875rem * 16px/rem = 30px
+        subHeading: '2rem', // 2rem * 16px/rem = 32px
+        '4xl': '2.25rem', // 2.25rem * 16px/rem = 36px
+        '5xl': '3rem', // 3rem * 16px/rem = 48px
+        '6xl': '4rem', // 4rem * 16px/rem = 64px
+        heroText: '3.4375rem', // 55px / 16px/rem = 3.4375rem
+      },
+      minHeight: {
+        'custom-page-min': 'calc(100svh + 1rem)',
+        'iframes-images-lg': 'calc(40vh + 2.5rem)',
+        'iframes-images-md': 'calc(35vh + 2.5rem)',
+        'iframes-images-sm': 'calc(30vh + 2.5rem)',
       },
       borderRadius: {
         appButtonBase: '49px',
+      },
+      lineHeight: {
+        baseLineHeight: '120%',
       },
     },
   },

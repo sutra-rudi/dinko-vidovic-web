@@ -5,24 +5,31 @@ import React from 'react';
 import dinkoLogo from '../img/logos/dinko-vidovic-logo.svg';
 import { navLinks } from '../staticWebData/navLinks';
 import AppButton from './AppButton';
+import { Sling as Hamburger } from 'hamburger-react';
 const AppHeader = () => {
   return (
     <nav className='w-full bg-white'>
-      <div className='max-w-max-nav mx-auto my-0 py-5'>
+      <div className='max-w-max-nav mx-auto my-0 py-5 px-6'>
         <div className='flex flex-row justify-between items-center'>
           <Image src={dinkoLogo} alt='header logo signiature' />
-          <div className='flex items-center gap-11'>
-            {navLinks.hr.map((link) => (
-              <a
-                href={link.href}
-                key={link.title}
-                className='transition-all uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava'
-              >
-                {link.title}
-              </a>
-            ))}
+          <div className='w-full flex items-center justify-end xl:gap-48 lg:gap-16 gap-4 '>
+            <div className='lg:flex hidden items-center gap-11'>
+              {navLinks.hr.map((link) => (
+                <a
+                  href={link.href}
+                  key={link.title}
+                  className='transition-all uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                >
+                  {link.title}
+                </a>
+              ))}
+            </div>
+
+            <AppButton primary='prim' content='Dogovorite pregled' />
+            <div className='lg:hidden block'>
+              <Hamburger color='#092A4C' />
+            </div>
           </div>
-          <AppButton primary='prim' content='Dogovorite pregled' />
         </div>
       </div>
     </nav>
