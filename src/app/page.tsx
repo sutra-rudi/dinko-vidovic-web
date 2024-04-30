@@ -6,6 +6,8 @@ import Novosti from './sections/Novosti';
 import Biografija from './sections/Biografija';
 import VideoCitat from './sections/VideoCitat';
 import IskustvaPacijenata from './sections/IskustvaPacijenata';
+import PromoSekcija from './sections/PromoSekcija';
+import BlogSekcija from './sections/BlogSekcija';
 export default async function Home() {
   return (
     <Suspense>
@@ -17,6 +19,8 @@ export default async function Home() {
         <Biografija />
         <VideoCitat />
         <IskustvaPacijenata />
+        <PromoSekcija />
+        <BlogSekcija />
       </main>
     </Suspense>
   );

@@ -17,6 +17,7 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         overlayVideoCitat: 'url("img/heros/dinko-vidovic-bg-video-citat.svg")',
         overlayIskustva: 'url("img/heros/dinko-vidovic-iskustva-pacijenata-bg.png")',
+        overlayPromoTraka: 'url("img/svg/dinko-promo-traka-pattern.svg")',
       },
 
       colors: {
