@@ -18,6 +18,7 @@ const config: Config = {
         overlayVideoCitat: 'url("img/heros/dinko-vidovic-bg-video-citat.svg")',
         overlayIskustva: 'url("img/heros/dinko-vidovic-iskustva-pacijenata-bg.png")',
         overlayPromoTraka: 'url("img/svg/dinko-promo-traka-pattern.svg")',
+        footerOverlay: 'url("img/svg/dinko-promo-traka-pattern.svg")',
       },
 
       colors: {

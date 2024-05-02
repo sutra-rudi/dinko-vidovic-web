@@ -8,6 +8,8 @@ import VideoCitat from './sections/VideoCitat';
 import IskustvaPacijenata from './sections/IskustvaPacijenata';
 import PromoSekcija from './sections/PromoSekcija';
 import BlogSekcija from './sections/BlogSekcija';
+import BannerSekcija from './sections/BannerSekcija';
+import AppFooter from './components/AppFooter';
 export default async function Home() {
   return (
     <Suspense>
@@ -21,7 +23,9 @@ export default async function Home() {
         <IskustvaPacijenata />
         <PromoSekcija />
         <BlogSekcija />
+        <BannerSekcija />
       </main>
+      <AppFooter />
     </Suspense>
   );
 }

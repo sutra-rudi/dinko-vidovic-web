@@ -7,7 +7,7 @@ const AppButton = ({ primary, content }: { primary: 'prim' | 'sec' | 'hero' | 'b
         primary === 'prim' && 'bg-dinko-tamnoplava text-white'
       } ${primary === 'hero' && 'bg-transparent text-dinko-tamnoplava outline outline-2 outline-dinko-tamnoplava'} ${
         primary === 'bio' && 'bg-dinko-plava'
-      }`}
+      } ${primary === 'sec' && 'bg-white text-dinko-tamnoplava'}`}
     >
       {content}
     </button>
