@@ -14,9 +14,9 @@ const AppFooter = () => {
   ];
 
   return (
-    <footer className='lg:h-[557px] relative bg-dinko-plava before:absolute before:bg-footerOverlay before:w-full before:h-full'>
-      <div className='w-full flex items-center justify-center h-full '>
-        <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10'>
+    <footer className='lg:h-[557px] relative bg-dinko-plava before:absolute before:bg-footerOverlay before:w-full before:h-full flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center'>
+        <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10 '>
           <div className='flex items-center justify-between'>
             <Image src={dinkoVidovicFooterLogo} alt='Logo of Dinko Vidović' />
             <div className='grid grid-cols-2 items-center'>
@@ -29,6 +29,16 @@ const AppFooter = () => {
             <AppButton primary='sec' content='Dogovori pregled' />
           </div>
           <div className='w-full h-px bg-white'></div>
+
+          <div className='flex w-full justify-between h-min'>
+            <p className='text-white/80'>{`© prof. dr. sc. Dinko Vidović, prim, dr. med., 2024. | Made by Studio Sutra.`}</p>
+            <div className='flex'>
+              <p>Follow us:</p>
+              <p>link</p>
+              <p>link</p>
+              <p>link</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

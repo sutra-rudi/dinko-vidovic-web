@@ -62,6 +62,7 @@ const config: Config = {
       },
       lineHeight: {
         baseLineHeight: '120%',
+        blogParaLineHeight: '140%',
       },
     },
   },
