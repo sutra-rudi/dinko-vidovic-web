@@ -21,6 +21,12 @@ const config: Config = {
         footerOverlay: 'url("img/svg/dinko-promo-traka-pattern.svg")',
       },
 
+      transitionTimingFunction: {
+        'custom-ease-in-out': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+        'custom-ease-out': 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+        'custom-ease-in': 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
+      },
+
       colors: {
         'dinko-plava': '#17AEC2',
         'dinko-tamnoplava': '#092A4C',
@@ -29,13 +35,11 @@ const config: Config = {
         'alt-bila': '#F5FAFF',
       },
       screens: {
-        xs: '360px', // Extra small devices (phones, less than 576px)
-        sm: '576px', // Small devices (phones, 576px and up)
+        sm: '640px', // Small devices (landscape phones, 640px and up)
         md: '768px', // Medium devices (tablets, 768px and up)
-        lg: '992px', // Large devices (desktops, 992px and up)
-        xl: '1200px', // Extra large devices (large desktops, 1200px and up)
-        '2xl': '1440px', // 2X large devices
-        '3xl': '1920px', // 3X large devices
+        lg: '1024px', // Large devices (desktops, 1024px and up)
+        xl: '1280px', // Extra large devices (large desktops, 1280px and up)
+        '2xl': '1536px', // 2X large devices (extra large desktops, 1536px and up)
       },
       fontSize: {
         xs: '0.75rem', // 0.75rem * 16px/rem = 12px
