@@ -12,56 +12,62 @@ import esska from '../img/logos/oMeniLogoi/ESSKA-LOGO.svg';
 
 const PromoSekcija = () => {
   return (
-    <section className='relative w-full'>
-      <div className='flex gap-0 items-stretch w-full overflow-hidden'>
+    <section className='relative w-full '>
+      <div className='flex gap-0 items-stretch w-full overflow-scroll snap-x snap-always snap-center'>
         {promoTrakaSlike.map((slik, ind) => {
           return (
             <Image
               src={slik.src}
               key={ind}
               alt='Operation thumbnail'
-              className='object-cover aspect-[9/16] max-w-[385px] h-[442px]'
+              className='object-cover aspect-[9/16] max-w-[385px] h-[442px] snap-always snap-center'
             />
           );
         })}
       </div>
 
-      <div className='w-full bg-overlayPromoTraka min-h-[550px] flex items-center justify-center'>
-        <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-between'>
+      <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center 2xl:p-0 px-6'>
+        <div className='max-w-max-container w-full my-0 mx-auto flex items-center lg:justify-between justify-center lg:gap-0 gap-8 lg:flex-nowrap flex-wrap'>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava text-[99px] leading-baseLineHeight font-medium'>300</h1>
+            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
+              300
+            </h1>
             <p className='text-2xl text-dinko-tamnoplava font-medium'>operacija godišnje</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava text-[99px] leading-baseLineHeight font-medium'>22</h1>
+            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
+              22
+            </h1>
             <p className='text-2xl text-dinko-tamnoplava font-medium'>godina iskustva</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava text-[99px] leading-baseLineHeight font-medium'>34</h1>
+            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
+              34
+            </h1>
             <p className='text-2xl text-dinko-tamnoplava font-medium'>održanih edukacija</p>
           </div>
         </div>
       </div>
 
-      <div className='min-h-[794px] bg-dinko-tamnoplava flex items-center justify-center'>
-        <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center gap-y-20 gap-x-20'>
+      <div className='min-h-[794px] lg:py-0 py-8 bg-dinko-tamnoplava flex items-center justify-center'>
+        <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center  gap-y-20 gap-x-20'>
           <div className='grid items-center grid-cols-1 gap-8'>
             <h2 className='text-4xl text-dinko-plava text-center'>Klinički rad</h2>
-            <div className='flex gap-20 px-24'>
+            <div className='flex gap-20 px-24 lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image src={kbc} alt='' />
               <Image src={katarina} alt='' />
             </div>
           </div>
           <div className='grid items-center grid-cols-1 gap-8'>
             <h2 className='text-4xl text-dinko-plava text-center'>Akademsko djelovanje</h2>
-            <div className='flex gap-20 px-24'>
+            <div className='flex gap-20 px-24 lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image src={sveuciliste} alt='' />
               <Image src={stomatoloski} alt='' />
             </div>
           </div>
           <div className='grid items-center grid-cols-1 gap-8'>
             <h2 className='text-4xl text-dinko-plava text-center'>Stručna društva</h2>
-            <div className='flex gap-20 px-24'>
+            <div className='flex gap-20 px-24 lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image src={ao} alt='' />
               <Image src={traumatsko} alt='' />
               <Image src={pedi} alt='' />

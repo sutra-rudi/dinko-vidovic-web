@@ -15,11 +15,11 @@ const AppFooter = () => {
 
   return (
     <footer className='lg:h-[557px] relative bg-dinko-plava before:absolute before:bg-footerOverlay before:w-full before:h-full flex items-center justify-center'>
-      <div className='w-full flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center 2xl:p-0 px-6 2xl:py-0 py-4'>
         <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10 '>
-          <div className='flex items-center justify-between'>
+          <div className='flex place-items-center justify-between  lg:flex-nowrap flex-wrap lg:gap-0 gap-8'>
             <Image src={dinkoVidovicFooterLogo} alt='Logo of Dinko Vidović' />
-            <div className='grid grid-cols-2 items-center'>
+            <div className='grid grid-cols-2 items-center lg:w-auto  w-full'>
               {footerLinks.map((lin, ind) => (
                 <a href={''} key={ind}>
                   {lin}

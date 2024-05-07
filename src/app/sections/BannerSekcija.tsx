@@ -5,7 +5,7 @@ import Image from 'next/image';
 import AppButton from '../components/AppButton';
 const BannerSekcija = () => {
   return (
-    <section>
+    <section className='2xl:mt-24 xl:mt-20 lg:mt-16 mt-12'>
       <div className='w-full relative lg:h-[961px] '>
         <Image
           src={dinkoBanner}
@@ -15,9 +15,9 @@ const BannerSekcija = () => {
           placeholder='blur'
         />
       </div>
-      <div className='w-full relative flex items-center justify-center min-h-[340px]'>
+      <div className='w-full relative flex items-center justify-center min-h-[340px] 2xl:p-0 px-6'>
         <Image src={dinkoSocialBg} alt='decorative background' fill className='select-none pointer-events-none' />
-        <div className='flex z-10  gap-24 items-center'>
+        <div className='flex z-10  gap-24 place-items-center lg:flex-nowrap flex-wrap'>
           <h2 className='text-4xl text-dinko-tamnoplava max-w-[637px] text-balance whitespace-pre-wrap'>
             {`Aktivnosti prof. Vidovića možete pratiti i na društvenim mrežama`}
           </h2>
