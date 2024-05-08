@@ -5,8 +5,8 @@ import AppButton from '../components/AppButton';
 
 const BlogSekcija = () => {
   return (
-    <section className='w-full relative pb-24'>
-      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap pt-32 pb-4 text-center'>
+    <section className='w-full relative xl:pb-24 lg:pb-20 pb-16'>
+      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-32 lg:pt-24 md:pt-20 pt-16 pb-4 text-center'>
         Blog
       </h1>
 

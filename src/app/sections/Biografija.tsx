@@ -13,10 +13,10 @@ const Biografija = () => {
         <StickyBox
           offsetTop={0}
           offsetBottom={0}
-          className='max-lg:!relative w-full h-full xl:min-h-[750px] lg:min-h-[700px] min-h-[400px] lg:max-w-[795px] '
+          className='max-lg:!relative w-full h-full xl:min-h-[750px] lg:min-h-[700px] md:min-h-[650px] min-h-[500px] lg:max-w-[795px] '
         >
           <Image
-            className='object-cover lg:object-bottom object-center lg:aspect-[9 / 16] md:aspect-video aspect-square'
+            className='object-cover lg:object-bottom object-center md:aspect-[9 / 16] aspect-square'
             alt='Image of Dinko Vidovic smiling'
             src={DinkoBioHero}
             fill

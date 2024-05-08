@@ -26,7 +26,7 @@ const PromoSekcija = () => {
         })}
       </div>
 
-      <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center 2xl:p-0 px-6 xl:py-0 py-6'>
+      <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center 2xl:p-0 px-6 xl:py-0 py-16'>
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-28 gap-20 lg:flex-nowrap flex-wrap'>
           <div className='grid grid-cols-1 place-items-center'>
             <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>

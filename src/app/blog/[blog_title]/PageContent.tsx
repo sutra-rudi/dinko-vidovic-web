@@ -27,15 +27,15 @@ const PageContent = () => {
           alt='svg deco'
           className='absolute -bottom-[0] -left-[5%] z-0 pointer-events-none select-none'
         />
-        <div className='max-w-max-container mx-auto my-0 text-dinko-tamnoplava grid grid-cols-1 items-center gap-8 mt-32 w-2/4 z-10'>
-          <h2 className='text-4xl'>SAČUVATI ILI ZAMIJENITI ZGLOB?</h2>
-          <h4 className={`text-xl font-bold leading-baseLineHeight ${RobotoFont.className}`}>
+        <div className='max-w-max-container mx-auto my-0 text-dinko-tamnoplava grid grid-cols-1 items-center gap-8 lg:mt-32 md:mt-24 mt-16 lg:w-2/4 w-full lg:px-0 px-4 z-10'>
+          <h2 className='lg:text-4xl md:text-3xl text-2xl'>SAČUVATI ILI ZAMIJENITI ZGLOB?</h2>
+          <h4 className={`lg:text-xl md:text-lg text-base font-bold leading-baseLineHeight ${RobotoFont.className}`}>
             Pacijenti često traže pomoć zbog bolnog koljena, što otežava svakodnevne aktivnosti. Liječenje varira ovisno
             o stupnju bolesti. Minimalno invazivni zahvati su opcije za manja oštećenja, dok se za ozbiljnije slučajeve
             preporučuje totalna endoproteza. Razvoj tehnologije omogućuje brz oporavak, nudeći pacijentima izbor
             očuvanja ili zamjene zgloba.
           </h4>
-          <p className='leading-blogParaLineHeight'>
+          <p className='text-base leading-blogParaLineHeight'>
             {`U svakodnevnom mi se radu često javljaju pacijenti koji traže pomoć radi bolnog koljena koje im značajno
           narušava kvalitetu života. Aktivnosti poput vožnje bicikla, plesa, putovanja i druženja s obitelji, a vrlo
           često i obična šetnja za njih postaju „nemoguća misija“.\n\nPacijente pritom najviše zanima koje su opcije
@@ -50,12 +50,12 @@ const PageContent = () => {
           </p>
           <figure>
             <Image src={blogHero} alt='image of blog' />
-            <figcaption className='italic text-sm leading-[143%]'>
+            <figcaption className='italic lg:text-sm text-xs leading-[143%]'>
               S lijeva na desno: korektivna osteotomija, parcijalna endoproteza koljena, totalna endoproteza koljena
             </figcaption>
           </figure>
 
-          <h3 className='font-medium text-3xl leading-baseLineHeight'>
+          <h3 className='font-medium lg:text-3xl md:text-2xl text-xl leading-baseLineHeight'>
             Minimalno invazivni reparacijski i rekonstruktivni zahvati
           </h3>
 
@@ -68,7 +68,7 @@ const PageContent = () => {
             vaskularna frakcija iz masnog tkiva i faktori rasta trombocita).
           </p>
 
-          <h3 className='font-medium text-3xl leading-baseLineHeight'>
+          <h3 className='font-medium lg:text-3xl md:text-2xl text-xl leading-baseLineHeight'>
             Korektivna osteotomija i parcijalna endoproteza koljena
           </h3>
 
@@ -82,7 +82,9 @@ const PageContent = () => {
             pacijenta u potpunosti oslobađaju boli. 
           </p>
 
-          <h3 className='font-medium text-3xl leading-baseLineHeight'>Totalna endoproteza koljena</h3>
+          <h3 className='font-medium lg:text-3xl md:text-2xl text-xl leading-baseLineHeight'>
+            Totalna endoproteza koljena
+          </h3>
 
           <p className='leading-blogParaLineHeight'>
             Ovdje dolazimo do zahvata kojega se pacijenti pribojavaju zbog nedostatka informacija. Termin umjetni zglob
@@ -107,7 +109,7 @@ const PageContent = () => {
 
           <figure className='z-10'>
             <Image src={blogArticleImg} alt='image of blog' />
-            <figcaption className='italic text-sm leading-[143%]'>
+            <figcaption className='italic lg:text-sm text-xs leading-[143%]'>
               Lijevo: deformitet prije ugradnje endoproteze; desno: ispravljen deformitet ugradnjom endoproteze
             </figcaption>
           </figure>
@@ -115,7 +117,7 @@ const PageContent = () => {
           <p className='leading-blogParaLineHeight'>
             Ukratko, na pitanje sačuvati ili zamijeniti zglob, odgovor glasi:  i jedno i drugo! Naime, svaka faza
             osteoartritisa ima svoje rješenje u spektru operacijskih metoda, a pojedine metode se također uspješno
-            kombiniraju. 
+            kombiniraju.
           </p>
         </div>
       </div>
