@@ -9,7 +9,7 @@ const Novosti = () => {
       <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading  leading-baseLineHeight mx-auto my-0 w-full text-center'>
         Novosti
       </h1>
-      <div className='grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 max-w-max-container my-0 mx-auto gap-9 mt-16 2xl:p-0 px-6 items-stretch'>
+      <div className='grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 max-w-max-container my-0 mx-auto lg:gap-9 md:gap-6 gap-3 mt-16 2xl:p-0 px-3 items-stretch'>
         {novostiExample.map((nov, index) => {
           return (
             <article key={index} className='bg-articleNovostiBg '>

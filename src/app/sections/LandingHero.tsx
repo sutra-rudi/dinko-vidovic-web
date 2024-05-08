@@ -38,8 +38,8 @@ const LandingHero = () => {
       </div>
       {/* tablet / mobile */}
       <div className='bg-dinko-tamnoplava lg:hidden block px-6 py-10'>
-        <h2 className='text-4xl text-white text-balance leading-tight whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h2>
-        <div className='flex items-start flex-col justify-start gap-5 z-10'>
+        <h2 className='text-4xl text-white text-balance leading-none whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h2>
+        <div className='flex items-start flex-col justify-start gap-5 z-10 mt-2'>
           <p className='text-base text-white text-balance leading-snug'>
             {`Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
           zahvata iz područja kirurgije koljena i kuka.`}

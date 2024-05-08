@@ -2,6 +2,12 @@ import React from 'react';
 import dinkoVidovicFooterLogo from '../img/logos/dinko-vidovic-footer-logo.svg';
 import Image from 'next/image';
 import AppButton from './AppButton';
+import {
+  SlSocialLinkedin as LinkedInIcon,
+  SlSocialInstagram as InstagramIcon,
+  SlSocialFacebook as FacebookIcon,
+  SlSocialYoutube as YoutubeIcon,
+} from 'react-icons/sl';
 const AppFooter = () => {
   const footerLinks = [
     'Biografija',
@@ -30,13 +36,16 @@ const AppFooter = () => {
           </div>
           <div className='w-full h-px bg-white'></div>
 
-          <div className='flex w-full justify-between h-min'>
+          <div className='flex w-full justify-between h-min lg:flex-nowrap flex-wrap-reverse place-items-center lg:gap-0 gap-4'>
             <p className='text-white/80'>{`© prof. dr. sc. Dinko Vidović, prim, dr. med., 2024. | Made by Studio Sutra.`}</p>
-            <div className='flex'>
+            <div className='flex items-center gap-4'>
               <p>Follow us:</p>
-              <p>link</p>
-              <p>link</p>
-              <p>link</p>
+              <div className='flex items-center gap-3'>
+                <LinkedInIcon size={24} />
+                <InstagramIcon size={24} />
+                <FacebookIcon size={24} />
+                <YoutubeIcon size={24} />
+              </div>
             </div>
           </div>
         </div>

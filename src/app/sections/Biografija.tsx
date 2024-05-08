@@ -18,7 +18,7 @@ const Biografija = () => {
           <Image className='aspect-auto object-cover' alt='Image of Dinko Vidovic smiling' src={DinkoBioHero} fill />
         </StickyBox>
 
-        <div className='grid grid-cols-1 items-start gap-6 lg:max-w-[686px] w-full lg:pt-16'>
+        <div className='grid grid-cols-1 items-start gap-6 lg:max-w-[686px] w-full lg:pt-16 pr-6'>
           <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading leading-baseLineHeight'>
             Biografija
           </h1>

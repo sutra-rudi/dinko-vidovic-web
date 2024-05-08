@@ -5,14 +5,17 @@ import Image from 'next/image';
 const IskustvaPacijenata = () => {
   return (
     <section className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-0 '>
-      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap py-32 text-center'>
+      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:py-32 lg:py-28 md:py-24 py-20 text-center'>
         Iskustva pacijenata
       </h1>
 
       <div className='max-w-max-container mx-auto my-0  '>
         {iskustvaDemo.map((isk, ind) => {
           return (
-            <article key={ind} className='flex items-center justify-center pb-52 2xl:p-0 px-6 lg:flex-nowrap flex-wrap'>
+            <article
+              key={ind}
+              className='flex items-center justify-center lg:pb-52 pb-24 2xl:p-0 px-6 lg:flex-nowrap flex-wrap lg:gap-0 gap-10'
+            >
               <div className='lg:max-w-[620px] w-full flex flex-col items-start gap-5'>
                 <div className=''>
                   <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl text-lg leading-baseLineHeight font-medium'>

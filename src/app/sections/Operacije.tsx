@@ -7,10 +7,10 @@ const Operacije = () => {
       <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
         Operacije
       </h1>
-      <div className='max-w-max-container mx-auto my-0 grid md:grid-cols-2 grid-cols-1 xl:gap-10 lg:gap-8 gap-6 mt-16 items-stretch'>
+      <div className='max-w-max-container mx-auto my-0 grid md:grid-cols-2 grid-cols-1 xl:gap-10 lg:gap-8 gap-6 mt-16 place-items-center xl:px-20 lg:px-16 px-8'>
         {operacijeExample.map((op, index) => {
           return (
-            <article key={index} className='grid grid-cols-1 xl:gap-1 gap-3 items-start 2xl:p-0 px-6 md:max-w-[686px]'>
+            <article key={index} className='grid grid-cols-1 xl:gap-1 gap-3 items-start  md:max-w-[600px]'>
               <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl text-lg leading-baseLineHeight font-medium'>
                 {op.title}
               </h2>
