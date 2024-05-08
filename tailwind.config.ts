@@ -19,6 +19,7 @@ const config: Config = {
         overlayIskustva: 'url("img/heros/dinko-vidovic-iskustva-pacijenata-bg.png")',
         overlayPromoTraka: 'url("img/svg/dinko-promo-traka-pattern.svg")',
         footerOverlay: 'url("img/svg/dinko-promo-traka-pattern.svg")',
+        dinkoSocialBg: 'url("img/heros/dinko-vidovic-pre-footer-social-bg.png")',
       },
 
       transitionTimingFunction: {
@@ -35,6 +36,7 @@ const config: Config = {
         'alt-bila': '#F5FAFF',
       },
       screens: {
+        xsm: '400px',
         sm: '640px', // Small devices (landscape phones, 640px and up)
         md: '768px', // Medium devices (tablets, 768px and up)
         lg: '1024px', // Large devices (desktops, 1024px and up)

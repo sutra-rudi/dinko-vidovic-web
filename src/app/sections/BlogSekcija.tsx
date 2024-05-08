@@ -10,18 +10,26 @@ const BlogSekcija = () => {
         Blog
       </h1>
 
-      <div className='max-w-max-container my-0 mx-auto grid xl:grid-cols-2 grid-cols-1 xl:place-items-start place-items-center gap-x-9 gap-y-16 mt-9 2xl:p-0 px-6'>
+      <div className='max-w-max-container my-0 mx-auto grid xsm:grid-cols-2 grid-cols-1  xl:place-items-start place-items-center lg:gap-x-9 gap-x-5 lg:gap-y-16 gap-y-8 mt-9 2xl:p-0 px-6'>
         {blogExample.map((blo, ind) => {
           return (
             <article
               key={ind}
-              className='xl:max-w-[617px] w-full flex items-start md:flex-nowrap flex-wrap gap-7 bg-[#f1f1f1] '
+              className='xl:max-w-[617px] w-full flex items-start xl:flex-nowrap flex-wrap lg:gap-7 gap-4 bg-[#f1f1f1] '
             >
-              <Image src={blo.imgSrc} alt='blog thumbnail' className='md:max-w-[284px] w-full' />
+              <Image
+                src={blo.imgSrc}
+                alt='blog thumbnail'
+                className='xl:max-w-[284px] w-full xl:max-h-[284px] xl:aspect-square max-h-[300px] aspect-video object-cover'
+              />
               <div className='p-2 flex flex-col items-start w-full gap-3'>
-                <h2 className='text-dinko-tamnoplava text-2xl leading-baseLineHeight font-medium'>{blo.title}</h2>
-                <p className='text-dinko-tamnoplava text-base leading-normal font-normal text-balance'>{blo.content}</p>
-                <a href='' className='text-dinko-plava font-medium self-end'>
+                <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium'>
+                  {blo.title}
+                </h2>
+                <p className='text-dinko-tamnoplava  xl:text-base text-sm leading-normal font-normal text-balance lg:line-clamp-none md:line-clamp-4 line-clamp-3'>
+                  {blo.content}
+                </p>
+                <a href='' className='text-dinko-plava font-medium self-end  xl:text-lg text-base'>
                   Procitaj blog
                 </a>
               </div>
