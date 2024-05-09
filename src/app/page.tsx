@@ -11,7 +11,7 @@ import BlogSekcija from './sections/BlogSekcija';
 import BannerSekcija from './sections/BannerSekcija';
 import AppFooter from './components/AppFooter';
 export default async function Home() {
-  const getPosts = await fetch(`${process.env.DINKO_BASE_URL}`);
+  const getPosts = await fetch(`${process.env.DINKO_BASE_URL}`, { cache: 'no-store' });
   const parseData = await getPosts.json();
 
   return (
