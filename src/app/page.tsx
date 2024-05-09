@@ -11,6 +11,9 @@ import BlogSekcija from './sections/BlogSekcija';
 import BannerSekcija from './sections/BannerSekcija';
 import AppFooter from './components/AppFooter';
 export default async function Home() {
+  const getPosts = await fetch(`${process.env.DINKO_BASE_URL}`);
+  const parseData = await getPosts.json();
+
   return (
     <Suspense>
       <AppHeader />
@@ -22,7 +25,7 @@ export default async function Home() {
         <VideoCitat />
         <IskustvaPacijenata />
         <PromoSekcija />
-        <BlogSekcija />
+        <BlogSekcija blogList={parseData} />
         <BannerSekcija />
       </main>
       <AppFooter />

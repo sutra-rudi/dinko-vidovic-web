@@ -1,15 +1,25 @@
+'use client';
+
 import React from 'react';
-import blogHero from '../../img/heros/dinko-vidovic-blog-hero-placeholder.png';
-import blogArticleImg from '../../img/blog/dinko-vidovic-blog-article-placeholder.png';
-import blogSvg from '../../img/svg/dinko-vidovic-blog-bg-svg.svg';
-import Image from 'next/image';
+// import blogHero from '../../img/heros/dinko-vidovic-blog-hero-placeholder.png';
+// import blogArticleImg from '../../img/blog/dinko-vidovic-blog-article-placeholder.png';
+// import blogSvg from '../../img/svg/dinko-vidovic-blog-bg-svg.svg';
+// import Image from 'next/image';
+import parse from 'html-react-parser';
 import { Roboto_Condensed } from 'next/font/google';
 
-const RobotoFont = Roboto_Condensed({ subsets: ['latin'], weight: '700' });
-const PageContent = () => {
+interface DinkoSingleBlogData {
+  content: any;
+}
+
+// const RobotoFont = Roboto_Condensed({ subsets: ['latin'], weight: '700' });
+const PageContent = ({ content }: DinkoSingleBlogData) => {
+  console.log('CONTENT', content);
+
   return (
-    <article className='relative overflow-x-hidden'>
-      <Image src={blogHero} alt='image of blog' />
+    <article className='relative overflow-x-hidden mx-auto my-0 grid items-center justify-center'>
+      {parse(content[0].content.rendered)}
+      {/* <Image src={blogHero} alt='image of blog' />
       <div className='relative w-full h-full'>
         <Image
           src={blogSvg}
@@ -120,7 +130,7 @@ const PageContent = () => {
             kombiniraju.
           </p>
         </div>
-      </div>
+      </div> */}
     </article>
   );
 };
