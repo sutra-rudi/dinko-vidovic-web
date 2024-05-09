@@ -25,7 +25,7 @@ export default async function Home() {
         <VideoCitat />
         <IskustvaPacijenata />
         <PromoSekcija />
-        <BlogSekcija blogList={parseData} />
+        <BlogSekcija blogList={parseData} isBlogPage />
         <BannerSekcija />
       </main>
       <AppFooter />

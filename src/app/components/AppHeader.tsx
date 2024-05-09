@@ -13,7 +13,7 @@ const AppHeader = () => {
         <div className='flex flex-row justify-between items-center'>
           <Image src={dinkoLogo} alt='header logo signiature' />
           <div className='w-full flex items-center justify-end 2xl:gap-48  gap-8 '>
-            <div className='xl:flex hidden items-center gap-11'>
+            <div className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
               {navLinks.hr.map((link) => (
                 <a
                   href={link.href}

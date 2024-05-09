@@ -42,6 +42,7 @@ const config: Config = {
         lg: '1024px', // Large devices (desktops, 1024px and up)
         xl: '1280px', // Extra large devices (large desktops, 1280px and up)
         '2xl': '1536px', // 2X large devices (extra large desktops, 1536px and up)
+        '3xl': '1700px',
       },
       fontSize: {
         xs: '0.75rem', // 0.75rem * 16px/rem = 12px

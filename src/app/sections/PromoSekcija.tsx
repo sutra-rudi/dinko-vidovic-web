@@ -20,38 +20,38 @@ const PromoSekcija = () => {
               src={slik.src}
               key={ind}
               alt='Operation thumbnail'
-              className='object-cover aspect-[9/16] max-w-[385px] xl:h-[442px] h-[300px] snap-always snap-center'
+              className='object-cover aspect-[9/16] max-w-[385px] xl:h-[442px] h-[200px] snap-always snap-center'
             />
           );
         })}
       </div>
 
-      <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center 2xl:p-0 px-6 xl:py-0 py-16'>
+      <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-28 gap-20 lg:flex-nowrap flex-wrap'>
           <div className='grid grid-cols-1 place-items-center'>
             <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
               300
             </h1>
-            <p className='text-2xl text-dinko-tamnoplava font-medium'>operacija godišnje</p>
+            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>operacija godišnje</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
             <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
               22
             </h1>
-            <p className='text-2xl text-dinko-tamnoplava font-medium'>godina iskustva</p>
+            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>godina iskustva</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
             <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
               34
             </h1>
-            <p className='text-2xl text-dinko-tamnoplava font-medium'>održanih edukacija</p>
+            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>održanih edukacija</p>
           </div>
         </div>
       </div>
 
-      <div className='min-h-[794px] lg:py-0 py-8 px-3 bg-dinko-tamnoplava flex items-center justify-center'>
+      <div className='lg:py-12 md:py-10 py-8 px-3 bg-dinko-tamnoplava flex items-center justify-center'>
         <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center  gap-y-20 gap-x-20'>
-          <div className='grid items-center grid-cols-1 gap-8'>
+          <div className='grid items-center grid-cols-1 xl:gap-8 lg:gap-6 gap-2'>
             <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center'>Klinički rad</h2>
             <div className='flex xl:gap-20 lg:gap-16 md:gap-16 gap-12   lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image

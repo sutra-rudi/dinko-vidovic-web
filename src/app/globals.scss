@@ -93,10 +93,10 @@ body {
   }
 
   p {
-    font-size: theme('fontSize.sm');
-    @media only screen and (min-width: theme('screens.lg')) {
-      font-size: theme('fontSize.base');
-    }
+    font-size: theme('fontSize.base');
+    // @media only screen and (min-width: theme('screens.lg')) {
+    //   font-size: theme('fontSize.base');
+    // }
     line-height: theme('lineHeight.blogParaLineHeight');
     text-wrap: balance;
   }

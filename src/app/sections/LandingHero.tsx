@@ -26,9 +26,9 @@ const LandingHero = () => {
         quality={100}
       />
       <Image src={dinkoLinijeEfekt} alt='flavor' className='absolute -bottom-8 -left-16 xl:block hidden' />
-      <div className='lg:block hidden absolute bottom-[30%] right-[10%] max-w-[407px]  lg:bg-transparent'>
-        <h1 className='text-heroText text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h1>
-        <div className='flex items-start flex-col justify-start gap-5 '>
+      <div className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] bottom-[12%] right-[10%] max-w-[407px]  lg:bg-transparent'>
+        <h1 className='text-heroText text-dinko-tamnoplava text-balance xl:leading-tight leading-none whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h1>
+        <div className='flex items-start flex-col justify-start gap-6 '>
           <p className='text-base text-dinko-tamnoplava text-balance leading-snug'>
             {`Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
           zahvata iz područja kirurgije koljena i kuka.`}
