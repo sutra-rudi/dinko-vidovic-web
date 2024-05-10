@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { promoTrakaSlike } from '../staticWebData/promoSekcijaTraka';
 import Image from 'next/image';
@@ -9,41 +11,97 @@ import ao from '../img/logos/oMeniLogoi/AO-LOGO.svg';
 import traumatsko from '../img/logos/oMeniLogoi/TRAUMATSKO-LOGO.svg';
 import pedi from '../img/logos/oMeniLogoi/ORTOPEDIJA-LOGO.svg';
 import esska from '../img/logos/oMeniLogoi/ESSKA-LOGO.svg';
+import { useCountUp } from 'react-countup';
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 const PromoSekcija = () => {
+  const splideOptions: any = {
+    perPage: 4,
+    type: 'slide',
+    drag: 'free',
+    snap: true,
+    gap: '0',
+    focus: 'center',
+    pagination: false,
+    arrows: false,
+    autoplay: true,
+    interval: 1000,
+    rewind: true,
+
+    breakpoints: {
+      400: { perPage: 1.2 },
+      768: { perPage: 2.2 },
+      1536: { perPage: 3.3 },
+    },
+  };
+
+  const operacijeRef = React.useRef(null);
+  const godineRef = React.useRef(null);
+  const edukacijeRef = React.useRef(null);
+
+  const operacijeRefCount = useCountUp({
+    start: 0,
+    end: 300,
+    ref: operacijeRef,
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+  });
+
+  const godineRefCount = useCountUp({
+    start: 0,
+    end: 22,
+    ref: godineRef,
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+  });
+
+  const edukacijeRefCount = useCountUp({
+    start: 0,
+    end: 34,
+    ref: edukacijeRef,
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+  });
+
   return (
     <section className='relative w-full'>
-      <div className='flex gap-0 items-stretch w-full overflow-scroll snap-x snap-always snap-center'>
+      <Splide options={splideOptions} className='w-full'>
         {promoTrakaSlike.map((slik, ind) => {
           return (
-            <Image
-              src={slik.src}
-              key={ind}
-              alt='Operation thumbnail'
-              className='object-cover aspect-[9/16] max-w-[385px] xl:h-[442px] h-[200px] snap-always snap-center'
-            />
+            <SplideSlide key={ind}>
+              <Image
+                src={slik.src}
+                alt='Operation thumbnail'
+                className='object-cover aspect-[9/16] max-w-[385px] xl:h-[442px] h-[200px]'
+              />
+            </SplideSlide>
           );
         })}
-      </div>
+      </Splide>
 
       <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-28 gap-20 lg:flex-nowrap flex-wrap'>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
-              300
-            </h1>
+            <h1
+              ref={operacijeRef}
+              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
+            ></h1>
             <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>operacija godišnje</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
-              22
-            </h1>
+            <h1
+              ref={godineRef}
+              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
+            ></h1>
             <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>godina iskustva</p>
           </div>
           <div className='grid grid-cols-1 place-items-center'>
-            <h1 className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'>
-              34
-            </h1>
+            <h1
+              ref={edukacijeRef}
+              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
+            ></h1>
             <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>održanih edukacija</p>
           </div>
         </div>

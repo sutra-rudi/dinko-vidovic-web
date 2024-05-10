@@ -10,6 +10,7 @@ interface DinkoSingleBlogData {
 }
 
 const PageContent = ({ content }: DinkoSingleBlogData) => {
+  console.log('CONTENT', content);
   return (
     <article className='relative overflow-x-hidden mx-auto my-0 '>
       <Image

@@ -13,7 +13,7 @@ export default async function BlogPage({ params }: { params: { slug: string } })
   const parseSinglePost = await getSinglePost.json();
 
   return (
-    <Suspense fallback={<h2>LOADING</h2>}>
+    <Suspense>
       <AppHeader />
       <main className='min-h-screen bg-white'>
         <PageContent content={parseSinglePost} />
