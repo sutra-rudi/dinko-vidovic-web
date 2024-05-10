@@ -8,12 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "browserslist": {
-  "production": [
+  "browserslist": [
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]},
+  ],
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
     "hamburger-react": "^2.5.0",
