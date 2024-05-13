@@ -1,13 +1,17 @@
 import Image from 'next/image';
 import React from 'react';
 
+import dinkoVideoPatternBg from '../img/heros/dinko-vidovic-bg-video-citat.svg';
 import videoPatternQuote from '../img/svg/dinko-vidovic-video-pattern-effect.svg';
 import imageOfDinkoThumb from '../img/heros/image-of-dinko-bg-for-video.png';
 import playButton from '../img/svg/dinko-vidovic-video-play-button.svg';
 const VideoCitat = () => {
   return (
     <section className='w-full 2xl:mt-14 xl:mt-10 lg:mt-6 mt-2'>
-      <div className='relative w-full h-full bg-overlayVideoCitat bg-dinko-tamnoplava flex items-center justify-center'>
+      <div
+        style={{ backgroundImage: `url(${dinkoVideoPatternBg.src})` }}
+        className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center'
+      >
         <div className='max-w-max-container my-0 mx-auto relative 2xl:py-24 pt-16 pb-0'>
           <div className='w-full flex place-items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap relative xl:gap-0 gap-8'>
             <p className='text-alt-bila leading-tight md:text-3xl sm:text-2xl  text-lg z-10 text-balance xl:max-w-[613px] w-full relative shrink-1 md:pl-12 pl-16 pr-4 max-w-[40ch]'>

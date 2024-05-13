@@ -4,7 +4,8 @@ import React from 'react';
 import dinkoBanner from '../img/heros/dinko-vidovic-pre-footer-banner.png';
 import Image from 'next/image';
 import AppButton from '../components/AppButton';
-import { BannerLayer, ParallaxBanner } from 'react-scroll-parallax';
+import dinkoBannerBg from '../img/heros/dinko-vidovic-pre-footer-social-bg.png';
+// import { BannerLayer, ParallaxBanner } from 'react-scroll-parallax';
 const BannerSekcija = () => {
   // const background: BannerLayer = {
   //   translateY: [0, 60],
@@ -54,7 +55,10 @@ const BannerSekcija = () => {
           placeholder='blur'
         />
       </div>
-      <div className='w-full  relative flex items-center justify-center min-h-[340px] 2xl:p-0 px-6 before:bg-dinkoSocialBg before:absolute before:w-full before:h-full before:inset-0 before:object-scale-down before:bg-no-repeat before:object-right before:aspect-video'>
+      <div
+        style={{ backgroundImage: `url(${dinkoBannerBg.src})` }}
+        className='w-full  relative flex items-center justify-center min-h-[340px] 2xl:p-0 px-6 bg-no-repeat xl:bg-center bg-right bg-cover'
+      >
         <div className='flex z-10  xl:gap-24 lg:gap-20 md:gap-16 gap-12 place-items-center justify-center lg:flex-nowrap flex-wrap'>
           <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-tamnoplava lg:max-w-[637px] text-balance whitespace-pre-wrap lg:text-left text-center'>
             {`Aktivnosti prof. Vidovića možete pratiti i na društvenim mrežama`}

@@ -13,10 +13,7 @@ import AppFooter from './components/AppFooter';
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 
 export default async function Home() {
-  const getPosts = await fetch(`${process.env.DINKO_BASE_URL}`, { cache: 'no-store' });
-  const parseData = await getPosts.json();
-
-  const graphQlTest = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+  const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -24,9 +21,10 @@ export default async function Home() {
     body: JSON.stringify({
       query: getAllBlogsQuery,
     }),
+    cache: 'no-store',
   });
 
-  const gData = await graphQlTest.json();
+  const parseData = await getDinkoBlogs.json();
 
   return (
     <Suspense>
@@ -34,7 +32,7 @@ export default async function Home() {
       <main className='min-h-screen bg-white'>
         <LandingHero />
         <Operacije />
-        <Novosti {...gData} />
+        <Novosti />
         <Biografija />
         <VideoCitat />
         <IskustvaPacijenata />
