@@ -10,7 +10,9 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useParallax } from 'react-scroll-parallax';
 
-const Novosti = () => {
+const Novosti = (data: any) => {
+  console.log('DATA', data);
+
   const splideOptions: any = {
     perPage: 4,
     type: 'slide',

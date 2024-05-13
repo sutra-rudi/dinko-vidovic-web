@@ -31,6 +31,7 @@ const config: Config = {
       colors: {
         'dinko-plava': '#17AEC2',
         'dinko-tamnoplava': '#092A4C',
+        'dinko-operacije': 'rgba(9, 42, 76, 0.02)',
         tekstovi: 'rgba(0, 0, 0, 0.8)',
         articleNovostiBg: '#fafafa',
         'alt-bila': '#F5FAFF',

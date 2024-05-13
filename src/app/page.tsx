@@ -10,9 +10,23 @@ import PromoSekcija from './sections/PromoSekcija';
 import BlogSekcija from './sections/BlogSekcija';
 import BannerSekcija from './sections/BannerSekcija';
 import AppFooter from './components/AppFooter';
+import { getAllBlogsQuery } from './queries/getDinkoBlogs';
+
 export default async function Home() {
   const getPosts = await fetch(`${process.env.DINKO_BASE_URL}`, { cache: 'no-store' });
   const parseData = await getPosts.json();
+
+  const graphQlTest = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: getAllBlogsQuery,
+    }),
+  });
+
+  const gData = await graphQlTest.json();
 
   return (
     <Suspense>
@@ -20,7 +34,7 @@ export default async function Home() {
       <main className='min-h-screen bg-white'>
         <LandingHero />
         <Operacije />
-        <Novosti />
+        <Novosti {...gData} />
         <Biografija />
         <VideoCitat />
         <IskustvaPacijenata />
