@@ -5,7 +5,7 @@ import Image from 'next/image';
 const IskustvaPacijenata = () => {
   return (
     <section className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-0 '>
-      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-32 xl:pb-28 lg:pt-28 lg:pb-24 md:pt-24 md:pb-20 pt-16 pb-12 text-center'>
+      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-28 xl:pb-16 lg:pt-24 lg:pb-12 md:pt-20 md:pb-8 pt-14 pb-8 text-center'>
         Iskustva pacijenata
       </h1>
 

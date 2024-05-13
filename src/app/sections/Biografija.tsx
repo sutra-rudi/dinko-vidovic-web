@@ -66,8 +66,8 @@ const Biografija = () => {
           <p className='text-dinko-tamnoplava lg:text-base text-sm break-words whitespace-pre-wrap text-balance leading-normal'>
             Profesor Vidović godišnje obavi oko 300 operacijskih zahvata, uglavnom totalnih endoproteza koljena i kuka,
             kako primarnih, tako i najkompleksnijihrevizijskih zahvata. Također izvodi sve vrste artroskopskih zahvata
-            na koljenu,uključujući i rekonstrukcije svih ligamenata. U svakodnevnom radu bavi se i liječenjem prijeloma
-            dugih kostiju te ugradnjom endoproteza ramena.Primjenjuje i ortobiološku terapiju i transplantaciju
+            na koljenu, uključujući i rekonstrukcije svih ligamenata. U svakodnevnom radu bavi se i liječenjem prijeloma
+            dugih kostiju te ugradnjom endoproteza ramena. Primjenjuje i ortobiološku terapiju i transplantaciju
             hrskavice.
           </p>
 

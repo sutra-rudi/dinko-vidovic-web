@@ -110,10 +110,12 @@ const PromoSekcija = () => {
       <div className='lg:py-12 md:py-10 py-8 px-3 bg-dinko-tamnoplava flex items-center justify-center'>
         <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center  gap-y-20 gap-x-20'>
           <div className='grid items-center grid-cols-1 xl:gap-8 lg:gap-6 gap-2'>
-            <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center'>Klinički rad</h2>
+            <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center leading-none'>
+              Klinički rad
+            </h2>
             <div className='flex xl:gap-20 lg:gap-16 md:gap-16 gap-12   lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
-                className='lg:w-32 md:w-24 w-16 lg:h-32 md:h-24 h-16 object-contain object-center'
+                className='lg:w-32 md:w-24 w-16 lg:h-32 md:h-24 h-20 object-contain object-center'
                 src={kbc}
                 alt=''
               />
