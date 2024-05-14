@@ -46,10 +46,10 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
             <SplideSlide key={blo.node.id}>
               <article className={` w-full flex xl:flex-nowrap items-stretch flex-wrap lg:gap-7 gap-2 bg-[#f1f1f1] `}>
                 <Image
-                  src={blo.node.dinkoBlog.slikaHeroBlog.node.sourceUrl}
+                  src={blo.node.dinkoBlog.slikaThumbBlog.node.sourceUrl}
                   width={284}
                   height={284}
-                  sizes={blo.node.dinkoBlog.slikaHeroBlog.node.sizes}
+                  sizes={blo.node.dinkoBlog.slikaThumbBlog.node.sizes}
                   alt='blog thumbnail'
                   className=' w-full  lg:aspect-square shrink-1 aspect-video object-cover object-center lg:min-h-[284px] min-h-[180px]'
                 />
@@ -59,11 +59,13 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   </h2>
                   {isBlogPage && (
                     <span className='text-dinko-tamnoplava  lg:text-base text-sm  md:line-clamp-4 line-clamp-3'>
-                      {parse(blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuNovostiDo200ZnakovaHR)}
+                      {blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuNovostiDo200ZnakovaHR}
                     </span>
                   )}
                   <Link
-                    href={`/blog/${blo.node.id}`}
+                    href={`/blog/${blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR.split(' ').join('-').toLowerCase()}-${
+                      blo.node.vidovicBlogId
+                    }`}
                     className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm'
                   >
                     Pročitaj blog

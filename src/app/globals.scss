@@ -36,12 +36,15 @@ body {
   grid-template-columns: repeat(1, 1fr);
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: start;
-  place-items: center;
+  place-items: stretch;
   gap: 1.93rem;
-
+  max-width: 1024px;
   @media only screen and (min-width: theme('screens.lg')) {
     position: relative;
+  }
+
+  .flex-col {
+    gap: 0 !important;
   }
 
   .wp-block-image:first-child {
@@ -57,11 +60,13 @@ body {
   h2,
   h3,
   h4,
+  figure,
+  img,
   figcaption {
     color: theme('colors.dinko-tamnoplava');
     width: 100%;
     text-align: left;
-    max-width: 1024px;
+    width: 100%;
     @media only screen and (min-width: 1044px) {
       padding-inline: 0;
     }
@@ -97,7 +102,13 @@ body {
   p {
     font-size: theme('fontSize.base');
     line-height: theme('lineHeight.blogParaLineHeight');
-    text-wrap: balance;
+    // text-wrap: balance;
+  }
+
+  figure,
+  img {
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   figcaption {

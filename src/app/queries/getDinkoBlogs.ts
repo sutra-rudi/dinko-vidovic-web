@@ -3,22 +3,25 @@ export const getAllBlogsQuery = `query NewQuery {
     edges {
       node {
         id
+        slug
+        title
+        vidovicBlogId
         dinkoBlog {
           datumBlog
           fieldGroupName
-          engleskiJezik {
-            blogTekstENG
+          hrvatskiJezik {
+            blogTekstHr
             fieldGroupName
+            kratkiTekstZaKarticuBlogaDo200ZnakovaHr
+            nASLOVHR
+            uvodnikHr
+          }
+          engleskiJezik {
+            blogTekstEng
+            fieldGroupName
+            kratkiTekstZaKarticuEn
             naslovEng
             uvodnikEng
-          }
-          hrvatskiJezik {
-            blogTekstHR
-            fieldGroupName
-            kratkiTekstZaKarticuNovostiDo200ZnakovaHR
-            nASLOVHR
-            tekstNovostiHR
-            uvodnikHR
           }
           seoTekstovi {
             fieldGroupName
@@ -27,6 +30,15 @@ export const getAllBlogsQuery = `query NewQuery {
           }
           slikaHeroBlog {
             node {
+              id
+              sizes
+              sourceUrl
+            }
+          }
+          slikaThumbBlog {
+            node {
+              id
+              sizes
               sourceUrl
             }
           }

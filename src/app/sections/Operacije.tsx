@@ -10,12 +10,12 @@ const Operacije = () => {
   return (
     <section
       style={{ backgroundImage: `url(${dinkoBackgroundOperacije.src})` }}
-      className={`2xl:py-28 xl:py-24 lg:py-20 py-16 bg-cover bg-no-repeat bg-center`}
+      className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 bg-cover bg-no-repeat bg-center`}
     >
-      <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
+      <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
         Operacije
       </h1>
-      <div className='max-w-max-container mx-auto my-0 mt-16  xl:px-20 lg:px-16 md:px-8 px-2'>
+      <div className='max-w-max-container mx-auto my-0 xl:px-20 lg:px-16 md:px-8 px-2'>
         <div className='grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2'>
           <div className='grid grid-cols-1 items-start gap-6 w-full xl:whitespace-nowrap xl:max-w-min max-w-max'>
             {operacijeByKat.slice(0, 1).map((operacija, index) => {
