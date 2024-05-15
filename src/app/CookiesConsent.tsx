@@ -3,7 +3,7 @@
 import React from 'react';
 import CookieConsent from 'react-cookie-consent';
 
-const clientW = window.innerWidth;
+const clientW = typeof window !== 'undefined' && window ? window.innerWidth : 1024;
 
 const CookiesConsent = () => (
   <CookieConsent
