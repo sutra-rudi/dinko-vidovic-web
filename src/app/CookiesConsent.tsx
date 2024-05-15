@@ -8,15 +8,15 @@ const clientW = typeof window !== 'undefined' && window ? window.innerWidth : 10
 const CookiesConsent = () => (
   <CookieConsent
     debug
-    buttonText={'Razumjem'}
+    buttonText={'Razumijem'}
     style={{ background: '#17AEC2', maxWidth: clientW > 768 ? '768px' : '100%', placeItems: 'flex-end' }}
     buttonStyle={{ background: '#F5FAFF', borderRadius: '6px' }}
   >
-    <h2 className='xl:text-2xl text-lg'>Pozdrav!</h2>
+    <h2 className='xl:text-2xl text-lg pb-2'>Pozdrav!</h2>
 
-    <p className='xl:text-base text-sm text-balance'>
+    <p className='xl:text-base text-sm text-balance leading-baseLineHeight '>
       Ova stranica koristi kolačiće kako bi osigurala bolje korisničko iskustvo. Korištenjem ove stranice pristajete na
-      upotrebu kolačića u skladu s našom Pravilima o kolačićima. Hvala vam na posjeti!
+      upotrebu kolačića u skladu s našim Pravilima o kolačićima. Hvala vam na posjeti!
     </p>
   </CookieConsent>
 );
