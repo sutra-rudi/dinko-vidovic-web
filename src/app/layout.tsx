@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.scss';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
+import CookiesConsent from './CookiesConsent';
 
 export const metadata: Metadata = {
   title: 'Dinko Vidović',
@@ -23,9 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'>
+    <html
+      lang='hr-HR'
+      className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'
+    >
       <body className={`${Firs.className} w-full h-full bg-white `}>
         <Providers>{children}</Providers>
+        <CookiesConsent />
       </body>
     </html>
   );
