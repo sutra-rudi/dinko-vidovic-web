@@ -9,10 +9,10 @@ const AppButton = ({ primary, content }: { primary: 'prim' | 'sec' | 'hero' | 'b
         primary === 'hero' &&
         'bg-transparent text-dinko-tamnoplava outline outline-2 outline-dinko-tamnoplava hover:bg-dinko-plava hover:text-dinko-tamnoplava hover:outline-dinko-plava'
       } ${primary === 'bio' && 'bg-dinko-plava hover:bg-dinko-tamnoplava hover:text-white'} ${
-        primary === 'sec' && 'bg-white text-dinko-tamnoplava hover:bg-dinko-tamnoplava hover:text-white'
+        primary === 'sec' && 'bg-white text-dinko-tamnoplava hover:bg-dinko-plava hover:text-dinko-tamnoplava'
       } ${
         primary === 'blue-bg' &&
-        'bg-transparent outline outline-2 outline-white text-white hover:outline-dinko-tamnoplava hover:bg-dinko-tamnoplava'
+        'bg-white  outline-white text-dinko-tamnoplava hover:outline-dinko-tamnoplava hover:bg-dinko-tamnoplava hover:text-white'
       }`}
     >
       {content}

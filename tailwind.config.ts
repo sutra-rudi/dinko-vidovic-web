@@ -11,6 +11,7 @@ const config: Config = {
       maxWidth: {
         'max-nav': '1660px',
         'max-container': '1440px',
+        'operations-cont': '1200px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -74,6 +75,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar'), require('@tailwindcss/forms')],
+  plugins: [require('tailwind-scrollbar'), require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
 export default config;

@@ -27,24 +27,47 @@ const AppFooter = () => {
             <Image src={dinkoVidovicFooterLogo} alt='Logo of Dinko Vidović' />
             <div className='grid grid-cols-2 items-center lg:w-auto  w-max'>
               {footerLinks.map((lin, ind) => (
-                <a href={''} key={ind}>
+                <a
+                  href={''}
+                  key={ind}
+                  className='relative block before:absolute before:-left-2 before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
+                >
                   {lin}
                 </a>
               ))}
             </div>
-            <AppButton primary='sec' content='Dogovori pregled' />
+            <AppButton primary='blue-bg' content='Dogovori pregled' />
           </div>
           <div className='w-full h-px bg-white'></div>
 
           <div className='flex w-full lg:justify-between h-min xl:flex-nowrap flex-wrap-reverse place-items-center justify-center lg:gap-0 gap-4'>
-            <p className='text-white/80 lg:text-base text-xs text-balance text-center'>{`© prof. dr. sc. Dinko Vidović, prim, dr. med., 2024. | Made by Studio Sutra.`}</p>
-            <div className='grid md:grid-cols-2 grid-cols-1 place-items-center gap-4'>
+            <p className='text-white/80 lg:text-base text-xs text-balance text-center flex gap-px items-center md:flex-nowrap flex-wrap justify-center'>
+              <span className='flex'>
+                <span>© prof. dr. sc. Dinko Vidović, prim, dr. med.</span>
+                <span>, 2024.</span>
+                <span className='px-px sm:block hidden'>|</span>
+              </span>
+              <span>Made by Studio Sutra</span>.
+            </p>
+            <div className='flex md:flex-nowrap flex-wrap place-items-center md:gap-4 gap-2'>
               <p>Follow us:</p>
               <div className='flex items-center gap-3'>
-                <LinkedInIcon size={24} />
-                <InstagramIcon size={24} />
-                <FacebookIcon size={24} />
-                <YoutubeIcon size={24} />
+                <LinkedInIcon
+                  className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'
+                  size={24}
+                />
+                <InstagramIcon
+                  className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'
+                  size={24}
+                />
+                <FacebookIcon
+                  className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'
+                  size={24}
+                />
+                <YoutubeIcon
+                  className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'
+                  size={24}
+                />
               </div>
             </div>
           </div>
