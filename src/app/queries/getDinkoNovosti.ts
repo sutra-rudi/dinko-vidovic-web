@@ -4,19 +4,18 @@ export const getDinkoNovostiQuery = `query NewQuery {
       node {
         novosti {
           datumBlog
-          fieldGroupName
           seoTekstovi {
-            fieldGroupName
             seoNovostiTekstEng
             seoNovostiTekstHr
           }
           slikaHeroBlog {
             node {
               id
+              sizes
+              sourceUrl
             }
           }
           engleskiJezik {
-            fieldGroupName
             kratkiTekstZaKarticuNovostiDo200ZnakovaEng
             naslovNovostiEng
             novostiTekstEng
@@ -25,7 +24,6 @@ export const getDinkoNovostiQuery = `query NewQuery {
             novostiTekstHr
             nASLOVNOVOSTIHR
             kratkiTekstZaKarticuNovostiDo200ZnakovaHr
-            fieldGroupName
           }
         }
       }

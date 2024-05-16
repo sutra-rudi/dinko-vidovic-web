@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import AppButton from '../components/AppButton';
-import parse from 'html-react-parser';
+// import parse from 'html-react-parser';
 import Link from 'next/link';
 interface DinkoBlogList {
   blogList: any;

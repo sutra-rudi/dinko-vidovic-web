@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { novostiExample } from '../staticWebData/novostiDemo';
 import Image from 'next/image';
 import dinkoLinijeEfektAlt from '../img/svg/dinko-vidovic-linije-efekt-alt.svg';
 
@@ -10,7 +9,11 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useParallax } from 'react-scroll-parallax';
 
-const Novosti = () => {
+interface DinkoNovosti {
+  novostiList: any;
+}
+
+const Novosti = ({ novostiList }: DinkoNovosti) => {
   const splideOptions: any = {
     perPage: 4,
     type: 'slide',
@@ -38,7 +41,7 @@ const Novosti = () => {
   });
 
   return (
-    <section className='2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 relative z-10 block overflow-x-hidden'>
+    <section className='2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 relative z-10 overflow-x-hidden'>
       <Image
         ref={linesMove.ref as any}
         src={dinkoLinijeEfektAlt}
@@ -53,17 +56,25 @@ const Novosti = () => {
         options={splideOptions}
         className='max-w-max-container my-0 mx-auto lg:gap-9 md:gap-6 gap-3 mt-16 2xl:p-0 px-3 cursor-grab'
       >
-        {novostiExample.map((nov, index) => {
+        {novostiList.data.novosti.edges.map((nov: any, index: number) => {
           return (
             <SplideSlide key={index}>
               <article key={index} className='bg-articleNovostiBg '>
-                <Image src={nov.srcImage} alt='news thumbnail' quality={100} loading='eager' placeholder='blur' />
+                <Image
+                  src={nov.node.novosti.slikaHeroBlog.node.sourceUrl}
+                  alt='news thumbnail'
+                  quality={100}
+                  sizes={nov.node.novosti.slikaHeroBlog.node.sizes}
+                  loading='eager'
+                  width={350}
+                  height={240}
+                />
                 <div className='lg:px-5 lg:py-6 px-3 py-4 flex flex-col items-start gap-2'>
                   <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl md:text-lg text-base leading-baseLineHeight font-medium lg:line-clamp-none line-clamp-2'>
-                    {nov.title}
+                    {nov.node.novosti.hrvatskiJezik.nASLOVNOVOSTIHR}
                   </h2>
                   <p className='text-dinko-tamnoplava md:text-base text-sm leading-normal font-normal text-balance lg:line-clamp-none md:line-clamp-4 line-clamp-3'>
-                    {nov.content}
+                    {nov.node.novosti.hrvatskiJezik.kratkiTekstZaKarticuNovostiDo200ZnakovaHr}
                   </p>
                   <a href='' className='text-dinko-plava font-medium self-end lg:text-base text-sm'>
                     Saznjaj više
