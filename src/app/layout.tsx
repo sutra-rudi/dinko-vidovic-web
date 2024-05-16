@@ -4,6 +4,7 @@ import './globals.scss';
 import localFont from 'next/font/local';
 import { Providers } from './providers';
 import CookiesConsent from './CookiesConsent';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: 'Dinko Vidović',
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${Firs.className} w-full h-full bg-white `}>
         <Providers>{children}</Providers>
         <CookiesConsent />
+        <GoogleAnalytics gaId={process.env.DINKO_VIDOVIC_ANALYTICS_KEY!} />
       </body>
     </html>
   );
