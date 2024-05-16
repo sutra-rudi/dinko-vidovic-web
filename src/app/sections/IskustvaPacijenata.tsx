@@ -68,7 +68,7 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
                     sizes={isk.node.iskustvaPacijenataInputFields.slikaTestimonials.node.sizes}
                     width={664}
                     height={479}
-                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px]object-cover object-center'
+                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center'
                   />
                 ) : (
                   <div className='lg:max-w-[664px] w-full aspect-[9/16] max-h-[479px] object-cover object-center'></div>
