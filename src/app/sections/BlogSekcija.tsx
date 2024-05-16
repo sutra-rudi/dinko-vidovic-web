@@ -59,7 +59,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   </h2>
                   {isBlogPage && (
                     <span className='text-dinko-tamnoplava  lg:text-base text-sm  md:line-clamp-4 line-clamp-3'>
-                      {blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuNovostiDo200ZnakovaHR}
+                      {blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuBlogaDo200ZnakovaHr}
                     </span>
                   )}
                   <Link

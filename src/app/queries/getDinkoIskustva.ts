@@ -4,7 +4,6 @@ export const getDinkoIskustvaQuery = `query NewQuery {
       node {
         iskustvaPacijenataId
         iskustvaPacijenataInputFields {
-          fieldGroupName
           imeIPrezimePacijenta
           linkNaVanjskiLinkSamoUSlucajuDaPostoji
           videoLinkNaYoutube
@@ -19,6 +18,10 @@ export const getDinkoIskustvaQuery = `query NewQuery {
           testimonialsHrvatskiJezik {
             tekstTestimoniala
           }
+          testimonialsEngleskiJezik {
+            tekstTestimoniala
+          }
+          vrstaZahvata
         }
       }
     }

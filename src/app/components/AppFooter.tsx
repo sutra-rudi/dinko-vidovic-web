@@ -17,6 +17,9 @@ const AppFooter = () => {
     'Operacije',
     'Novosti',
     'Blog',
+    'Pravila privatnosti',
+    'GDPR',
+    'Uvjeti korištenja',
   ];
 
   return (

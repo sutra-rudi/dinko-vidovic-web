@@ -12,6 +12,7 @@ import BannerSekcija from './sections/BannerSekcija';
 import AppFooter from './components/AppFooter';
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
+import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -40,6 +41,19 @@ export default async function Home() {
 
   const parseNovostiData = await getDinkoNovosti.json();
 
+  const getDinkoIskustva = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: getDinkoIskustvaQuery,
+    }),
+    cache: 'no-store',
+  });
+
+  const parseIskustvaData = await getDinkoIskustva.json();
+
   return (
     <Suspense>
       <AppHeader />
@@ -49,7 +63,7 @@ export default async function Home() {
         <Novosti novostiList={parseNovostiData} />
         <Biografija />
         <VideoCitat />
-        <IskustvaPacijenata />
+        <IskustvaPacijenata iskustvaList={parseIskustvaData} />
         <PromoSekcija />
         <BlogSekcija blogList={parseData} isBlogPage />
         <BannerSekcija />
