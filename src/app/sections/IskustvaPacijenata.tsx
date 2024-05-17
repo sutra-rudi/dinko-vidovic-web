@@ -20,6 +20,7 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
     focus: 'center',
     pagination: false,
     arrows: true,
+    autoHeight: true,
     // autoplay: true,
     // interval: 2000,
     // rewind: true,
