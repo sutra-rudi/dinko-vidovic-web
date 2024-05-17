@@ -33,7 +33,7 @@ const AppFooter = () => {
                 <a
                   href={''}
                   key={ind}
-                  className='relative block before:absolute before:-left-2 before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
+                  className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
                 >
                   {lin}
                 </a>
@@ -53,7 +53,7 @@ const AppFooter = () => {
               <span>Made by Studio Sutra</span>.
             </p>
             <div className='flex md:flex-nowrap flex-wrap place-items-center md:gap-4 gap-2'>
-              <p>Follow us:</p>
+              <p className='text-white'>Follow us:</p>
               <div className='flex items-center gap-3'>
                 <LinkedInIcon
                   className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'

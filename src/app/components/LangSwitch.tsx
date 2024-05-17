@@ -67,7 +67,7 @@ const LanguageSwitch = () => {
 
   return (
     <div
-      className='bg-dinko-tamnoplava fixed bottom-2 right-0 py-2 px-4'
+      className='bg-dinko-tamnoplava fixed bottom-2 right-2 py-2 px-4'
       onClick={() => handleLangSwitch(userLang === UserLanguage.hr ? UserLanguage.en : UserLanguage.hr)}
     >
       <h2 className='text-alt-bila'>Lang switch</h2>
