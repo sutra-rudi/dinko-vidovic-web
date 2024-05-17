@@ -5,6 +5,8 @@ import localFont from 'next/font/local';
 import { Providers } from './providers';
 import CookiesConsent from './CookiesConsent';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import LanguageSwitch from './components/LangSwitch';
+import { GlobalContextProvider } from './contexts/store';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -45,7 +47,10 @@ export default function RootLayout({
       className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'
     >
       <body className={`${Firs.className} w-full h-full bg-white `}>
-        <Providers>{children}</Providers>
+        <GlobalContextProvider>
+          <Providers>{children}</Providers>
+          <LanguageSwitch />
+        </GlobalContextProvider>
         <CookiesConsent />
         <GoogleAnalytics gaId={process.env.DINKO_VIDOVIC_ANALYTICS_KEY!} />
         <GoogleTagManager gtmId={process.env.DINKO_VIDOVIC_TAG_ANALYTICS_KEY!} />

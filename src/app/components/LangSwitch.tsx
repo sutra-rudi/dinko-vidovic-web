@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from '../styles/langSwitcher.module.scss';
+// import styles from '../styles/langSwitcher.module.scss';
 import { useAppContext } from '../contexts/store';
 import { ActionTypes } from '../types/actionTypes';
 import { UserLanguage } from '../types/appState';
@@ -24,11 +24,11 @@ const LanguageSwitch = () => {
   React.useEffect(() => {
     const checkParams = paramsControler.get('lang');
 
-    const checkLocalStorage = getLocalStorageItem('@riva-rafting-user-language');
+    const checkLocalStorage = getLocalStorageItem('@dinko-vidovic-user-language');
 
     if (checkParams) {
       dispatch({ type: ActionTypes.SET_USER_LANG, payload: checkParams === 'hr' ? UserLanguage.hr : UserLanguage.en });
-      setLocalStorageItem('@riva-rafting-user-language', checkParams);
+      setLocalStorageItem('@dinko-vidovic-user-language', checkParams);
     } else if (checkLocalStorage) {
       dispatch({ type: ActionTypes.SET_USER_LANG, payload: checkLocalStorage });
 
@@ -55,9 +55,9 @@ const LanguageSwitch = () => {
 
     router.replace(`?${searchString}`);
 
-    setLocalStorageItem('@riva-rafting-user-language', payloadF);
+    setLocalStorageItem('@dinko-vidovic-user-language', payloadF);
 
-    if (pathname !== '/smjestaj/mobilne-kucice') {
+    if (pathname !== '/') {
       window.location.reload();
       router.push('/');
     } else {
@@ -67,10 +67,10 @@ const LanguageSwitch = () => {
 
   return (
     <div
+      className='bg-dinko-tamnoplava fixed bottom-2 right-0 py-2 px-4'
       onClick={() => handleLangSwitch(userLang === UserLanguage.hr ? UserLanguage.en : UserLanguage.hr)}
-      className={styles.lang}
     >
-      <h2>switch</h2>
+      <h2 className='text-alt-bila'>Lang switch</h2>
       {/* {userLang === UserLanguage.hr ? (
         <Image width={30} height={30} alt='croatian flag' src={croatianFlag} />
       ) : (
