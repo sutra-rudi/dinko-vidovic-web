@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 import './globals.scss';
 import localFont from 'next/font/local';
@@ -6,9 +6,24 @@ import { Providers } from './providers';
 import CookiesConsent from './CookiesConsent';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 3,
+  userScalable: true,
+  interactiveWidget: 'overlays-content',
+  colorScheme: 'light',
+  themeColor: '#eeeeee',
+};
+
 export const metadata: Metadata = {
   title: 'Dinko Vidović',
   description: '',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+  },
 };
 
 const Firs = localFont({
