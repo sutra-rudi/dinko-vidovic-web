@@ -5,7 +5,6 @@ import Operacije from './sections/Operacije';
 import Novosti from './sections/Novosti';
 import Biografija from './sections/Biografija';
 import VideoCitat from './sections/VideoCitat';
-import IskustvaPacijenata from './sections/IskustvaPacijenata';
 import PromoSekcija from './sections/PromoSekcija';
 import BlogSekcija from './sections/BlogSekcija';
 import BannerSekcija from './sections/BannerSekcija';
@@ -13,6 +12,8 @@ import AppFooter from './components/AppFooter';
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
+import dynamic from 'next/dynamic';
+import Loading from './loading';
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -54,6 +55,11 @@ export default async function Home() {
 
   const parseIskustvaData = await getDinkoIskustva.json();
 
+  const LazyIskustva = dynamic(() => import('./sections/IskustvaPacijenata'), {
+    ssr: false,
+    loading: () => <Loading />,
+  });
+
   return (
     <Suspense>
       <AppHeader />
@@ -63,7 +69,7 @@ export default async function Home() {
         <Novosti novostiList={parseNovostiData} />
         <Biografija />
         <VideoCitat />
-        <IskustvaPacijenata iskustvaList={parseIskustvaData} />
+        <LazyIskustva iskustvaList={parseIskustvaData} />
         <PromoSekcija />
         <BlogSekcija blogList={parseData} isBlogPage />
         <BannerSekcija />

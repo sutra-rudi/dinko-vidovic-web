@@ -17,13 +17,15 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   scrollbar-gutter: stable both-edges;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .overflow-hidden {
+    overflow: hidden;
   }
 }
 
