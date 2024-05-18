@@ -49,7 +49,6 @@ export default function RootLayout({
       <body className={`${Firs.className} w-full h-full bg-white `}>
         <GlobalContextProvider>
           <Providers>{children}</Providers>
-          <LanguageSwitch />
         </GlobalContextProvider>
         <CookiesConsent />
         <GoogleAnalytics gaId={process.env.DINKO_VIDOVIC_ANALYTICS_KEY!} />
