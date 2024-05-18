@@ -5,7 +5,6 @@ import localFont from 'next/font/local';
 import { Providers } from './providers';
 import CookiesConsent from './CookiesConsent';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import LanguageSwitch from './components/LangSwitch';
 import { GlobalContextProvider } from './contexts/store';
 
 export const viewport: Viewport = {
