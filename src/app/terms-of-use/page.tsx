@@ -1,6 +1,6 @@
 import { getDinkoUvjetiQuery } from '../queries/getDinkoUvjeti';
 
-export default async function TermsOfUse({}) {
+export default async function TermsOfUse() {
   const getDinkoUvjeti = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
     method: 'POST',
     headers: {

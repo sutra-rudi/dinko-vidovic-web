@@ -61,7 +61,7 @@ export default async function Home() {
   });
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loading />}>
       <AppHeader />
       <main className='min-h-screen bg-white'>
         <LandingHero />
