@@ -14,11 +14,28 @@ export async function generateMetadata({
   params: { slug: string };
   searchParams: { lang: string };
 }) {
+  const blog_id = params.slug.split('-').at(-1);
+
+  const getSingleBlog = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: getSingleBlogQuery(blog_id!),
+    }),
+    cache: 'no-store',
+  });
+
+  const parsePost = await getSingleBlog.json();
+
+  const shortHand = parsePost.data.vidovicBlog.dinkoBlog;
+
   return {
     title:
       typeof searchParams !== 'undefined' && searchParams && searchParams.lang === 'en'
-        ? 'engleski naslov'
-        : 'hrvatski naslov',
+        ? shortHand.engleskiJezik.naslovEng
+        : shortHand.hrvatskiJezik.nASLOVHR,
   };
 }
 
