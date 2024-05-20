@@ -15,6 +15,7 @@ import {
 } from 'react-icons/sl';
 import { useAppContext } from '../contexts/store';
 import { UserLanguage } from '../types/appState';
+import { operacijeByKat } from '../staticWebData/operacijeDemo';
 const AppHeader = () => {
   const [isMobileOpen, setIsMobileOpen] = React.useState<boolean>(false);
 
@@ -31,24 +32,67 @@ const AppHeader = () => {
     [userLang]
   );
 
+  const [isDropdown, setIsDropdown] = React.useState<boolean>(false);
+
   return (
-    <nav className='w-full bg-white overflow-hidden'>
+    <nav className='w-full bg-white '>
       <div className='max-w-max-nav mx-auto my-0 py-5 px-6'>
         <div className='flex flex-row justify-between items-center'>
           <Link href={'/'}>
             <Image src={dinkoLogo} alt='header logo signiature' />
           </Link>
           <div className='w-full flex items-center justify-end 2xl:gap-16  gap-8 '>
-            <div className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
-              {getCurrentLangLinks().map((link) => (
-                <a
-                  href={link.href}
-                  key={link.title}
-                  className='transition-all uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
-                >
-                  {link.title}
-                </a>
-              ))}
+            <div onMouseLeave={() => setIsDropdown(false)} className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
+              {getCurrentLangLinks().map((link) => {
+                if (link.isMenu) {
+                  return (
+                    <div className='relative' key={link.title}>
+                      <a
+                        onMouseOver={() => setIsDropdown(true)}
+                        onMouseEnter={() => setIsDropdown(true)}
+                        href={link.href}
+                        className='transition-all uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                      >
+                        {link.title}
+                      </a>
+
+                      <div
+                        className={`absolute transition-all w-auto duration-300 ease-custom-ease-in-out bg-red-400 grid grid-cols-1 items-start gap-4 top-[1.5rem] z-30 left-0 ${
+                          isDropdown
+                            ? 'opacity-1 translate-y-0'
+                            : 'opacity-0 translate-y-10 pointer-events-none select-none'
+                        }`}
+                      >
+                        {operacijeByKat.map((operacija, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out'
+                            >
+                              {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
+                              <div className='absolute transition-all duration-300 ease-custom-ease-in-out translate-y-10  left-full min-w-[400px] top-0 min-h-36 bg-blue-500 opacity-0 pointer-events-none select-none grid group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100 grid-cols-1 w-full gap-1'>
+                                {userLang === UserLanguage.hr
+                                  ? operacija.contentHr.map((op, index) => <p key={index}>{op}</p>)
+                                  : operacija.contentEn.map((op, index) => <p key={index}>{op}</p>)}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    href={link.href}
+                    key={link.title}
+                    className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                  >
+                    {link.title}
+                  </a>
+                );
+              })}
             </div>
 
             <div className='md:block hidden'>
