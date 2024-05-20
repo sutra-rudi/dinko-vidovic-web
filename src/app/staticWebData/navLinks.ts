@@ -3,7 +3,7 @@ export const navLinks = {
     { title: 'About me', href: '/' },
     { title: 'Procedures', href: '/', isMenu: true },
     { title: 'Patient experiences', href: '/' },
-    { title: 'Frequently asked questions', href: '/' },
+    { title: 'FAQ', href: '/' },
     { title: 'News', href: '/' },
     { title: 'Blog', href: '/' },
     { title: 'Contact', href: '/' },
