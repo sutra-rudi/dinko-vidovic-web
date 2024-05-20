@@ -7,7 +7,7 @@ import { getAllBlogsQuery } from '@/app/queries/getDinkoBlogs';
 import { getSingleBlogQuery } from '@/app/queries/getSingleBlog';
 import PageContent from './PageContent';
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({ params, searchParams }: { params: { slug: string }; searchParams: string }) {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
     method: 'POST',
     headers: {
@@ -35,6 +35,8 @@ export default async function BlogPage({ params }: { params: { slug: string } })
   });
 
   const parsePost = await getSingleBlog.json();
+
+  console.log('SEARCH PARAMS', searchParams);
 
   return (
     <Suspense>

@@ -14,7 +14,6 @@ import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
 import dynamic from 'next/dynamic';
 import Loading from './loading';
-import LanguageSwitch from './components/LangSwitch';
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -64,7 +63,6 @@ export default async function Home() {
   return (
     <Suspense fallback={<Loading />}>
       <AppHeader />
-      <LanguageSwitch />
       <main className='min-h-screen bg-white'>
         <LandingHero />
         <Operacije />

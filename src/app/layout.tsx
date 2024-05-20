@@ -6,6 +6,9 @@ import { Providers } from './providers';
 import CookiesConsent from './CookiesConsent';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { GlobalContextProvider } from './contexts/store';
+import LanguageSwitch from './components/LangSwitch';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -46,12 +49,18 @@ export default function RootLayout({
       className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'
     >
       <body className={`${Firs.className} w-full h-full bg-white `}>
-        <GlobalContextProvider>
-          <Providers>{children}</Providers>
-        </GlobalContextProvider>
-        <CookiesConsent />
-        <GoogleAnalytics gaId={process.env.DINKO_VIDOVIC_ANALYTICS_KEY!} />
-        <GoogleTagManager gtmId={process.env.DINKO_VIDOVIC_TAG_ANALYTICS_KEY!} />
+        <Suspense fallback={<Loading />}>
+          <GlobalContextProvider>
+            <Providers>
+              {children}
+              <LanguageSwitch />
+            </Providers>
+          </GlobalContextProvider>
+          <CookiesConsent />
+
+          <GoogleAnalytics gaId={process.env.DINKO_VIDOVIC_ANALYTICS_KEY!} />
+          <GoogleTagManager gtmId={process.env.DINKO_VIDOVIC_TAG_ANALYTICS_KEY!} />
+        </Suspense>
       </body>
     </html>
   );
