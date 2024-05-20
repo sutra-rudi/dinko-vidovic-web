@@ -1,3 +1,4 @@
 export enum ActionTypes {
   SET_USER_LANG = 'SET_USER_LANG',
+  SET_CURRENT_ROUTE = 'SET_CURRENT_ROUTE',
 }

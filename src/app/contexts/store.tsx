@@ -24,6 +24,7 @@ const GlobalContext = React.createContext<{ state: AppState; dispatch: React.Dis
 export const GlobalContextProvider = ({ children }: any) => {
   const initial_state = {
     userLang: UserLanguage.hr,
+    currentRoute: '/',
   };
 
   const [state, dispatch] = React.useReducer(appReducer, initial_state);

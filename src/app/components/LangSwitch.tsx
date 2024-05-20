@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-// import styles from '../styles/langSwitcher.module.scss';
 import { useAppContext } from '../contexts/store';
 import { ActionTypes } from '../types/actionTypes';
 import { UserLanguage } from '../types/appState';
@@ -57,12 +56,7 @@ const LanguageSwitch = () => {
 
     setLocalStorageItem('@dinko-vidovic-user-language', payloadF);
 
-    if (pathname !== '/') {
-      window.location.reload();
-      router.push('/');
-    } else {
-      window.location.reload();
-    }
+    window.location.reload();
   };
 
   return (

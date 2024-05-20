@@ -5,4 +5,5 @@ export enum UserLanguage {
 
 export interface AppState {
   userLang: UserLanguage;
+  currentRoute: string;
 }

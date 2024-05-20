@@ -13,12 +13,23 @@ import {
   SlSocialFacebook as FacebookIcon,
   SlSocialYoutube as YoutubeIcon,
 } from 'react-icons/sl';
+import { useAppContext } from '../contexts/store';
+import { UserLanguage } from '../types/appState';
 const AppHeader = () => {
   const [isMobileOpen, setIsMobileOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     isMobileOpen ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden');
   }, [isMobileOpen]);
+
+  const {
+    state: { userLang },
+  } = useAppContext();
+
+  const getCurrentLangLinks = React.useCallback(
+    () => (userLang === UserLanguage.hr ? navLinks.hr : navLinks.en),
+    [userLang]
+  );
 
   return (
     <nav className='w-full bg-white overflow-hidden'>
@@ -29,7 +40,7 @@ const AppHeader = () => {
           </Link>
           <div className='w-full flex items-center justify-end 2xl:gap-48  gap-8 '>
             <div className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
-              {navLinks.hr.map((link) => (
+              {getCurrentLangLinks().map((link) => (
                 <a
                   href={link.href}
                   key={link.title}

@@ -6,7 +6,10 @@ import Image from 'next/image';
 import parse from 'html-react-parser';
 import dayjs from 'dayjs';
 import { Roboto_Condensed } from 'next/font/google';
-
+import { UserLanguage } from '@/app/types/appState';
+import { useAppContext } from '@/app/contexts/store';
+// import { usePathname } from 'next/navigation';
+// import { ActionTypes } from '@/app/types/actionTypes';
 const RobotoFont = Roboto_Condensed({ subsets: ['latin'], weight: ['700'] });
 
 interface DinkoSingleBlogData {
@@ -16,7 +19,31 @@ interface DinkoSingleBlogData {
 const PageContent = ({ content }: DinkoSingleBlogData) => {
   console.log('CONTENT', content);
 
+  const {
+    state: { userLang },
+  } = useAppContext();
+
   const shortHand = content.data.vidovicBlog.dinkoBlog;
+
+  const langShortHand = (lang: UserLanguage) => {
+    if (lang === UserLanguage.hr) {
+      const hrTrans = {
+        title: shortHand.hrvatskiJezik.nASLOVHR,
+        subTitle: shortHand.hrvatskiJezik.uvodnikHr,
+        content: shortHand.hrvatskiJezik.blogTekstHr,
+      };
+
+      return hrTrans;
+    } else {
+      const enTrans = {
+        title: shortHand.engleskiJezik.naslovEng,
+        subTitle: shortHand.engleskiJezik.uvodnikEng,
+        content: shortHand.engleskiJezik.blogTekstEng,
+      };
+
+      return enTrans;
+    }
+  };
 
   return (
     <article className='relative max-w-full mx-auto my-0 overflow-hidden min-h-dvh'>
@@ -38,8 +65,8 @@ const PageContent = ({ content }: DinkoSingleBlogData) => {
 
       <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[220px] aspect-video object-cover'>
         <Image
-          src={content.data.vidovicBlog.dinkoBlog.slikaHeroBlog.node.sourceUrl}
-          sizes={content.data.vidovicBlog.dinkoBlog.slikaHeroBlog.node.sizes}
+          src={shortHand.slikaHeroBlog.node.sourceUrl}
+          sizes={shortHand.slikaHeroBlog.node.sizes}
           className='aspect-video object-cover'
           fill
           alt='hero'
@@ -49,15 +76,15 @@ const PageContent = ({ content }: DinkoSingleBlogData) => {
         {dayjs(shortHand.datumBlog).format('DD.MM.YYYY')}
       </div>
       <h2 className='text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] pb-8 text-4xl leading-[112%] xl:p-0 px-4'>
-        {shortHand.hrvatskiJezik.nASLOVHR}
+        {langShortHand(userLang).title}
       </h2>
 
       <h4
         className={`text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] xl:py-8 xl:px-0 px-4 text-xl leading-baseLineHeight py-4 ${RobotoFont.className}`}
       >
-        {shortHand.hrvatskiJezik.uvodnikHr}
+        {langShortHand(userLang).subTitle}
       </h4>
-      <div className='inner-cont-custom'>{parse(shortHand.hrvatskiJezik.blogTekstHr)}</div>
+      <div className='inner-cont-custom'>{parse(langShortHand(userLang).content)}</div>
     </article>
   );
 };

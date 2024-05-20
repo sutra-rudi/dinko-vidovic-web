@@ -7,7 +7,28 @@ import { getAllBlogsQuery } from '@/app/queries/getDinkoBlogs';
 import { getSingleBlogQuery } from '@/app/queries/getSingleBlog';
 import PageContent from './PageContent';
 
-export default async function BlogPage({ params, searchParams }: { params: { slug: string }; searchParams: string }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { lang: string };
+}) {
+  return {
+    title:
+      typeof searchParams !== 'undefined' && searchParams && searchParams.lang === 'en'
+        ? 'engleski naslov'
+        : 'hrvatski naslov',
+  };
+}
+
+export default async function BlogPage({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { lang: string };
+}) {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
     method: 'POST',
     headers: {
