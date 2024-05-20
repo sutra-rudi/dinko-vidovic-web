@@ -13,6 +13,8 @@ interface DinkoBlogList {
 // @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import slugify from 'slugify';
+import { useSearchParams } from 'next/navigation';
 
 const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
   const splideOptions: any = {
@@ -34,6 +36,19 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
       1536: { perPage: 3.3 },
     },
   };
+
+  const slugifyOptions = {
+    strict: true,
+    replacement: '-',
+    trim: true,
+    locale: 'en',
+    lower: true,
+  };
+
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
+
+  console.log('CHECK', checkParams);
 
   return (
     <section className='w-full relative xl:pb-24 lg:pb-20 pb-16'>
@@ -63,9 +78,9 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                     </span>
                   )}
                   <Link
-                    href={`/blog/${blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR.split(' ').join('-').toLowerCase()}-${
+                    href={`/blog/${slugify(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, slugifyOptions)}-${
                       blo.node.vidovicBlogId
-                    }`}
+                    }?lang=${checkParams}`}
                     className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm'
                   >
                     Pročitaj blog
