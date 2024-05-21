@@ -48,8 +48,6 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
 
-  console.log('CHECK', checkParams);
-
   return (
     <section className='w-full relative xl:pb-24 lg:pb-20 pb-16'>
       <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-32 lg:pt-24 md:pt-20 pt-16 pb-4 text-center'>
@@ -66,7 +64,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   height={284}
                   sizes={blo.node.dinkoBlog.slikaThumbBlog.node.sizes}
                   alt='blog thumbnail'
-                  className=' w-full  lg:aspect-square shrink-1 aspect-video object-cover object-center lg:min-h-[284px] min-h-[180px]'
+                  className=' w-full  lg:aspect-square shrink aspect-video object-cover object-center lg:min-h-[284px] min-h-[180px]'
                 />
                 <div className='py-2 px-4 flex flex-col items-start w-full h-full gap-3'>
                   <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium '>

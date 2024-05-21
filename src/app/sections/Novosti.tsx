@@ -99,7 +99,7 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
                     }?lang=${checkParams}`}
                     className='text-dinko-plava font-medium self-end lg:text-base text-sm'
                   >
-                    Saznjaj više
+                    Saznaj više
                   </Link>
                 </div>
               </article>
