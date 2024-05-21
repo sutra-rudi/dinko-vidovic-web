@@ -44,7 +44,7 @@ const PageContent = ({ content, date, heroImg, title }: DinkoSingleNewsData) => 
       <div className='text-dinko-plava mx-auto my-0 max-w-[1024px] mt-24 xl:p-0 px-4'>
         {dayjs(date).format('DD.MM.YYYY')}
       </div>
-      <h2 className='text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] pb-8 text-4xl leading-[112%] xl:p-0 px-4'>
+      <h2 className='text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] pb-8 text-4xl leading-[112%] xl:px-0 px-4 '>
         {title}
       </h2>
 
