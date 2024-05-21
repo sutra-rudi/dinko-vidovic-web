@@ -18,7 +18,7 @@ const AppFooter = () => {
     'Novosti',
     'Blog',
     'Pravila privatnosti',
-    'GDPR',
+    'Izdvojeno iz medija',
     'Uvjeti korištenja',
   ];
 
@@ -28,7 +28,7 @@ const AppFooter = () => {
         <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10 '>
           <div className='flex place-items-center lg:justify-between justify-center  lg:flex-nowrap flex-wrap lg:gap-0 gap-12'>
             <Image src={dinkoVidovicFooterLogo} alt='Logo of Dinko Vidović' />
-            <div className='grid grid-cols-2 items-center lg:w-auto  w-max'>
+            <div className='grid grid-cols-2 items-center gap-x-4 lg:w-auto  w-max'>
               {footerLinks.map((lin, ind) => (
                 <a
                   href={''}

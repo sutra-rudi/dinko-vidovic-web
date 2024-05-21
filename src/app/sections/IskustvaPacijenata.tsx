@@ -36,8 +36,8 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
       <Splide options={splideOptions} className='max-w-max-container mx-auto my-0'>
         {iskustvaList.data.allIskustvaPacijenata.edges.map((isk: any) => {
           return (
-            <SplideSlide key={isk.node.iskustvaPacijenataId}>
-              <article className='flex items-center justify-center lg:pb-52 pb-24 2xl:p-0 px-6 lg:flex-nowrap flex-wrap lg:gap-0 gap-10'>
+            <SplideSlide className='lg:pb-52 pb-24 2xl:p-0 px-6' key={isk.node.iskustvaPacijenataId}>
+              <article className='flex items-center justify-center  lg:flex-nowrap flex-wrap lg:gap-6 gap-10'>
                 <div className='lg:max-w-[620px] w-full flex flex-col items-start gap-5'>
                   <div className=''>
                     <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl text-lg leading-baseLineHeight font-medium'>
@@ -55,7 +55,7 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
 
                 {!isk.node.iskustvaPacijenataInputFields.slikaTestimonials &&
                 isk.node.iskustvaPacijenataInputFields.videoLinkNaYoutube ? (
-                  <div className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center relative'>
+                  <div className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[449px] object-cover object-center relative'>
                     <ReactPlayer
                       url={isk.node.iskustvaPacijenataInputFields.videoLinkNaYoutube}
                       width={'100%'}

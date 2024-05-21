@@ -76,15 +76,18 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
           return (
             <SplideSlide key={index}>
               <article key={index} className='bg-articleNovostiBg '>
-                <Image
-                  src={nov.node.novosti.slikaHeroBlog.node.sourceUrl}
-                  alt='news thumbnail'
-                  quality={100}
-                  sizes={nov.node.novosti.slikaHeroBlog.node.sizes}
-                  loading='eager'
-                  width={350}
-                  height={240}
-                />
+                <div className='relative w-full h-[241px] aspect-square'>
+                  <Image
+                    src={nov.node.novosti.slikaHeroBlog.node.sourceUrl}
+                    alt='news thumbnail'
+                    quality={100}
+                    sizes={nov.node.novosti.slikaHeroBlog.node.sizes}
+                    loading='eager'
+                    width={350}
+                    height={240}
+                    className='object-cover w-full h-full aspect-square'
+                  />
+                </div>
                 <div className='lg:px-5 lg:py-6 px-3 py-4 flex flex-col items-start gap-2'>
                   <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl md:text-lg text-base leading-baseLineHeight font-medium lg:line-clamp-none line-clamp-2'>
                     {nov.node.novosti.hrvatskiJezik.nASLOVNOVOSTIHR}

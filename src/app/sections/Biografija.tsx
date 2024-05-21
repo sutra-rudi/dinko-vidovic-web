@@ -11,8 +11,8 @@ const Biografija = () => {
     <section className='relative 2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 pb-28'>
       <div className='flex lg:items-start items-center lg:justify-start justify-center max-w-max-container my-0 mx-auto lg:gap-24 md:gap-20 gap-16 lg:flex-nowrap flex-wrap 2xl:p-0 px-6 '>
         <StickyBox
-          offsetTop={0}
-          offsetBottom={0}
+          offsetTop={200}
+          offsetBottom={100}
           className='max-lg:!relative w-full h-full  lg:min-h-[700px] md:min-h-[600px] min-h-[500px] lg:max-w-[795px] '
         >
           <div className='lg:block hidden'>

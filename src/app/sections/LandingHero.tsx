@@ -17,7 +17,10 @@ const LandingHero = () => {
     easing: 'easeOut',
   });
 
-  console.log('ALO', dinkoLottie);
+  const heroBlockMove = useParallax<HTMLDivElement>({
+    translateY: [0, 45],
+    easing: 'easeOut',
+  });
 
   return (
     <section className='w-full h-full relative overflow-hidden lg:min-h-fit min-h-iframes-images-lg'>
@@ -48,10 +51,13 @@ const LandingHero = () => {
         className='absolute -bottom-8 -left-16 xl:block hidden'
       />
 
-      <div className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] bottom-[12%] right-[10%] max-w-[407px]  lg:bg-transparent'>
+      <div
+        ref={heroBlockMove.ref as any}
+        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] bottom-[12%] right-[10%] max-w-[407px]  lg:bg-transparent'
+      >
         {/* <h1 className='text-heroText text-dinko-tamnoplava text-balance  leading-none whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h1> */}
-        <Lottie animationData={dinkoLottie} width={200} height={200} />
-        {/* <HeroLottie /> */}
+        <Lottie animationData={dinkoLottie} width={200} height={200} loop={false} />
+
         <div className='flex items-start flex-col justify-start gap-6 mt-3 '>
           <p className='text-base text-dinko-tamnoplava text-balance leading-snug'>
             {`Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih

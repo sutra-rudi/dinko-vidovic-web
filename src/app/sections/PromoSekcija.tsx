@@ -13,8 +13,9 @@ import pedi from '../img/logos/oMeniLogoi/ORTOPEDIJA-LOGO.svg';
 import esska from '../img/logos/oMeniLogoi/ESSKA-LOGO.svg';
 import { useCountUp } from 'react-countup';
 // @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
+// import { Splide, SplideSlide } from '@splidejs/react-splide';
+// import '@splidejs/react-splide/css';
+import { motion } from 'framer-motion';
 
 const PromoSekcija = () => {
   const splideOptions: any = {
@@ -67,19 +68,32 @@ const PromoSekcija = () => {
 
   return (
     <section className='relative w-full'>
-      <Splide options={splideOptions} className='w-full'>
-        {promoTrakaSlike.map((slik, ind) => {
-          return (
-            <SplideSlide key={ind}>
+      {/* <Splide options={splideOptions} className='w-full'> */}
+      <div className='relative w-full overflow-hidden'>
+        <motion.div
+          className='flex'
+          animate={{
+            x: ['-100%', '0%'],
+            transition: {
+              ease: 'linear',
+              duration: 15,
+              repeat: Infinity,
+            },
+          }}
+        >
+          {[...promoTrakaSlike, ...promoTrakaSlike].map((slik, ind) => {
+            return (
               <Image
                 src={slik.src}
+                key={ind}
                 alt='Operation thumbnail'
                 className='object-cover xl:aspect-[9/16] aspect-square max-w-[385px] xl:h-[442px] h-[350px]'
               />
-            </SplideSlide>
-          );
-        })}
-      </Splide>
+            );
+          })}
+        </motion.div>
+      </div>
+      {/* </Splide> */}
 
       <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-20 gap-8 lg:flex-nowrap flex-wrap'>
