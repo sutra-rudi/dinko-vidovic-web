@@ -7,6 +7,8 @@ import landingHeroDinkoMobile from '../img/heros/dinko-vidovic-hero-mobile.png';
 import dinkoLinijeEfekt from '../img/svg/dinko-vidovic-linije-efekt.svg';
 import AppButton from '../components/AppButton';
 import { useParallax } from 'react-scroll-parallax';
+// import DinkoLottie from '../img/lottie/hero-lottie-dinko.json';
+// import { useLottie } from 'lottie-react';
 
 const LandingHero = () => {
   const linesMove = useParallax<HTMLDivElement>({
@@ -14,14 +16,6 @@ const LandingHero = () => {
     translateY: [0, 15],
     easing: 'easeOut',
   });
-
-  // const heroMove = useParallax<HTMLDivElement>({
-  //   // translateX: [0, -10],
-  //   // translateY: [0, 15],
-  //   easing: 'ease',
-  //   scale: [1, 1.15],
-  //   shouldAlwaysCompleteAnimation: true,
-  // });
 
   return (
     <section className='w-full h-full relative overflow-hidden lg:min-h-fit min-h-iframes-images-lg'>

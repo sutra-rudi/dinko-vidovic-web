@@ -8,6 +8,9 @@ import dinkoLinijeEfektAlt from '../img/svg/dinko-vidovic-linije-efekt-alt.svg';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useParallax } from 'react-scroll-parallax';
+import Link from 'next/link';
+import slugify from 'slugify';
+import { useSearchParams } from 'next/navigation';
 
 interface DinkoNovosti {
   novostiList: any;
@@ -39,6 +42,19 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
     // translateY: [0, -15],
     easing: 'easeOut',
   });
+
+  console.log('NOVOSTI', novostiList.data.novosti);
+
+  const slugifyOptions = {
+    strict: true,
+    replacement: '-',
+    trim: true,
+    locale: 'en',
+    lower: true,
+  };
+
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
 
   return (
     <section className='2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 relative z-10 overflow-x-hidden'>
@@ -76,9 +92,15 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
                   <p className='text-dinko-tamnoplava md:text-base text-sm leading-normal font-normal text-balance lg:line-clamp-none md:line-clamp-4 line-clamp-3'>
                     {nov.node.novosti.hrvatskiJezik.kratkiTekstZaKarticuNovostiDo200ZnakovaHr}
                   </p>
-                  <a href='' className='text-dinko-plava font-medium self-end lg:text-base text-sm'>
+
+                  <Link
+                    href={`/novosti/${slugify(nov.node.novosti.hrvatskiJezik.nASLOVNOVOSTIHR, slugifyOptions)}-${
+                      nov.node.databaseId
+                    }?lang=${checkParams}`}
+                    className='text-dinko-plava font-medium self-end lg:text-base text-sm'
+                  >
                     Saznjaj više
-                  </a>
+                  </Link>
                 </div>
               </article>
             </SplideSlide>

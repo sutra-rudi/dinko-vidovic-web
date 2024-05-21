@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player';
 // @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import dinkoPattern from '../img/heros/dinko-vidovic-bijeli-pattern.svg';
 interface DinkoVidovicIskustvaPacijenata {
   iskustvaList: any;
 }
@@ -72,7 +73,13 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
                     className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center'
                   />
                 ) : (
-                  <div className='lg:max-w-[664px] w-full aspect-[9/16] max-h-[479px] object-cover object-center'></div>
+                  <Image
+                    src={dinkoPattern}
+                    alt='testimonial placeholder'
+                    width={664}
+                    height={479}
+                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center opacity-50'
+                  />
                 )}
               </article>
             </SplideSlide>

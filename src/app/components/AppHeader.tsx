@@ -112,7 +112,7 @@ const AppHeader = () => {
           isMobileOpen ? 'translate-y-0 grid' : 'translate-y-full hidden'
         }`}
       >
-        <div className='flex flex-col mx-auto my-0 items-start h-max justify-start  gap-6'>
+        <div className='flex flex-col mx-auto my-0 items-start h-max justify-start w-full px-12  gap-6'>
           {navLinks.hr.map((link) => (
             <a
               href={link.href}
@@ -124,8 +124,8 @@ const AppHeader = () => {
           ))}
         </div>
 
-        <div className='grid items-center gap-4 grid-cols-1'>
-          <div className='flex items-center gap-3 justify-center'>
+        <div className='grid items-center gap-4 grid-cols-1 px-12'>
+          <div className='flex items-center gap-3 justify-start'>
             <LinkedInIcon
               className='text-white transition-all ease-custom-ease-in-out hover:scale-125 hover:text-dinko-tamnoplava cursor-pointer'
               size={24}
@@ -144,12 +144,11 @@ const AppHeader = () => {
             />
           </div>
 
-          <div className='w-1/4 bg-alt-bila/20 h-px place-self-center'></div>
+          <div className='w-2/4 bg-alt-bila/20 h-px'></div>
 
-          <p className='text-white/80 lg:text-base text-xs text-balance text-center flex gap-px items-center md:flex-nowrap px-6 flex-wrap justify-center'>
-            <span className='flex'>
-              <span>© prof. dr. sc. Dinko Vidović, prim, dr. med.</span>
-              <span>, 2024.</span>
+          <p className='text-white/80 lg:text-base text-xs text-balance text-center flex gap-px items-center md:flex-nowrap flex-wrap justify-start'>
+            <span className='flex text-left justify-start'>
+              <span className='whitespace-nowrap'>© prof. dr. sc. Dinko Vidović, prim, dr. med., 2024.</span>
               <span className='px-px sm:block hidden'>|</span>
             </span>
             <span>Made by Studio Sutra</span>.
