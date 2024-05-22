@@ -12,9 +12,9 @@ const VideoCitat = () => {
         style={{ backgroundImage: `url(${dinkoVideoPatternBg.src})` }}
         className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center'
       >
-        <div className='max-w-max-container my-0 mx-auto relative 2xl:py-24 pt-16 pb-0'>
+        <div className='max-w-max-container my-0 mx-auto relative 2xl:py-24 pt-20 pb-0'>
           <div className='w-full flex place-items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap relative xl:gap-0 gap-8'>
-            <p className='text-alt-bila leading-tight md:text-3xl sm:text-2xl  text-lg z-10 text-balance xl:max-w-[613px] w-full relative shrink-1 md:pl-12 pl-16 pr-4 max-w-[40ch]'>
+            <p className='text-alt-bila leading-tight md:text-3xl sm:text-2xl 2xl:pb-0 pb-4  text-lg z-10 text-balance xl:max-w-[613px] w-full relative shrink-1 md:pl-12 pl-16 pr-4 max-w-[40ch]'>
               <Image
                 src={videoPatternQuote}
                 alt='decorative quote pattern'
@@ -28,12 +28,17 @@ const VideoCitat = () => {
               <Image
                 src={imageOfDinkoThumb}
                 alt='picture of Dinko as thumbnail for video'
-                className='w-full aspect-video lg:min-h-[458px] xl:max-w-[700px] object-left object-cover '
+                className='w-full aspect-video lg:min-h-[458px] xl:max-w-[700px] object-left object-cover'
+                width={981}
+                height={549}
+                quality={100}
               />
               <Image
                 src={playButton}
                 alt='play button icon'
                 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain xl:w-32 xl:h-32 lg:w-28 lg:h-28 w-20 h-20'
+                width={132}
+                height={132}
               />
               {/* <div className='absolute w-12 h-12 inset-0 bg-red-500'></div> */}
             </div>

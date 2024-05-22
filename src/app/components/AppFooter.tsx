@@ -27,7 +27,13 @@ const AppFooter = () => {
       <div className='w-full flex items-center justify-center 2xl:p-0 px-6 2xl:py-0 py-8'>
         <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10 '>
           <div className='flex place-items-center lg:justify-between justify-center  lg:flex-nowrap flex-wrap lg:gap-0 gap-12'>
-            <Image src={dinkoVidovicFooterLogo} alt='Logo of Dinko Vidović' />
+            <Image
+              src={dinkoVidovicFooterLogo}
+              alt='Logo of Dinko Vidović'
+              width={271}
+              height={56}
+              className='object-contain object-center block aspect-video'
+            />
             <div className='grid grid-cols-2 items-center gap-x-4 lg:w-auto  w-max'>
               {footerLinks.map((lin, ind) => (
                 <a

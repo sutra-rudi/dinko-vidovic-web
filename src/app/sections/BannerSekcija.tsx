@@ -15,8 +15,9 @@ const BannerSekcija = () => {
         src={dinkoBanner}
         alt='image of Dinko at work'
         fill
-        className='object-cover object-center block xl:aspect-square aspect-video'
+        className='object-cover object-center block  aspect-video'
         placeholder='blur'
+        quality={100}
       />
     ),
   };

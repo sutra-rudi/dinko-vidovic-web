@@ -63,13 +63,14 @@ const PageContent = ({ content }: DinkoSingleBlogData) => {
         className='absolute -bottom-[0] -left-[5%] z-0 pointer-events-none select-none'
       />
 
-      <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[220px] aspect-video object-cover'>
+      <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[320px]'>
         <Image
           src={shortHand.slikaHeroBlog.node.sourceUrl}
           sizes={shortHand.slikaHeroBlog.node.sizes}
-          className='aspect-video object-cover'
+          className='aspect-video object-cover block'
           fill
           alt='hero'
+          quality={100}
         />
       </div>
       <div className='text-dinko-plava mx-auto my-0 max-w-[1024px] mt-24 xl:p-0 px-4'>

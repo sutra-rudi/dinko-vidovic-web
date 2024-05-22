@@ -25,7 +25,6 @@ const LandingHero = () => {
   return (
     <section className='w-full h-full relative overflow-hidden lg:min-h-fit min-h-iframes-images-lg'>
       <Image
-        // ref={heroMove.ref as any}
         className='md:block hidden'
         src={landingHeroDinko}
         alt='picture of Dinko Vidovic'
@@ -33,16 +32,19 @@ const LandingHero = () => {
         placeholder='blur'
         priority
         quality={100}
+        width={1920}
+        height={967}
       />
       <Image
         className='md:hidden block w-full'
-        // ref={heroMove.ref as any}
         src={landingHeroDinkoMobile}
         alt='picture of Dinko Vidovic'
         loading='eager'
         placeholder='blur'
         priority
         quality={100}
+        width={374}
+        height={405}
       />
       <Image
         ref={linesMove.ref as any}
@@ -53,10 +55,9 @@ const LandingHero = () => {
 
       <div
         ref={heroBlockMove.ref as any}
-        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] bottom-[12%] right-[10%] max-w-[407px]  lg:bg-transparent'
+        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] xl:bottom-[24%] bottom-[20%] 2xl:right-[10%] xl:right-[7%] lg:right-[5%] max-w-[407px]  lg:bg-transparent'
       >
-        {/* <h1 className='text-heroText text-dinko-tamnoplava text-balance  leading-none whitespace-pre-wrap'>{`Kreći se\ns lakoćom!`}</h1> */}
-        <Lottie animationData={dinkoLottie} width={200} height={200} loop={false} />
+        <Lottie animationData={dinkoLottie} className='xl:w-full xl:h-full w-2/3 h-2/3' loop={false} />
 
         <div className='flex items-start flex-col justify-start gap-6 mt-3 '>
           <p className='text-base text-dinko-tamnoplava text-balance leading-snug'>

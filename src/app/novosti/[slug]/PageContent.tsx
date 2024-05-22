@@ -32,12 +32,13 @@ const PageContent = ({ content, date, heroImg, title }: DinkoSingleNewsData) => 
         className='absolute -bottom-[0] -left-[5%] z-0 pointer-events-none select-none'
       />
 
-      <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[220px] aspect-video object-cover'>
+      <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[320px]'>
         <Image
           src={heroImg.node.sourceUrl}
           sizes={heroImg.node.sizes}
-          className='aspect-video object-cover'
+          className='aspect-video object-cover object-center block'
           fill
+          quality={100}
           alt='hero'
         />
       </div>

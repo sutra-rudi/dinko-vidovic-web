@@ -38,7 +38,7 @@ body {
   grid-template-columns: repeat(1, 1fr);
   -webkit-box-align: start;
   -ms-flex-align: start;
-  place-items: stretch;
+  place-items: start;
   gap: 1.93rem;
   max-width: 1024px;
   @media only screen and (min-width: theme('screens.lg')) {

@@ -74,8 +74,6 @@ export default async function BlogPage({
 
   const parsePost = await getSingleBlog.json();
 
-  console.log('SEARCH PARAMS', searchParams);
-
   return (
     <Suspense>
       <AppHeader />

@@ -3,41 +3,18 @@
 import React from 'react';
 import { promoTrakaSlike } from '../staticWebData/promoSekcijaTraka';
 import Image from 'next/image';
-import kbc from '../img/logos/oMeniLogoi/KBC-ZG-LOGO.svg';
-import katarina from '../img/logos/oMeniLogoi/SVG-KATARINA-LOGO.svg';
-import sveuciliste from '../img/logos/oMeniLogoi/MED-FAKS-LOGO.svg';
-import stomatoloski from '../img/logos/oMeniLogoi/SVEUCILISTE-LOGO.svg';
-import ao from '../img/logos/oMeniLogoi/AO-LOGO.svg';
-import traumatsko from '../img/logos/oMeniLogoi/TRAUMATSKO-LOGO.svg';
-import pedi from '../img/logos/oMeniLogoi/ORTOPEDIJA-LOGO.svg';
-import esska from '../img/logos/oMeniLogoi/ESSKA-LOGO.svg';
+import log1 from '../img/logos/oMeniLogoi/oMeni-01.png';
+import log2 from '../img/logos/oMeniLogoi/oMeni-02.png';
+import log3 from '../img/logos/oMeniLogoi/oMeni-03.png';
+import log4 from '../img/logos/oMeniLogoi/oMeni-04.png';
+import log5 from '../img/logos/oMeniLogoi/oMeni-05.png';
+import log6 from '../img/logos/oMeniLogoi/oMeni-06.png';
+import log7 from '../img/logos/oMeniLogoi/oMeni-07.png';
+import log8 from '../img/logos/oMeniLogoi/oMeni-08.png';
 import { useCountUp } from 'react-countup';
-// @ts-ignore
-// import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import '@splidejs/react-splide/css';
 import { motion } from 'framer-motion';
 
 const PromoSekcija = () => {
-  const splideOptions: any = {
-    perPage: 4,
-    type: 'slide',
-    drag: 'free',
-    snap: true,
-    gap: '0',
-    focus: 'center',
-    pagination: false,
-    arrows: false,
-    autoplay: true,
-    interval: 1000,
-    rewind: true,
-
-    breakpoints: {
-      400: { perPage: 2.4 },
-      768: { perPage: 3.4 },
-      1536: { perPage: 4 },
-    },
-  };
-
   const operacijeRef = React.useRef(null);
   const godineRef = React.useRef(null);
   const edukacijeRef = React.useRef(null);
@@ -68,7 +45,6 @@ const PromoSekcija = () => {
 
   return (
     <section className='relative w-full'>
-      {/* <Splide options={splideOptions} className='w-full'> */}
       <div className='relative w-full overflow-hidden'>
         <motion.div
           className='flex'
@@ -76,7 +52,7 @@ const PromoSekcija = () => {
             x: ['-100%', '0%'],
             transition: {
               ease: 'linear',
-              duration: 15,
+              duration: 25,
               repeat: Infinity,
             },
           }}
@@ -87,13 +63,12 @@ const PromoSekcija = () => {
                 src={slik.src}
                 key={ind}
                 alt='Operation thumbnail'
-                className='object-cover xl:aspect-[9/16] aspect-square max-w-[385px] xl:h-[442px] h-[350px]'
+                className='object-cover xl:aspect-[9/16] aspect-square w-[385px]  xl:h-[330px] h-[350px]'
               />
             );
           })}
         </motion.div>
       </div>
-      {/* </Splide> */}
 
       <div className='w-full bg-overlayPromoTraka lg:min-h-[550px] md:min-h-[500px] min-h-[400px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-20 gap-8 lg:flex-nowrap flex-wrap'>
@@ -129,14 +104,20 @@ const PromoSekcija = () => {
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8   lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={kbc}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log1}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
               <Image
-                className='lg:w-56 md:w-24 w-16 lg:h-32 md:h-56 h-16 object-contain object-center'
-                src={katarina}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log2}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
             </div>
           </div>
@@ -146,14 +127,20 @@ const PromoSekcija = () => {
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8  lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={sveuciliste}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log3}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={stomatoloski}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log4}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
             </div>
           </div>
@@ -163,24 +150,36 @@ const PromoSekcija = () => {
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8  lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={ao}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log5}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={traumatsko}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log6}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={pedi}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log7}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
               <Image
-                className='lg:w-40 md:w-32 w-24 lg:h-40 md:h-32 h-24 object-contain object-center'
-                src={esska}
-                alt=''
+                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
+                src={log8}
+                alt='institution logo'
+                width={120}
+                height={120}
+                quality={100}
               />
             </div>
           </div>

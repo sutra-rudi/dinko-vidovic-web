@@ -86,6 +86,7 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
                     width={350}
                     height={240}
                     className='object-cover w-full h-full aspect-square'
+                    priority
                   />
                 </div>
                 <div className='lg:px-5 lg:py-6 px-3 py-4 flex flex-col items-start gap-2'>
