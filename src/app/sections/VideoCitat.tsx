@@ -24,7 +24,7 @@ const VideoCitat = () => {
               <Image
                 src={videoPatternQuote}
                 alt='decorative quote pattern'
-                className='absolute 2xl:-left-[7%] left-4 -top-[30%] 2xl:w-24 2xl:h-24 xl:w-16 xl:h-16 w-12 h-12'
+                className='absolute 2xl:-left-[7%] xl:-left-6 lg:left-2 left-1 -top-[30%] 2xl:w-24 2xl:h-24 xl:w-20 xl:h-20 lg:w-16 lg:h-16 w-14 h-14'
               />
               Kretanje je nužno za zdrav, kvalitetan i ispunjen život. Pritom je važno da se krećemo u punom opsegu
               kretnji, bez bolova i ograničenja. Važno je da se krećemo s lakoćom.
@@ -57,7 +57,7 @@ const VideoCitat = () => {
                   },
                 ]}
                 render={{
-                  slide: ({ slide }) => (
+                  slide: () => (
                     <ReactPlayer
                       url={'/dinko-vidovic-video.mov'}
                       config={{
@@ -73,22 +73,9 @@ const VideoCitat = () => {
                       playsinline
                       fallback={<Loading />}
                     />
-
-                    // <Image
-                    //   //@ts-ignore
-                    //   slide={'custom-slide'}
-                    //   src={imageOfDinkoThumb}
-                    //   alt='picture of Dinko as thumbnail for video'
-                    //   className='w-full aspect-video lg:min-h-[458px] xl:max-w-[700px] object-left object-cover'
-                    //   width={981}
-                    //   height={549}
-                    //   quality={100}
-                    //   key={imageOfDinkoThumb.src}
-                    // />
                   ),
                 }}
               />
-              {/* <div className='absolute w-12 h-12 inset-0 bg-red-500'></div> */}
             </div>
           </div>
         </div>
