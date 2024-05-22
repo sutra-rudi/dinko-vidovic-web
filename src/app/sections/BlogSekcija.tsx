@@ -93,7 +93,14 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
       </Splide>
 
       <div className='flex items-center justify-center mt-12'>
-        <AppButton primary='bio' content='Arhiva blogova' />
+        {/* <AppButton primary='bio' content='Arhiva blogova' /> */}
+
+        <Link
+          href={'/blog'}
+          className='transition-all duration-300 ease-custom-ease-in-out flex items-center justify-center px-5 py-[0.6rem] rounded-appButtonBase lg:text-base text-sm cursor-pointer bg-dinko-plava hover:bg-dinko-tamnoplava text-white'
+        >
+          Arhiva blogova
+        </Link>
       </div>
     </section>
   );

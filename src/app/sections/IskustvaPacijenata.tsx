@@ -28,7 +28,7 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
   };
 
   return (
-    <section className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-0 '>
+    <section className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-8 '>
       <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-28 xl:pb-16 lg:pt-24 lg:pb-12 md:pt-20 md:pb-8 pt-14 pb-8 text-center'>
         Iskustva pacijenata
       </h1>
@@ -36,7 +36,7 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
       <Splide options={splideOptions} className='max-w-max-container mx-auto my-0'>
         {iskustvaList.data.allIskustvaPacijenata.edges.map((isk: any) => {
           return (
-            <SplideSlide className='lg:pb-52 pb-24 2xl:p-0 px-6' key={isk.node.iskustvaPacijenataId}>
+            <SplideSlide className='2xl:p-0 px-6' key={isk.node.iskustvaPacijenataId}>
               <article className='flex items-center justify-center  lg:flex-nowrap flex-wrap lg:gap-6 gap-10'>
                 <div className='lg:max-w-[620px] w-full flex flex-col items-start gap-5'>
                   <div className=''>
@@ -70,7 +70,9 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
                     sizes={isk.node.iskustvaPacijenataInputFields.slikaTestimonials.node.sizes}
                     width={664}
                     height={479}
-                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center'
+                    loading='eager'
+                    quality={100}
+                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center block'
                   />
                 ) : (
                   <Image
@@ -78,7 +80,9 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
                     alt='testimonial placeholder'
                     width={664}
                     height={479}
-                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center opacity-50'
+                    loading='eager'
+                    quality={100}
+                    className='lg:max-w-[664px] w-full lg:aspect-[9/16] aspect-video lg:max-h-[479px] object-cover object-center opacity-50 block'
                   />
                 )}
               </article>

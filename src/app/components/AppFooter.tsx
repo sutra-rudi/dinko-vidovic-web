@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import dinkoVidovicFooterLogo from '../img/logos/dinko-vidovic-footer-logo.svg';
 import Image from 'next/image';
@@ -8,19 +10,53 @@ import {
   SlSocialFacebook as FacebookIcon,
   SlSocialYoutube as YoutubeIcon,
 } from 'react-icons/sl';
+import { useSearchParams } from 'next/navigation';
 const AppFooter = () => {
   const footerLinks = [
-    'Biografija',
-    'Iskustva Pacijenata',
-    'Iz Medija',
-    'Najčešća Pitanja',
-    'Operacije',
-    'Novosti',
-    'Blog',
-    'Pravila privatnosti',
-    'Izdvojeno iz medija',
-    'Uvjeti korištenja',
+    {
+      content: 'Biografija',
+      href: '/biografija',
+    },
+    {
+      content: 'Iskustva Pacijenata',
+      href: '/iskustva-pacijenata',
+    },
+    {
+      content: 'Iz Medija',
+      href: '/iz-medija',
+    },
+    {
+      content: 'Najčešća Pitanja',
+      href: '/najcesca-pitanja',
+    },
+    {
+      content: 'Operacije',
+      href: '/operacije',
+    },
+    {
+      content: 'Novosti',
+      href: '/novosti',
+    },
+    {
+      content: 'Blog',
+      href: '/blog',
+    },
+    {
+      content: 'Pravila privatnosti',
+      href: '/privacy-policy',
+    },
+    {
+      content: 'Izdvojeno iz medija',
+      href: '/izdvojeno-iz-medija',
+    },
+    {
+      content: 'Uvjeti korištenja',
+      href: '/uvjeti-koristenja',
+    },
   ];
+
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
 
   return (
     <footer className='lg:h-[557px] relative bg-dinko-plava before:absolute before:bg-footerOverlay before:w-full before:h-full flex items-center justify-center'>
@@ -37,11 +73,11 @@ const AppFooter = () => {
             <div className='grid grid-cols-2 items-center gap-x-4 lg:w-auto  w-max'>
               {footerLinks.map((lin, ind) => (
                 <a
-                  href={''}
+                  href={`${lin.href}?lang=${checkParams}`}
                   key={ind}
                   className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
                 >
-                  {lin}
+                  {lin.content}
                 </a>
               ))}
             </div>
