@@ -1,11 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
-
 import dinkoVideoPatternBg from '../img/heros/dinko-vidovic-bg-video-citat.svg';
 import videoPatternQuote from '../img/svg/dinko-vidovic-video-pattern-effect.svg';
 import imageOfDinkoThumb from '../img/heros/image-of-dinko-bg-for-video.png';
 import playButton from '../img/svg/dinko-vidovic-video-play-button.svg';
+import 'yet-another-react-lightbox/styles.css';
+import Lightbox from 'yet-another-react-lightbox';
+import ReactPlayer from 'react-player';
+import Loading from '../loading';
 const VideoCitat = () => {
+  const [open, setOpen] = React.useState(false);
   return (
     <section className='w-full 2xl:mt-14 xl:mt-10 lg:mt-6 mt-2'>
       <div
@@ -39,6 +45,48 @@ const VideoCitat = () => {
                 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain xl:w-32 xl:h-32 lg:w-28 lg:h-28 w-20 h-20'
                 width={132}
                 height={132}
+                onClick={() => setOpen(true)}
+              />
+              <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                slides={[
+                  {
+                    //@ts-ignore
+                    type: 'custom-slide',
+                  },
+                ]}
+                render={{
+                  slide: ({ slide }) => (
+                    <ReactPlayer
+                      url={'/dinko-vidovic-video.mov'}
+                      config={{
+                        file: {
+                          attributes: {
+                            poster: imageOfDinkoThumb.src,
+                          },
+                        },
+                      }}
+                      loop
+                      width={'100%'}
+                      height={'100%'}
+                      playsinline
+                      fallback={<Loading />}
+                    />
+
+                    // <Image
+                    //   //@ts-ignore
+                    //   slide={'custom-slide'}
+                    //   src={imageOfDinkoThumb}
+                    //   alt='picture of Dinko as thumbnail for video'
+                    //   className='w-full aspect-video lg:min-h-[458px] xl:max-w-[700px] object-left object-cover'
+                    //   width={981}
+                    //   height={549}
+                    //   quality={100}
+                    //   key={imageOfDinkoThumb.src}
+                    // />
+                  ),
+                }}
               />
               {/* <div className='absolute w-12 h-12 inset-0 bg-red-500'></div> */}
             </div>
