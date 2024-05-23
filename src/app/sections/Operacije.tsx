@@ -8,6 +8,8 @@ import Link from 'next/link';
 import slugify from 'slugify';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 
 const Roboto = Roboto_Condensed({ weight: '700', subsets: ['latin'] });
 
@@ -25,6 +27,14 @@ const Operacije = () => {
     threshold: 0,
     triggerOnce: true,
   });
+
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
+
+  const parseOperationsLinks = (operacija: any, content: string) =>
+    checkParams === UserLanguage.hr
+      ? `/operacije/${slugify(operacija.titleHr, slugifyOptions)}/#${slugify(content, slugifyOptions)}`
+      : `/operacije/${slugify(operacija.titleEn, slugifyOptions)}/#${slugify(content, slugifyOptions)}`;
 
   return (
     <section
@@ -44,18 +54,28 @@ const Operacije = () => {
                   <h2
                     className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
                   >
-                    {operacija.titleHr}
+                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                   </h2>
                   <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {operacija.contentHr.map((content) => (
-                      <Link
-                        href={`/operacije/${operacija.titleHr.toLowerCase()}/#${slugify(content, slugifyOptions)}`}
-                        className='text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                        key={content}
-                      >
-                        {content}
-                      </Link>
-                    ))}
+                    {checkParams === UserLanguage.hr
+                      ? operacija.contentHr.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))
+                      : operacija.contentEn.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))}
                   </div>
                 </motion.div>
               );
@@ -68,18 +88,28 @@ const Operacije = () => {
                   <h2
                     className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
                   >
-                    {operacija.titleHr}
+                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                   </h2>
                   <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {operacija.contentHr.map((content) => (
-                      <Link
-                        href={`/operacije/${operacija.titleHr.toLowerCase()}/#${slugify(content, slugifyOptions)}`}
-                        className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                        key={content}
-                      >
-                        {content}
-                      </Link>
-                    ))}
+                    {checkParams === UserLanguage.hr
+                      ? operacija.contentHr.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))
+                      : operacija.contentEn.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))}
                   </div>
                 </div>
               );
@@ -96,32 +126,41 @@ const Operacije = () => {
                     <h2
                       className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
                     >
-                      {operacija.titleHr}
+                      {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                     </h2>
                     <div className='grid grid-cols-1 xl:gap-0 gap-2'>
                       <AnimatePresence>
-                        {operacija.contentHr.map((content, index) => (
-                          <motion.div
-                            className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                            key={content}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                              duration: index - index * 0.85,
-                              delay: index * 1.5,
-                              ease: 'easeInOut',
-                            }}
-                          >
-                            <Link
-                              href={`/operacije/${operacija.titleHr.toLowerCase()}/#${slugify(
-                                content,
-                                slugifyOptions
-                              )}`}
-                            >
-                              {content}
-                            </Link>
-                          </motion.div>
-                        ))}
+                        {checkParams === UserLanguage.hr
+                          ? operacija.contentHr.map((content, index) => (
+                              <motion.div
+                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                                key={content}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                  duration: index - index * 0.85,
+                                  delay: index * 1.5,
+                                  ease: 'easeInOut',
+                                }}
+                              >
+                                <Link href={parseOperationsLinks(operacija, content)}>{content}</Link>
+                              </motion.div>
+                            ))
+                          : operacija.contentEn.map((content, index) => (
+                              <motion.div
+                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                                key={content}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{
+                                  duration: index - index * 0.85,
+                                  delay: index * 1.5,
+                                  ease: 'easeInOut',
+                                }}
+                              >
+                                <Link href={parseOperationsLinks(operacija, content)}>{content}</Link>
+                              </motion.div>
+                            ))}
                       </AnimatePresence>
                     </div>
                   </div>
@@ -135,18 +174,28 @@ const Operacije = () => {
                   <h2
                     className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
                   >
-                    {operacija.titleHr}
+                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                   </h2>
                   <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {operacija.contentHr.map((content) => (
-                      <Link
-                        href={`/operacije/${operacija.titleHr.toLowerCase()}/#${slugify(content, slugifyOptions)}`}
-                        className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                        key={content}
-                      >
-                        {content}
-                      </Link>
-                    ))}
+                    {checkParams === UserLanguage.hr
+                      ? operacija.contentHr.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))
+                      : operacija.contentEn.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))}
                   </div>
                 </div>
               );
@@ -159,18 +208,28 @@ const Operacije = () => {
                   <h2
                     className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
                   >
-                    {operacija.titleHr}
+                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                   </h2>
                   <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {operacija.contentHr.map((content) => (
-                      <Link
-                        href={`/operacije/${operacija.titleHr.toLowerCase()}/#${slugify(content, slugifyOptions)}`}
-                        className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                        key={content}
-                      >
-                        {content}
-                      </Link>
-                    ))}
+                    {checkParams === UserLanguage.hr
+                      ? operacija.contentHr.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))
+                      : operacija.contentEn.map((content) => (
+                          <Link
+                            href={parseOperationsLinks(operacija, content)}
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            key={content}
+                          >
+                            {content}
+                          </Link>
+                        ))}
                   </div>
                 </div>
               );
