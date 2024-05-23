@@ -48,7 +48,7 @@ export default function RootLayout({
       lang='hr-HR'
       className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'
     >
-      <body className={`${Firs.className} w-full h-full bg-white `}>
+      <body className={`${Firs.className} w-full h-full bg-white max-w-[1920px] mx-auto my-0`}>
         <Suspense fallback={<Loading />}>
           <GlobalContextProvider>
             <Providers>
