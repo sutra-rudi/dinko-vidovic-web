@@ -12,10 +12,17 @@ import {
   SlSocialInstagram as InstagramIcon,
   SlSocialFacebook as FacebookIcon,
   SlSocialYoutube as YoutubeIcon,
+  SlPlus as PlusIcon,
+  SlArrowDown as DownIcon,
+  SlArrowRight as RightIcon,
 } from 'react-icons/sl';
+
 import { useAppContext } from '../contexts/store';
 import { UserLanguage } from '../types/appState';
 import { operacijeByKat } from '../staticWebData/operacijeDemo';
+
+import { useOnClickOutside } from 'usehooks-ts';
+
 const AppHeader = () => {
   const [isMobileOpen, setIsMobileOpen] = React.useState<boolean>(false);
 
@@ -32,7 +39,13 @@ const AppHeader = () => {
     [userLang]
   );
 
+  const containerRef = React.useRef(null);
+
   const [isDropdown, setIsDropdown] = React.useState<boolean>(false);
+
+  const handleClickOutsideOfContainer = () => setIsDropdown(false);
+
+  useOnClickOutside(containerRef, handleClickOutsideOfContainer);
 
   return (
     <nav className='w-full bg-white '>
@@ -42,22 +55,27 @@ const AppHeader = () => {
             <Image src={dinkoLogo} alt='header logo signiature' />
           </Link>
           <div className='w-full flex items-center justify-end 2xl:gap-16  gap-8 '>
-            <div onMouseLeave={() => setIsDropdown(false)} className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
+            <div className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
               {getCurrentLangLinks().map((link) => {
                 if (link.isMenu) {
                   return (
-                    <div className='relative' key={link.title}>
-                      <a
+                    <div ref={containerRef} className='relative' key={link.title}>
+                      <div
                         onMouseOver={() => setIsDropdown(true)}
                         onMouseEnter={() => setIsDropdown(true)}
-                        href={link.href}
-                        className='transition-all uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                        onClick={() => setIsDropdown(true)}
+                        className='transition-all ease-custom-ease-in-out duration-300 group flex items-center gap-2 uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
                       >
-                        {link.title}
-                      </a>
+                        <span className='transition-all ease-custom-ease-in-out duration-300'>{link.title}</span>
+                        <DownIcon
+                          className={`text-xs shrink-0 text-dinko-tamnoplava group-hover:text-dinko-plava transition-all ease-custom-ease-in-out duration-300 origin-center ${
+                            isDropdown && 'rotate-180'
+                          }`}
+                        />
+                      </div>
 
                       <div
-                        className={`absolute transition-all w-auto duration-300 ease-custom-ease-in-out bg-red-400 grid grid-cols-1 items-start gap-4 top-[1.5rem] z-30 left-0 ${
+                        className={`absolute pt-6 transition-all w-full min-w-60 duration-300 ease-custom-ease-in-out bg-white grid grid-cols-1 items-start  top-[2rem] z-30 left-0 ${
                           isDropdown
                             ? 'opacity-1 translate-y-0'
                             : 'opacity-0 translate-y-10 pointer-events-none select-none'
@@ -67,13 +85,42 @@ const AppHeader = () => {
                           return (
                             <div
                               key={index}
-                              className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out'
+                              className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4 border border-dinko-tamnoplava/5'
                             >
-                              {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                              <div className='absolute transition-all duration-300 ease-custom-ease-in-out translate-y-10  left-full min-w-[400px] top-0 min-h-36 bg-blue-500 opacity-0 pointer-events-none select-none grid group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100 grid-cols-1 w-full gap-1'>
+                              <span className='flex items-center gap-1 group px-4 '>
+                                <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
+                                <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
+                                  {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
+                                </span>
+                              </span>
+                              <div
+                                className={`absolute transition-all duration-300 ease-custom-ease-in-out translate-y-10  left-full  top-0  min-w-72 w-full bg-white  opacity-0 pointer-events-none select-none grid group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100 grid-cols-1 `}
+                              >
                                 {userLang === UserLanguage.hr
-                                  ? operacija.contentHr.map((op, index) => <p key={index}>{op}</p>)
-                                  : operacija.contentEn.map((op, index) => <p key={index}>{op}</p>)}
+                                  ? operacija.contentHr.map((op, index) => (
+                                      <Link
+                                        href={`/operacije/#${op}`}
+                                        key={index}
+                                        className='text-base leading-baseLineHeight inline-block border border-dinko-tamnoplava/5'
+                                      >
+                                        <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
+                                          <span>{op}</span>
+                                          <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0 ' />
+                                        </span>
+                                      </Link>
+                                    ))
+                                  : operacija.contentEn.map((op, index) => (
+                                      <Link
+                                        href={`/operacije/#${op}`}
+                                        key={index}
+                                        className='text-base leading-baseLineHeight inline-block  border border-dinko-tamnoplava/5'
+                                      >
+                                        <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
+                                          <span>{op}</span>
+                                          <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0' />
+                                        </span>
+                                      </Link>
+                                    ))}
                               </div>
                             </div>
                           );
