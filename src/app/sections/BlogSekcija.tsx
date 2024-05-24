@@ -58,7 +58,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
           return (
             <SplideSlide key={blo.node.id}>
               <article
-                className={` w-full flex 2xl:flex-nowrap place-items-stretch flex-wrap 2xl:gap-7 xl:gap-6 lg:gap-5 gap-2 bg-[#f1f1f1] `}
+                className={` w-full flex 2xl:flex-nowrap place-items-stretch flex-wrap 2xl:gap-7 xl:gap-3 lg:gap-2 gap-1 bg-[#f1f1f1] `}
               >
                 <Image
                   src={blo.node.dinkoBlog.slikaThumbBlog.node.sourceUrl}
@@ -69,7 +69,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   quality={100}
                   className='w-full h-full block  2xl:aspect-square aspect-video  object-cover object-center max-h-[284px]'
                 />
-                <div className='py-2 xl:pr-4 lg:pr-3 pr-2 2xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
+                <div className='2xl:py-2 py-1 xl:pr-4 lg:pr-3 pr-2 2xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
                   <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium '>
                     {blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR}
                   </h2>
