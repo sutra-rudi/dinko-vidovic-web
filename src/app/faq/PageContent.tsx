@@ -19,7 +19,7 @@ const PageContent = ({ content, heroImg }: DinkoVidovicFAQ) => {
           height={795}
           alt='picture of Dinko Vidovic in his office'
           src={heroImg.sourceUrl}
-          sizes={heroImg.sizes}
+          // sizes={heroImg.sizes}
           quality={100}
           loading='eager'
           className='block aspect-video object-cover object-center w-full h-full'

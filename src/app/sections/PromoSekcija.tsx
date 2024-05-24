@@ -13,7 +13,7 @@ import log7 from '../img/logos/oMeniLogoi/oMeni-07.png';
 import log8 from '../img/logos/oMeniLogoi/oMeni-08.png';
 import { useCountUp } from 'react-countup';
 import { motion } from 'framer-motion';
-
+import dinkoPromoTrakaPattern from '../img/svg/dinko-promo-traka-pattern.svg';
 const PromoSekcija = () => {
   const operacijeRef = React.useRef(null);
   const godineRef = React.useRef(null);
@@ -70,7 +70,13 @@ const PromoSekcija = () => {
         </motion.div>
       </div>
 
-      <div className='w-full bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[300px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
+      <div className='w-full relative bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[300px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
+        <Image
+          src={dinkoPromoTrakaPattern}
+          fill
+          alt='svg pattern dinko vidovic'
+          className='object-cover object-center block'
+        />
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-20 gap-8 lg:flex-nowrap flex-wrap'>
           <div className='grid grid-cols-1 place-items-center'>
             <h1

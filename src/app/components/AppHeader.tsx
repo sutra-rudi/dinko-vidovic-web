@@ -111,7 +111,7 @@ const AppHeader = () => {
                           return (
                             <div
                               key={index}
-                              className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4 border border-dinko-tamnoplava/5'
+                              className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-2 border border-dinko-tamnoplava/5'
                             >
                               <span className='flex items-center gap-1 group px-4 '>
                                 <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
@@ -132,7 +132,7 @@ const AppHeader = () => {
                                         key={index}
                                         className='text-base leading-baseLineHeight inline-block border border-dinko-tamnoplava/5'
                                       >
-                                        <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
+                                        <span className='flex items-center gap-2 justify-between transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
                                           <span>{op}</span>
                                           <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0 ' />
                                         </span>
@@ -147,7 +147,7 @@ const AppHeader = () => {
                                         key={index}
                                         className='text-base leading-baseLineHeight inline-block  border border-dinko-tamnoplava/5'
                                       >
-                                        <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
+                                        <span className='flex items-center gap-2 justify-between transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-4'>
                                           <span>{op}</span>
                                           <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0' />
                                         </span>
