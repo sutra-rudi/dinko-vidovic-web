@@ -46,6 +46,7 @@ const config: Config = {
         '2xl': '1536px', // 2X large devices (extra large desktops, 1536px and up)
         '3xl': '1700px',
         '2k': '1920px',
+        blogListCustom: '880px',
       },
       fontSize: {
         xs: '0.75rem', // 0.75rem * 16px/rem = 12px

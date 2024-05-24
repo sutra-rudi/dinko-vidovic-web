@@ -63,7 +63,8 @@ const PromoSekcija = () => {
                 src={slik.src}
                 key={ind}
                 alt='Operation thumbnail'
-                className='object-cover xl:aspect-[9/16] aspect-square w-[385px]  xl:h-[330px] h-[350px]'
+                placeholder='blur'
+                className='object-cover will-change-transform object-center w-[385px] aspect-square  xl:h-[330px] h-[350px]'
               />
             );
           })}

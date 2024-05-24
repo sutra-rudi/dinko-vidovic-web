@@ -58,7 +58,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
           return (
             <SplideSlide key={blo.node.id}>
               <article
-                className={` w-full flex xl:flex-nowrap items-stretch flex-wrap 2xl:gap-7 xl:gap-6 lg:gap-5 gap-2 bg-[#f1f1f1] `}
+                className={` w-full flex 2xl:flex-nowrap place-items-stretch flex-wrap 2xl:gap-7 xl:gap-6 lg:gap-5 gap-2 bg-[#f1f1f1] `}
               >
                 <Image
                   src={blo.node.dinkoBlog.slikaThumbBlog.node.sourceUrl}
@@ -66,9 +66,10 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   height={284}
                   sizes={blo.node.dinkoBlog.slikaThumbBlog.node.sizes}
                   alt='blog thumbnail'
-                  className=' w-full h-full block  lg:aspect-square shrink aspect-video object-cover object-center lg:min-h-[284px] min-h-[180px]'
+                  quality={100}
+                  className='w-full h-full block  2xl:aspect-square aspect-video  object-cover object-center max-h-[284px]'
                 />
-                <div className='py-2 xl:pr-4 lg:pr-3 pr-2 xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
+                <div className='py-2 xl:pr-4 lg:pr-3 pr-2 2xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
                   <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium '>
                     {blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR}
                   </h2>

@@ -15,6 +15,7 @@ import {
   SlPlus as PlusIcon,
   SlArrowDown as DownIcon,
   SlArrowRight as RightIcon,
+  SlClose as CloseIcon,
 } from 'react-icons/sl';
 
 import { useAppContext } from '../contexts/store';
@@ -44,11 +45,12 @@ const AppHeader = () => {
   const containerRef = React.useRef(null);
 
   const [isDropdown, setIsDropdown] = React.useState<boolean>(false);
-  const [isMobileDropdown, setIsMobileDropdown] = React.useState<number | null>();
+  const [isMobileDropdownActive, setIsMobileDropdownActive] = React.useState<boolean>(false);
+  const [activeOperationsListIndex, setActiveOperationsListIndex] = React.useState<number | null>(null);
 
   const handleClickOutsideOfContainer = () => {
     setIsDropdown(false);
-    setIsMobileDropdown(null);
+    // setIsMobileDropdownActive(false);
   };
 
   useOnClickOutside(containerRef, handleClickOutsideOfContainer);
@@ -69,9 +71,13 @@ const AppHeader = () => {
   React.useEffect(() => {
     return () => {
       setIsDropdown(false);
-      setIsMobileDropdown(null);
+      setIsMobileDropdownActive(false);
+      setActiveOperationsListIndex(null);
     };
   }, []);
+
+  console.log('IS MOBILE', isMobileDropdownActive);
+  console.log('TRENUTNA OP', activeOperationsListIndex);
 
   return (
     <nav className='w-full bg-white '>
@@ -178,7 +184,14 @@ const AppHeader = () => {
               <AppButton primary='prim' content='Dogovorite pregled' />
             </div>
             <div className='xl:hidden block z-50'>
-              <Hamburger color={isMobileOpen ? '#F5FAFF' : '#092A4C'} onToggle={() => setIsMobileOpen(!isMobileOpen)} />
+              <Hamburger
+                color={isMobileOpen ? '#F5FAFF' : '#092A4C'}
+                onToggle={() => {
+                  setIsMobileOpen(!isMobileOpen);
+                  setIsMobileDropdownActive(false);
+                  setActiveOperationsListIndex(null);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -187,88 +200,29 @@ const AppHeader = () => {
       {/* mobile */}
 
       <div
-        className={`w-full transition-all items-center justify-center ease-custom-ease-in-out bg-dinko-tamnoplava  z-40 absolute top-0 left-0 h-full ${
+        className={`w-full  transition-all overflow-hidden items-center justify-center ease-custom-ease-in-out bg-dinko-tamnoplava  z-40 absolute top-0 left-0 h-full ${
           isMobileOpen ? 'translate-y-0 grid' : 'translate-y-full hidden'
         }`}
       >
-        <div className='flex flex-col mx-auto my-0 items-start h-max justify-start w-full sm:px-12 px-8  gap-6'>
+        <div className='flex relative flex-col mx-auto my-0 items-start justify-start w-full sm:px-12 px-8  gap-6 '>
           {getCurrentLangLinks().map((link) => {
             if (link.isMenu) {
               return (
-                <div ref={containerRef} className='relative' key={link.title}>
-                  <div
-                    onClick={() => setIsDropdown(true)}
-                    className='transition-all ease-custom-ease-in-out duration-300 group flex items-center gap-2 uppercase cursor-pointer text-alt-bila text-base'
-                  >
-                    <span className='transition-all ease-custom-ease-in-out duration-300'>{link.title}</span>
-                    <DownIcon
-                      className={`text-xs shrink-0 text-alt-bila  transition-all ease-custom-ease-in-out duration-300 origin-center ${
-                        isDropdown && 'rotate-180'
-                      }`}
-                    />
-                  </div>
-
-                  <div
-                    className={`absolute transition-all w-full min-w-60 duration-300 ease-custom-ease-in-out bg-dinko-tamnoplava border border-alt-bila grid grid-cols-1 items-start  top-[2rem] z-30 left-[15%] ${
-                      isDropdown
-                        ? 'opacity-1 translate-y-0'
-                        : 'opacity-0 translate-y-10 pointer-events-none select-none'
+                <div
+                  key={link.title}
+                  onClick={() => {
+                    if (!isMobileDropdownActive) {
+                      setIsMobileDropdownActive(true);
+                    }
+                  }}
+                  className='transition-all ease-custom-ease-in-out duration-300 group flex items-center gap-2 uppercase cursor-pointer text-alt-bila text-base'
+                >
+                  <span className='transition-all ease-custom-ease-in-out duration-300'>{link.title}</span>
+                  <DownIcon
+                    className={`text-xs shrink-0 text-alt-bila  transition-all ease-custom-ease-in-out duration-300 origin-center ${
+                      isDropdown && 'rotate-180'
                     }`}
-                  >
-                    {operacijeByKat.map((operacija, index) => {
-                      return (
-                        <div
-                          onClick={() => setIsMobileDropdown(index)}
-                          key={index}
-                          className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4'
-                        >
-                          <span className='flex items-center gap-1 px-4 text-white'>
-                            <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
-                            <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
-                              {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                            </span>
-                          </span>
-                          <div
-                            className={`absolute transition-all duration-300 ease-custom-ease-in-out translate-y-10  left-[20%]  top-0 w-full bg-alt-bila z-40  opacity-0 pointer-events-none select-none grid grid-cols-1  ${
-                              isMobileDropdown === index && 'translate-y-0 pointer-events-auto select-auto opacity-100'
-                            }`}
-                          >
-                            {userLang === UserLanguage.hr
-                              ? operacija.contentHr.map((op, index) => (
-                                  <Link
-                                    href={`/operacije/${slugify(operacija.titleHr, slugifyOptions)}/#${slugify(
-                                      op,
-                                      slugifyOptions
-                                    )}?lang=${checkParams}`}
-                                    key={index}
-                                    className='text-xs leading-baseLineHeight inline-block border border-dinko-tamnoplava/5'
-                                  >
-                                    <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-2'>
-                                      <span>{op}</span>
-                                      <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0 ' />
-                                    </span>
-                                  </Link>
-                                ))
-                              : operacija.contentEn.map((op, index) => (
-                                  <Link
-                                    href={`/operacije/${slugify(operacija.titleEn, slugifyOptions)}/#${slugify(
-                                      op,
-                                      slugifyOptions
-                                    )}?lang=${checkParams}`}
-                                    key={index}
-                                    className='text-xs leading-baseLineHeight inline-block  border border-dinko-tamnoplava/5'
-                                  >
-                                    <span className='flex items-center gap-2 transition-all duration-300 ease-custom-ease-in-out hover:text-dinko-plava px-4 py-2'>
-                                      <span>{op}</span>
-                                      <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0' />
-                                    </span>
-                                  </Link>
-                                ))}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  />
                 </div>
               );
             }
@@ -283,6 +237,40 @@ const AppHeader = () => {
               </Link>
             );
           })}
+
+          <div
+            className={`absolute  h-full min-h-[50vh] right-0 top-0  bg-red-500 transition-all ease-custom-ease-in-out flex  flex-col mx-auto my-0 items-start justify-center w-full sm:px-12 px-8 pointer-events-none ${
+              isMobileDropdownActive ? 'translate-x-0 pointer-events-auto' : 'translate-x-full'
+            }`}
+          >
+            <div className='relative bg-blue-500 w-full'>
+              <CloseIcon className='absolute right-0 top-0' />
+            </div>
+            {operacijeByKat.map((operacija, index) => {
+              return (
+                <div
+                  onClick={() => setActiveOperationsListIndex(index)}
+                  key={index}
+                  className='relative  cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4'
+                >
+                  <span className='flex items-center gap-1 px-4 text-white'>
+                    <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
+                    <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
+                      {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
+                    </span>
+                  </span>
+                </div>
+              );
+            })}
+
+            <div
+              className={`absolute w-full h-full bg-blue-500 inset-0 ${
+                activeOperationsListIndex && activeOperationsListIndex >= 0 ? 'translate-x-0' : 'translate-x-full '
+              }`}
+            >
+              AAAAAAAAAAAAAAAAAA
+            </div>
+          </div>
         </div>
 
         {/* mobile */}

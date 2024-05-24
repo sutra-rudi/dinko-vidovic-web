@@ -11,6 +11,7 @@ import {
   SlSocialYoutube as YoutubeIcon,
 } from 'react-icons/sl';
 import { useSearchParams } from 'next/navigation';
+import dinkoFooterPattern from '../img/svg/dinko-promo-traka-pattern.svg';
 const AppFooter = () => {
   const footerLinks = [
     {
@@ -59,7 +60,13 @@ const AppFooter = () => {
   const checkParams = paramsControler.get('lang');
 
   return (
-    <footer className='lg:h-[557px] relative bg-dinko-plava before:absolute before:bg-footerOverlay before:w-full before:h-full flex items-center justify-center'>
+    <footer className='lg:h-[557px] relative bg-dinko-plava  flex items-center justify-center'>
+      <Image
+        src={dinkoFooterPattern}
+        fill
+        alt='svg pattern dinko vidovic'
+        className='w-full h-full object-cover object-center block'
+      />
       <div className='w-full flex items-center justify-center 2xl:p-0 px-6 2xl:py-0 py-8'>
         <div className='max-w-max-container w-full h-full grid grid-cols-1 gap-7 z-10 '>
           <div className='flex place-items-center lg:justify-between justify-center  lg:flex-nowrap flex-wrap lg:gap-0 gap-12'>
