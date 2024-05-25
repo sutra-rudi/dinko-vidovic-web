@@ -34,7 +34,7 @@ const VideoCitat = () => {
               <Image
                 src={imageOfDinkoThumb}
                 alt='picture of Dinko as thumbnail for video'
-                className='w-full aspect-video lg:min-h-[458px] xl:max-w-[700px] object-left object-cover'
+                className='w-full aspect-video  object-left object-cover'
                 width={981}
                 height={549}
                 quality={100}

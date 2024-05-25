@@ -16,6 +16,7 @@ import {
   SlArrowDown as DownIcon,
   SlArrowRight as RightIcon,
   SlClose as CloseIcon,
+  SlArrowLeftCircle as BackIcon,
 } from 'react-icons/sl';
 
 import { useAppContext } from '../contexts/store';
@@ -75,9 +76,6 @@ const AppHeader = () => {
       setActiveOperationsListIndex(null);
     };
   }, []);
-
-  console.log('IS MOBILE', isMobileDropdownActive);
-  console.log('TRENUTNA OP', activeOperationsListIndex);
 
   return (
     <nav className='w-full bg-white '>
@@ -239,19 +237,73 @@ const AppHeader = () => {
           })}
 
           <div
-            className={`absolute  h-full min-h-[50vh] right-0 top-0  bg-red-500 transition-all ease-custom-ease-in-out flex  flex-col mx-auto my-0 items-start justify-center w-full sm:px-12 px-8 pointer-events-none ${
-              isMobileDropdownActive ? 'translate-x-0 pointer-events-auto' : 'translate-x-full'
+            className={`absolute  h-full min-h-[50vh] right-0 top-0  bg-dinko-tamnoplava transition-all ease-custom-ease-in-out flex  flex-col mx-auto my-0 items-start justify-center w-full sm:px-12 px-8 pointer-events-none ${
+              isMobileDropdownActive ? 'translate-x-0 pointer-events-auto' : 'translate-x-[100vw]'
             }`}
           >
-            <div className='relative bg-blue-500 w-full'>
-              <CloseIcon className='absolute right-0 top-0' />
+            <div className='relative w-full bottom-0 h-full z-40'>
+              <CloseIcon
+                size={25}
+                className='absolute right-1 top-[55vh] z-40 text-white'
+                onClick={() => {
+                  setActiveOperationsListIndex(null);
+                  setIsMobileDropdownActive(false);
+                }}
+              />
+              <BackIcon
+                size={25}
+                className={`absolute top-[55vh] right-12 z-40 text-white ${
+                  activeOperationsListIndex !== null ? 'block' : 'hidden'
+                }`}
+                onClick={() => {
+                  setActiveOperationsListIndex(null);
+                }}
+              />
+            </div>
+
+            <div
+              className={`absolute w-full h-full z-50  bg-dinko-tamnoplava inset-0 transition-all duration-300 ease-custom-ease-in-out flex flex-col items-start justify-center  sm:px-12 px-8 ${
+                activeOperationsListIndex !== null ? 'translate-x-0' : 'translate-x-[100vw]'
+              }`}
+            >
+              {activeOperationsListIndex !== null && userLang === UserLanguage.hr
+                ? operacijeByKat[activeOperationsListIndex].contentHr.map((op) => (
+                    <Link
+                      href={`/operacije/${slugify(
+                        operacijeByKat[activeOperationsListIndex].titleHr,
+                        slugifyOptions
+                      )}/#${slugify(op, slugifyOptions)}?lang=${checkParams}`}
+                      className='py-2 text-white text-xs w-full outline-1 outline-alt-bila/5 px-4 outline'
+                      key={op}
+                    >
+                      <span className='flex items-center gap-2 justify-between'>
+                        <span>{op}</span>
+                        <RightIcon className='transition-all duration-300 ease-custom-ease-in-out shrink-0 ' />
+                      </span>
+                    </Link>
+                  ))
+                : activeOperationsListIndex !== null &&
+                  operacijeByKat[activeOperationsListIndex].contentEn.map((op) => (
+                    <Link
+                      href={`/operacije/${slugify(
+                        operacijeByKat[activeOperationsListIndex].titleEn,
+                        slugifyOptions
+                      )}/#${slugify(op, slugifyOptions)}?lang=${checkParams}`}
+                      className='py-2 text-white text-xs outline-1 outline-alt-bila/5 w-full px-4 outline'
+                      key={op}
+                    >
+                      {op}
+                    </Link>
+                  ))}
             </div>
             {operacijeByKat.map((operacija, index) => {
               return (
                 <div
                   onClick={() => setActiveOperationsListIndex(index)}
                   key={index}
-                  className='relative  cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4'
+                  className={`relative  cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-4 z-30 ${
+                    activeOperationsListIndex !== null ? 'outline-0' : 'outline-1'
+                  } outline-alt-bila/5 outline w-full`}
                 >
                   <span className='flex items-center gap-1 px-4 text-white'>
                     <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
@@ -262,14 +314,6 @@ const AppHeader = () => {
                 </div>
               );
             })}
-
-            <div
-              className={`absolute w-full h-full bg-blue-500 inset-0 ${
-                activeOperationsListIndex && activeOperationsListIndex >= 0 ? 'translate-x-0' : 'translate-x-full '
-              }`}
-            >
-              AAAAAAAAAAAAAAAAAA
-            </div>
           </div>
         </div>
 
