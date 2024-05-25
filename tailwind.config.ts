@@ -21,6 +21,7 @@ const config: Config = {
         overlayPromoTraka: 'url("img/svg/dinko-promo-traka-pattern.svg")',
         footerOverlay: 'url("img/svg/dinko-promo-traka-pattern.svg")',
         dinkoSocialBg: 'url("img/heros/dinko-vidovic-pre-footer-social-bg.png")',
+        dinkoNotFoundBg: 'url("img/heros/dinko-vidovic-not-found.png")',
       },
 
       transitionTimingFunction: {
