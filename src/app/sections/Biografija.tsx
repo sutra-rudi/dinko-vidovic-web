@@ -6,7 +6,13 @@ import DinkoBioHero from '../img/heros/dinko-vidovic-biografija-slika.png';
 import DinkoBioMobile from '../img/heros/dinko-vidovic-biografija-slika-mobile.png';
 import StickyBox from 'react-sticky-box';
 import AppButton from '../components/AppButton';
+import Link from 'next/link';
+import { useAppContext } from '../contexts/store';
 const Biografija = () => {
+  const {
+    state: { userLang },
+  } = useAppContext();
+
   return (
     <section className='relative 2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 pb-28'>
       <div className='flex lg:items-start items-center lg:justify-start justify-center max-w-max-container my-0 mx-auto lg:gap-24 md:gap-20 gap-16 lg:flex-nowrap flex-wrap 2xl:p-0 px-6 '>
@@ -71,8 +77,13 @@ const Biografija = () => {
             hrskavice.
           </p>
 
-          <div className='self-start'>
-            <AppButton primary='bio' content='Izdvojeno iz medija' />
+          <div className='place-self-start'>
+            <Link
+              href={`/media-excerpt?lang=${userLang}`}
+              className='transition-all duration-300 ease-custom-ease-in-out flex items-center justify-center px-5 py-[0.6rem] rounded-appButtonBase lg:text-base text-sm cursor-pointer bg-dinko-plava hover:bg-dinko-tamnoplava text-white'
+            >
+              Izdvojeno iz medija
+            </Link>
           </div>
         </div>
       </div>
