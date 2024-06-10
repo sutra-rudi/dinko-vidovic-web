@@ -123,3 +123,106 @@ body {
     padding-top: 0.15rem;
   }
 }
+
+.operations-cont-custom {
+  margin: 0 auto;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: repeat(1, 1fr);
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  place-items: start;
+  gap: 1.93rem;
+  max-width: 1024px;
+
+  word-wrap: break-word;
+  @media only screen and (min-width: theme('screens.lg')) {
+    position: relative;
+  }
+
+  .flex-col {
+    gap: 0 !important;
+  }
+
+  .wp-block-image:first-child {
+    width: 100%;
+  }
+
+  .wp-block-image:first-child img {
+    width: 100% !important;
+    display: block;
+  }
+
+  p,
+  h2,
+  h3,
+  h4,
+  figure,
+  img,
+  figcaption {
+    color: theme('colors.dinko-tamnoplava');
+    width: 100%;
+    text-align: left;
+    text-wrap: balance;
+    width: 100%;
+    @media only screen and (min-width: 1044px) {
+      padding-inline: 0;
+    }
+    padding-inline: 1rem;
+  }
+
+  h2 {
+    font-size: theme('fontSize.4xl');
+    font-weight: normal;
+    line-height: 112%;
+  }
+
+  h3 {
+    font-size: theme('fontSize.3xl');
+    font-weight: 500;
+    line-height: theme('lineHeight.baseLineHeight');
+
+    @media only screen and (min-width: theme('screens.lg')) {
+      font-size: theme('fontSize.3xl');
+    }
+
+    font-size: theme('fontSize.2xl');
+  }
+
+  h4 {
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: theme('fontSize.xl');
+
+    line-height: theme('lineHeight.baseLineHeight');
+  }
+
+  p {
+    font-size: theme('fontSize.base');
+    line-height: theme('lineHeight.blogParaLineHeight');
+    max-width: 100% !important;
+    // text-wrap: balance;
+
+    strong {
+      display: block !important;
+    }
+  }
+
+  figure,
+  img {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  figcaption {
+    font-style: italic;
+    font-size: theme('fontSize.xs');
+
+    @media only screen and (min-width: theme('screens.lg')) {
+      font-size: theme('fontSize.sm');
+    }
+    padding-top: 0.15rem;
+  }
+}

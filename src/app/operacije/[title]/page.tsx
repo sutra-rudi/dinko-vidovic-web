@@ -1,35 +1,70 @@
 import AppFooter from '@/app/components/AppFooter';
 import AppHeader from '@/app/components/AppHeader';
-import { operacijeByKat } from '@/app/staticWebData/operacijeDemo';
+import { getDinkoOperacijeQuery } from '@/app/queries/getDinkoOperacije';
+import parse from 'html-react-parser';
 import { Suspense } from 'react';
+import PageContent from './PageContent';
+import { UserLanguage } from '@/app/types/appState';
 
-export default async function Operacije() {
+export default async function Operacije({
+  searchParams,
+  params,
+}: {
+  searchParams: { lang: string };
+  params: { title: string };
+}) {
+  const getDinkoOperacije = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: getDinkoOperacijeQuery,
+    }),
+    cache: 'no-store',
+  });
+
+  const pageContent = await getDinkoOperacije.json();
+
+  const surgeryCategories = [
+    { opTitleHr: 'KOLJENO', opTitleEn: 'KNEE' },
+    { opTitleHr: 'LIJEČENJE-PRIJELOMA', opTitleEn: 'FRACTURE-TREATMENT' },
+    { opTitleHr: 'KUK', opTitleEn: 'HIP' },
+    { opTitleHr: 'RAME', opTitleEn: 'SHOULDER' },
+    { opTitleHr: 'TETIVE', opTitleEn: 'TENDONS' },
+    { opTitleHr: 'GLEŽANJ', opTitleEn: 'ANKLE' },
+    { opTitleHr: 'ORTOBIOLOGIJA', opTitleEn: 'ORTHOBIOLOGY' },
+  ];
+
+  const clientOpCategoryReq = params.title;
+
+  const findSurgeriesByCategory = () => {
+    const currentCat =
+      searchParams.lang === UserLanguage.hr
+        ? surgeryCategories.find(
+            (surgeryCategory) => surgeryCategory.opTitleHr.trim().toLowerCase() === clientOpCategoryReq
+          )
+        : surgeryCategories.find(
+            (surgeryCategory) => surgeryCategory.opTitleEn.trim().toLowerCase() === clientOpCategoryReq
+          );
+    return currentCat;
+  };
+
+  const dataShorthand = pageContent.data.allOperacije.edges;
+
+  const prepareDataForClient = dataShorthand.filter((item: any) => {
+    const shortHandCat = item.node.operacijeTekstoviPodstranica.odaberiKategoriju[0].trim().toLowerCase();
+
+    const res = shortHandCat === findSurgeriesByCategory()?.opTitleHr.split('-').join(' ').toLowerCase();
+
+    return res;
+  });
+
   return (
     <Suspense>
       <AppHeader />
       <main>
-        <div className='grid grid-cols-1 gap-24'>
-          {operacijeByKat.map((operacija) => {
-            return (
-              <div key={operacija.titleHr}>
-                <h2 className='text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase'>
-                  {operacija.titleHr}
-                </h2>
-                <div className='grid gap-24 grid-cols-1'>
-                  {operacija.contentHr.map((operacijaContent) => (
-                    <p
-                      key={operacijaContent}
-                      id={operacijaContent.toLowerCase().split(' ').join('-')}
-                      className={`text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block scroll-smooth`}
-                    >
-                      {operacijaContent}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <PageContent content={prepareDataForClient} />
       </main>
       <AppFooter />
     </Suspense>

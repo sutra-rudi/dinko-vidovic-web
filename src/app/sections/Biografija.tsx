@@ -5,13 +5,12 @@ import React from 'react';
 import DinkoBioHero from '../img/heros/dinko-vidovic-biografija-slika.png';
 import DinkoBioMobile from '../img/heros/dinko-vidovic-biografija-slika-mobile.png';
 import StickyBox from 'react-sticky-box';
-import AppButton from '../components/AppButton';
 import Link from 'next/link';
-import { useAppContext } from '../contexts/store';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 const Biografija = () => {
-  const {
-    state: { userLang },
-  } = useAppContext();
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
 
   return (
     <section className='relative 2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 pb-28'>
@@ -79,7 +78,7 @@ const Biografija = () => {
 
           <div className='place-self-start'>
             <Link
-              href={`/media-excerpt?lang=${userLang}`}
+              href={`/media-excerpt?lang=${checkParams}`}
               className='transition-all duration-300 ease-custom-ease-in-out flex items-center justify-center px-5 py-[0.6rem] rounded-appButtonBase lg:text-base text-sm cursor-pointer bg-dinko-plava hover:bg-dinko-tamnoplava text-white'
             >
               Izdvojeno iz medija
