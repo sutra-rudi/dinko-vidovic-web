@@ -7,9 +7,8 @@ import parse from 'html-react-parser';
 import dayjs from 'dayjs';
 import { Roboto_Condensed } from 'next/font/google';
 import { UserLanguage } from '@/app/types/appState';
-import { useAppContext } from '@/app/contexts/store';
-// import { usePathname } from 'next/navigation';
-// import { ActionTypes } from '@/app/types/actionTypes';
+import { useSearchParams } from 'next/navigation';
+
 const RobotoFont = Roboto_Condensed({ subsets: ['latin'], weight: ['700'] });
 
 interface DinkoSingleBlogData {
@@ -17,15 +16,12 @@ interface DinkoSingleBlogData {
 }
 
 const PageContent = ({ content }: DinkoSingleBlogData) => {
-  console.log('CONTENT', content);
-
-  const {
-    state: { userLang },
-  } = useAppContext();
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
 
   const shortHand = content.data.vidovicBlog.dinkoBlog;
 
-  const langShortHand = (lang: UserLanguage) => {
+  const langShortHand = (lang: UserLanguage | string) => {
     if (lang === UserLanguage.hr) {
       const hrTrans = {
         title: shortHand.hrvatskiJezik.nASLOVHR,
@@ -77,15 +73,15 @@ const PageContent = ({ content }: DinkoSingleBlogData) => {
         {dayjs(shortHand.datumBlog).format('DD.MM.YYYY')}
       </div>
       <h2 className='text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] pb-8 text-4xl leading-[112%] xl:p-0 px-4'>
-        {langShortHand(userLang).title}
+        {langShortHand(checkParams).title}
       </h2>
 
       <h4
         className={`text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] xl:py-8 xl:px-0 px-4 text-xl leading-baseLineHeight py-4 ${RobotoFont.className}`}
       >
-        {langShortHand(userLang).subTitle}
+        {langShortHand(checkParams).subTitle}
       </h4>
-      <div className='inner-cont-custom'>{parse(langShortHand(userLang).content)}</div>
+      <div className='inner-cont-custom'>{parse(langShortHand(checkParams).content)}</div>
     </article>
   );
 };

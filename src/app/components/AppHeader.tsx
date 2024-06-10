@@ -19,7 +19,6 @@ import {
   SlArrowLeftCircle as BackIcon,
 } from 'react-icons/sl';
 
-import { useAppContext } from '../contexts/store';
 import { UserLanguage } from '../types/appState';
 import { operacijeByKat } from '../staticWebData/operacijeDemo';
 
@@ -28,19 +27,18 @@ import { useSearchParams } from 'next/navigation';
 import slugify from 'slugify';
 
 const AppHeader = () => {
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
+
   const [isMobileOpen, setIsMobileOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     isMobileOpen ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden');
   }, [isMobileOpen]);
 
-  const {
-    state: { userLang },
-  } = useAppContext();
-
   const getCurrentLangLinks = React.useCallback(
-    () => (userLang === UserLanguage.hr ? navLinks.hr : navLinks.en),
-    [userLang]
+    () => (checkParams === UserLanguage.hr ? navLinks.hr : navLinks.en),
+    [checkParams]
   );
 
   const containerRef = React.useRef(null);
@@ -55,9 +53,6 @@ const AppHeader = () => {
   };
 
   useOnClickOutside(containerRef, handleClickOutsideOfContainer);
-
-  const paramsControler = useSearchParams();
-  const checkParams = paramsControler.get('lang');
 
   const slugifyOptions = {
     strict: true,
@@ -120,13 +115,13 @@ const AppHeader = () => {
                               <span className='flex items-center gap-1 group px-4 '>
                                 <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
                                 <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
-                                  {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
+                                  {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                                 </span>
                               </span>
                               <div
                                 className={`absolute transition-all duration-300 ease-custom-ease-in-out translate-y-10  left-full  top-0  min-w-72 w-full bg-white  opacity-0 pointer-events-none select-none grid group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100 grid-cols-1 `}
                               >
-                                {userLang === UserLanguage.hr
+                                {checkParams === UserLanguage.hr
                                   ? operacija.contentHr.map((op, index) => (
                                       <Link
                                         href={`/operacije/${slugify(operacija.titleHr, slugifyOptions)}/#${slugify(
@@ -266,7 +261,7 @@ const AppHeader = () => {
                 activeOperationsListIndex !== null ? 'translate-x-0' : 'translate-x-[100vw]'
               }`}
             >
-              {activeOperationsListIndex !== null && userLang === UserLanguage.hr
+              {activeOperationsListIndex !== null && checkParams === UserLanguage.hr
                 ? operacijeByKat[activeOperationsListIndex].contentHr.map((op) => (
                     <Link
                       href={`/operacije/${slugify(
@@ -308,7 +303,7 @@ const AppHeader = () => {
                   <span className='flex items-center gap-1 px-4 text-white'>
                     <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
                     <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
-                      {userLang === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
+                      {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
                     </span>
                   </span>
                 </div>
