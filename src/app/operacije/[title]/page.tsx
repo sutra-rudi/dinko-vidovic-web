@@ -56,7 +56,7 @@ export default async function Operacije({
     const shortHandCat = item.node.operacijeTekstoviPodstranica.odaberiKategoriju[0].trim().toLowerCase();
 
     const res = shortHandCat === findSurgeriesByCategory()?.opTitleHr.split('-').join(' ').toLowerCase();
-
+    console.log('RES', res);
     return res;
   });
 

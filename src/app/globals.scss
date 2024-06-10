@@ -135,7 +135,19 @@ body {
   -ms-flex-align: start;
   place-items: start;
   gap: 1.93rem;
-  max-width: 1024px;
+
+  .wp-video {
+    max-width: 100%;
+    width: 100% !important;
+    display: block;
+
+    video {
+      display: block;
+      max-width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+  }
 
   word-wrap: break-word;
   @media only screen and (min-width: theme('screens.lg')) {
@@ -213,7 +225,7 @@ body {
   figure,
   img {
     max-width: 100% !important;
-    width: 100% !important;
+    width: auto !important;
   }
 
   figcaption {
