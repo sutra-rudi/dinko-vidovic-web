@@ -59,12 +59,17 @@ export default async function Operacije({
   });
 
   const preparePageTitle = prepareDataForClient[0].node.operacijeTekstoviPodstranica.odaberiKategoriju[0] ?? '';
-  const prepareHeroUrl = prepareDataForClient[0].node.operacijeTekstoviPodstranica.naslovnaSlikaHeroImage.node;
+  const prepareHeroUrl = prepareDataForClient[0].node.operacijeTekstoviPodstranica.naslovnaSlikaHeroImage ?? '';
+  console.log('PREP', prepareHeroUrl);
   return (
     <Suspense>
       <AppHeader />
       <main>
-        <PageContent content={prepareDataForClient} pageTitle={preparePageTitle} heroImage={prepareHeroUrl} />
+        <PageContent
+          content={prepareDataForClient}
+          pageTitle={preparePageTitle}
+          heroImage={prepareHeroUrl ? prepareHeroUrl.node : ''}
+        />
       </main>
       <AppFooter />
     </Suspense>

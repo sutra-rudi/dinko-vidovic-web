@@ -18,7 +18,7 @@ const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
 
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
-  console.log('CHECK PARAMS', checkParams);
+  // console.log('CHECK PARAMS', checkParams);
   return (
     <section className='relative max-w-full mx-auto my-0 overflow-hidden min-h-dvh '>
       <Image
