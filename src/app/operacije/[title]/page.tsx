@@ -21,7 +21,7 @@ export default async function Operacije({
     body: JSON.stringify({
       query: getDinkoOperacijeQuery,
     }),
-    cache: 'no-store',
+    cache: 'no-cache',
   });
 
   const pageContent = await getDinkoOperacije.json();
