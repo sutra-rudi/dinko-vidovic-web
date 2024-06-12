@@ -20,8 +20,6 @@ export default async function TermsOfUse({ searchParams }: { searchParams: { lan
 
   const dataShorthand = parseData.data.allUvjetiKoristenja.edges[0].node.uvjetiKoristenjaFields;
 
-  console.log('DINKO UVJETI');
-
   const isHr = searchParams.lang === UserLanguage.hr;
 
   return (
