@@ -24,7 +24,7 @@ const AppFooter = () => {
     },
     {
       content: 'Iz Medija',
-      href: '/iz-medija',
+      href: '/',
     },
     {
       content: 'Najčešća Pitanja',
@@ -48,11 +48,11 @@ const AppFooter = () => {
     },
     {
       content: 'Izdvojeno iz medija',
-      href: '/izdvojeno-iz-medija',
+      href: '/media-excerpt',
     },
     {
       content: 'Uvjeti korištenja',
-      href: '/uvjeti-koristenja',
+      href: '/terms-of-use',
     },
   ];
 
