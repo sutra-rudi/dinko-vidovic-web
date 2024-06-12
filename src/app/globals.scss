@@ -243,4 +243,9 @@ body {
     list-style: disc;
     margin-left: 1rem;
   }
+
+  .aligncenter,
+  .alignnone {
+    place-self: center;
+  }
 }
