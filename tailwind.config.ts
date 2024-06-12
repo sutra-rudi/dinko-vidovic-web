@@ -12,6 +12,7 @@ const config: Config = {
         'max-nav': '1660px',
         'max-container': '1440px',
         'operations-cont': '1200px',
+        'articles-cont': '1024px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

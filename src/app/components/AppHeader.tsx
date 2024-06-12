@@ -124,10 +124,7 @@ const AppHeader = () => {
                                 {checkParams === UserLanguage.hr
                                   ? operacija.contentHr.map((op, index) => (
                                       <Link
-                                        href={`/operacije/${slugify(operacija.titleHr, slugifyOptions)}/#${slugify(
-                                          op,
-                                          slugifyOptions
-                                        )}?lang=${checkParams}`}
+                                        href={`/operacije/${slugify(op, slugifyOptions)}/?lang=${checkParams}`}
                                         key={index}
                                         className='text-base leading-baseLineHeight inline-block border border-dinko-tamnoplava/5'
                                       >
@@ -139,10 +136,7 @@ const AppHeader = () => {
                                     ))
                                   : operacija.contentEn.map((op, index) => (
                                       <Link
-                                        href={`/operacije/${slugify(operacija.titleEn, slugifyOptions)}/#${slugify(
-                                          op,
-                                          slugifyOptions
-                                        )}?lang=${checkParams}`}
+                                        href={`/operacije/${slugify(op, slugifyOptions)}?lang=${checkParams}`}
                                         key={index}
                                         className='text-base leading-baseLineHeight inline-block  border border-dinko-tamnoplava/5'
                                       >
@@ -264,10 +258,7 @@ const AppHeader = () => {
               {activeOperationsListIndex !== null && checkParams === UserLanguage.hr
                 ? operacijeByKat[activeOperationsListIndex].contentHr.map((op) => (
                     <Link
-                      href={`/operacije/${slugify(
-                        operacijeByKat[activeOperationsListIndex].titleHr,
-                        slugifyOptions
-                      )}/#${slugify(op, slugifyOptions)}?lang=${checkParams}`}
+                      href={`/operacije/${slugify(op, slugifyOptions)}/?lang=${checkParams}`}
                       className='py-2 text-white text-xs w-full outline-1 outline-alt-bila/5 px-4 outline'
                       key={op}
                     >
@@ -280,10 +271,7 @@ const AppHeader = () => {
                 : activeOperationsListIndex !== null &&
                   operacijeByKat[activeOperationsListIndex].contentEn.map((op) => (
                     <Link
-                      href={`/operacije/${slugify(
-                        operacijeByKat[activeOperationsListIndex].titleEn,
-                        slugifyOptions
-                      )}/#${slugify(op, slugifyOptions)}?lang=${checkParams}`}
+                      href={`/operacije/${slugify(op, slugifyOptions)}/?lang=${checkParams}`}
                       className='py-2 text-white text-xs outline-1 outline-alt-bila/5 w-full px-4 outline'
                       key={op}
                     >

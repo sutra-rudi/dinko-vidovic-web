@@ -134,7 +134,7 @@ body {
   -webkit-box-align: start;
   -ms-flex-align: start;
   place-items: start;
-  gap: 1.93rem;
+  gap: 1rem;
 
   .wp-video {
     max-width: 100%;
@@ -149,7 +149,6 @@ body {
     }
   }
 
-  word-wrap: break-word;
   @media only screen and (min-width: theme('screens.lg')) {
     position: relative;
   }
@@ -177,7 +176,6 @@ body {
     color: theme('colors.dinko-tamnoplava');
     width: 100%;
     text-align: left;
-    text-wrap: balance;
     width: 100%;
     @media only screen and (min-width: 1044px) {
       padding-inline: 0;

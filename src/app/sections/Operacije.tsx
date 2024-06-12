@@ -33,8 +33,8 @@ const Operacije = () => {
 
   const parseOperationsLinks = (operacija: any, content: string) =>
     checkParams === UserLanguage.hr
-      ? `/operacije/${slugify(operacija.titleHr, slugifyOptions)}/#${slugify(content, slugifyOptions)}`
-      : `/operacije/${slugify(operacija.titleEn, slugifyOptions)}/#${slugify(content, slugifyOptions)}`;
+      ? `/operacije/${slugify(content, slugifyOptions)}/?lang=${checkParams}`
+      : `/operacije/${slugify(content, slugifyOptions)}/?lang=${checkParams}`;
 
   return (
     <section
@@ -133,7 +133,7 @@ const Operacije = () => {
                         {checkParams === UserLanguage.hr
                           ? operacija.contentHr.map((content, index) => (
                               <motion.div
-                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
                                 key={content}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -148,7 +148,7 @@ const Operacije = () => {
                             ))
                           : operacija.contentEn.map((content, index) => (
                               <motion.div
-                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                                className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  text-balance'
                                 key={content}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -181,7 +181,7 @@ const Operacije = () => {
                       ? operacija.contentHr.map((content) => (
                           <Link
                             href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
                             key={content}
                           >
                             {content}
@@ -190,7 +190,7 @@ const Operacije = () => {
                       : operacija.contentEn.map((content) => (
                           <Link
                             href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
                             key={content}
                           >
                             {content}
@@ -215,7 +215,7 @@ const Operacije = () => {
                       ? operacija.contentHr.map((content) => (
                           <Link
                             href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
                             key={content}
                           >
                             {content}
@@ -224,7 +224,7 @@ const Operacije = () => {
                       : operacija.contentEn.map((content) => (
                           <Link
                             href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
+                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
                             key={content}
                           >
                             {content}

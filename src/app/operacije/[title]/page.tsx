@@ -1,12 +1,13 @@
 import AppFooter from '@/app/components/AppFooter';
 import AppHeader from '@/app/components/AppHeader';
 import { getDinkoOperacijeQuery } from '@/app/queries/getDinkoOperacije';
-import parse from 'html-react-parser';
 import { Suspense } from 'react';
 import PageContent from './PageContent';
 import { UserLanguage } from '@/app/types/appState';
+import slugify from 'slugify';
+import Operacije from '@/app/sections/Operacije';
 
-export default async function Operacije({
+export default async function OperacijePage({
   searchParams,
   params,
 }: {
@@ -26,50 +27,38 @@ export default async function Operacije({
 
   const pageContent = await getDinkoOperacije.json();
 
-  const surgeryCategories = [
-    { opTitleHr: 'KOLJENO', opTitleEn: 'KNEE' },
-    { opTitleHr: 'LIJEČENJE-PRIJELOMA', opTitleEn: 'FRACTURE-TREATMENT' },
-    { opTitleHr: 'KUK', opTitleEn: 'HIP' },
-    { opTitleHr: 'RAME', opTitleEn: 'SHOULDER' },
-    { opTitleHr: 'TETIVE', opTitleEn: 'TENDONS' },
-    { opTitleHr: 'GLEŽANJ', opTitleEn: 'ANKLE' },
-    { opTitleHr: 'ORTOBIOLOGIJA', opTitleEn: 'ORTHOBIOLOGY' },
-  ];
-
-  const clientOpCategoryReq = params.title;
-
-  const findSurgeriesByCategory = () => {
-    const currentSurgeryCategory = surgeryCategories.filter((cat) => {
-      return (
-        cat.opTitleHr.trim().toLowerCase() === clientOpCategoryReq.trim().toLowerCase() ||
-        cat.opTitleEn.trim().toLowerCase() === clientOpCategoryReq.trim().toLowerCase()
-      );
-    });
-
-    return currentSurgeryCategory;
+  const slugifyOptions = {
+    strict: true,
+    replacement: '-',
+    trim: true,
+    locale: 'en',
+    lower: true,
   };
+
+  const clientOpReq = params.title;
 
   const dataShorthand = pageContent.data.allOperacije.edges;
 
   const prepareDataForClient = dataShorthand.filter((item: any) => {
-    const shortHandCat = item.node.operacijeTekstoviPodstranica.odaberiKategoriju[0].trim().toLowerCase();
+    const itemShorthand = item.node.operacijeTekstoviPodstranica.naslovHr;
+    const itemShorthandEn = item.node.operacijeTekstoviPodstranica.naslovEng;
 
-    const res = shortHandCat === findSurgeriesByCategory()[0]?.opTitleHr.split('-').join(' ').toLowerCase();
-    return res;
+    return (
+      slugify(itemShorthand, slugifyOptions) === clientOpReq || slugify(itemShorthandEn, slugifyOptions) === clientOpReq
+    );
   });
 
-  const preparePageTitle = prepareDataForClient[0].node.operacijeTekstoviPodstranica.odaberiKategoriju[0] ?? '';
-  const prepareHeroUrl = prepareDataForClient[0].node.operacijeTekstoviPodstranica.naslovnaSlikaHeroImage ?? '';
-  console.log('PREP', prepareHeroUrl);
+  const preparePageTitle = () => prepareDataForClient[0].node.operacijeTekstoviPodstranica.odaberiKategoriju;
+  const prepareHeroUrl = () => prepareDataForClient[0].node.operacijeTekstoviPodstranica.naslovnaSlikaHeroImage;
+
+  console.log('PREP', prepareHeroUrl());
+
   return (
     <Suspense>
       <AppHeader />
       <main>
-        <PageContent
-          content={prepareDataForClient}
-          pageTitle={preparePageTitle}
-          heroImage={prepareHeroUrl ? prepareHeroUrl.node : ''}
-        />
+        <PageContent content={prepareDataForClient} pageTitle={preparePageTitle()} heroImage={prepareHeroUrl()} />
+        <Operacije />
       </main>
       <AppFooter />
     </Suspense>
