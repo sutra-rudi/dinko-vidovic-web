@@ -2,10 +2,10 @@ export const navLinks = {
   en: [
     { title: 'About me', href: '/' },
     { title: 'Procedures', href: '/', isMenu: true },
-    { title: 'Patient experiences', href: '/' },
+    { title: 'Patient experiences', href: '/#patExp' },
     { title: 'FAQ', href: '/faq' },
-    { title: 'News', href: '/' },
-    { title: 'Blog', href: '/' },
+    { title: 'News', href: '/novosti' },
+    { title: 'Blog', href: '/blog' },
     { title: 'Contact', href: '/' },
   ],
   hr: [
@@ -13,8 +13,8 @@ export const navLinks = {
     { title: 'Operacije', href: '/', isMenu: true },
     { title: 'Iskustva pacijenata', href: '/' },
     { title: 'Najčešća pitanja', href: '/faq' },
-    { title: 'Novosti', href: '/' },
-    { title: 'Blog', href: '/' },
+    { title: 'Novosti', href: '/novosti' },
+    { title: 'Blog', href: '/blog' },
     { title: 'Kontakt', href: '/' },
   ],
 };

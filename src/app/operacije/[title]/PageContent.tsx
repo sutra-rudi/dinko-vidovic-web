@@ -24,19 +24,19 @@ const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
       <Image
         src={blogSvg}
         alt='svg deco'
-        className='absolute top-[5%] -left-[10%] z-0 pointer-events-none select-none'
+        className='absolute top-[15%] -left-[10%] z-0 pointer-events-none select-none opacity-80'
       />
       <Image
         src={blogSvg}
         alt='svg deco'
-        className='absolute top-[42%] -right-[5%] z-0 pointer-events-none select-none'
+        className='absolute top-[42%] -right-[5%] z-0 pointer-events-none select-none opacity-80'
       />
       <Image
         src={blogSvg}
         alt='svg deco'
-        className='absolute -bottom-[0] -left-[5%] z-0 pointer-events-none select-none'
+        className='absolute -bottom-[5%] -left-[5%] z-0 pointer-events-none select-none opacity-80'
       />
-      <div className='relative w-full 2xl:h-[397px] xl:h-[200px] h-[120px] after:absolute after:inset-0 after:w-full after:h-full after:bg-dinko-tamnoplava/40 after:pointer-events-none after:select-none'>
+      <div className='relative w-full 2xl:h-[397px] xl:h-[250px] h-[170px] after:absolute after:inset-0 after:w-full after:h-full after:bg-dinko-tamnoplava/40 after:pointer-events-none after:select-none'>
         <Image
           src={heroImage ? heroImage.node.sourceUrl : '/'}
           className='aspect-video object-cover block'
@@ -44,8 +44,10 @@ const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
           alt='hero'
           quality={100}
         />
-        <div className='absolute bottom-32 left-0 w-full flex items-center justify-center'>
-          <h2 className='text-7xl text-white z-20 capitalize'>{pageTitle}</h2>
+        <div className='absolute bottom-0 left-0 w-full flex items-center justify-end 2xl:pr-20 xl:pr-16 lg:pr-12 pr-8'>
+          <h2 className='2xl:text-operationsHeroLarge xl:text-9xl lg:text-8xl md:text-7xl text-6xl lg:text-white/30 text-white/15 z-20 capitalize leading-none'>
+            {pageTitle}
+          </h2>
         </div>
       </div>
 
@@ -57,9 +59,9 @@ const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
               : contentItem.node.operacijeTekstoviPodstranica.sadrzajEng;
 
           return (
-            <div className='w-full xl:mt-32 lg:mt-16 md:mt-12 mt-8' key={index}>
-              <div className='xl:mb-12'>
-                <h3 className='lg:text-4xl md:text-3xl text-2xl text-dinko-tamnoplava uppercase text-balance font-semibold'>
+            <div className='w-full xl:mt-24 lg:mt-16 md:mt-12 mt-8' key={index}>
+              <div className='mb-4'>
+                <h3 className='lg:text-5xl md:text-4xl text-3xl lg:leading-blogParaLineHeight leading-baseLineHeight text-dinko-tamnoplava uppercase text-balance font-semibold lg:px-0 px-4'>
                   {parseSimpleString(
                     contentItem.node.operacijeTekstoviPodstranica.naslovHr,
                     contentItem.node.operacijeTekstoviPodstranica.naslovEng,

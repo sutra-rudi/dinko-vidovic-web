@@ -157,7 +157,7 @@ const AppHeader = () => {
 
                 return (
                   <Link
-                    href={link.href}
+                    href={`${link.href}/?lang=${checkParams}`}
                     key={link.title}
                     className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
                   >

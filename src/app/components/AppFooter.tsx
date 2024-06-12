@@ -28,7 +28,7 @@ const AppFooter = () => {
     },
     {
       content: 'Najčešća Pitanja',
-      href: '/najcesca-pitanja',
+      href: '/faq',
     },
     {
       content: 'Operacije',

@@ -64,6 +64,7 @@ const config: Config = {
         '6xl': '4rem', // 4rem * 16px/rem = 64px
         '7xl': '4.8rem', // 4.8rem * 16px/rem = 77px cca
         heroText: '3.4375rem', // 55px / 16px/rem = 3.4375rem
+        operationsHeroLarge: '11rem',
       },
       minHeight: {
         'custom-page-min': 'calc(100svh + 1rem)',
