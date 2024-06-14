@@ -12,52 +12,56 @@ import {
 } from 'react-icons/sl';
 import { useSearchParams } from 'next/navigation';
 import dinkoFooterPattern from '../img/svg/dinko-promo-traka-pattern.svg';
+import { UserLanguage } from '../types/appState';
 const AppFooter = () => {
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
   const footerLinks = [
     {
-      content: 'Biografija',
-      href: '/biografija',
+      content: langTriage('Biografija', 'Biography'),
+      href: '/#biografija',
     },
     {
-      content: 'Iskustva Pacijenata',
-      href: '/iskustva-pacijenata',
+      content: langTriage('Iskustva Pacijenata', 'Patient Experiences'),
+      href: '/#iskustva-pacijenata',
     },
     {
-      content: 'Iz Medija',
+      content: langTriage('Iz Medija', 'In the Media'),
       href: '/',
     },
     {
-      content: 'Najčešća Pitanja',
+      content: langTriage('Najčešća Pitanja', 'FAQ'),
       href: '/faq',
     },
     {
-      content: 'Operacije',
+      content: langTriage('Operacije', 'Surgeries'),
       href: '/operacije',
     },
     {
-      content: 'Novosti',
+      content: langTriage('Novosti', 'News'),
       href: '/novosti',
     },
     {
-      content: 'Blog',
+      content: langTriage('Blog', 'Blog'),
       href: '/blog',
     },
     {
-      content: 'Pravila privatnosti',
+      content: langTriage('Pravila privatnosti', 'Privacy Policy'),
       href: '/privacy-policy',
     },
     {
-      content: 'Izdvojeno iz medija',
+      content: langTriage('Izdvojeno iz medija', 'Featured in Media'),
       href: '/media-excerpt',
     },
     {
-      content: 'Uvjeti korištenja',
+      content: langTriage('Uvjeti korištenja', 'Terms of Use'),
       href: '/terms-of-use',
     },
   ];
-
-  const paramsControler = useSearchParams();
-  const checkParams = paramsControler.get('lang');
 
   return (
     <footer className='lg:h-[557px] relative bg-dinko-plava  flex items-center justify-center'>
@@ -88,7 +92,7 @@ const AppFooter = () => {
                 </a>
               ))}
             </div>
-            <AppButton primary='blue-bg' content='Dogovori pregled' />
+            <AppButton primary='blue-bg' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
           </div>
           <div className='w-full h-px bg-white'></div>
 

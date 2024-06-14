@@ -15,6 +15,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import slugify from 'slugify';
 import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 
 const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
   const splideOptions: any = {
@@ -47,14 +48,20 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
 
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
 
+  const contentShorthand = blogList.data.allVidovicBlog.edges;
+  console.log('KONTENT', contentShorthand);
   return (
     <section className='w-full relative xl:pb-24 lg:pb-20 pb-16'>
       <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-32 lg:pt-24 md:pt-20 pt-16 pb-4 text-center'>
         Blog
       </h1>
       <Splide options={splideOptions} className='max-w-max-container my-0 mx-auto mt-9 2xl:p-0 md:px-6 px-2'>
-        {blogList.data.allVidovicBlog.edges.map((blo: any) => {
+        {contentShorthand.map((blo: any) => {
           return (
             <SplideSlide key={blo.node.id}>
               <article
@@ -71,20 +78,24 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                 />
                 <div className='2xl:py-2 py-1 xl:pr-4 lg:pr-3 pr-2 2xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
                   <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium '>
-                    {blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR}
+                    {langTriage(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, blo.node.dinkoBlog.engleskiJezik.naslovEng)}
                   </h2>
                   {isBlogPage && (
                     <span className='text-dinko-tamnoplava  xl:text-base text-sm  md:line-clamp-4 line-clamp-3'>
-                      {blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuBlogaDo200ZnakovaHr}
+                      {langTriage(
+                        blo.node.dinkoBlog.hrvatskiJezik.kratkiTekstZaKarticuBlogaDo200ZnakovaHr,
+                        blo.node.dinkoBlog.engleskiJezik.kratkiTekstZaKarticuEn
+                      )}
                     </span>
                   )}
                   <Link
-                    href={`/blog/${slugify(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, slugifyOptions)}-${
-                      blo.node.vidovicBlogId
-                    }?lang=${checkParams}`}
+                    href={`/blog/${slugify(
+                      langTriage(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, blo.node.dinkoBlog.engleskiJezik.naslovEng),
+                      slugifyOptions
+                    )}-${blo.node.vidovicBlogId}?lang=${checkParams}`}
                     className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4'
                   >
-                    Pročitaj blog
+                    {langTriage('Pročitaj blog', 'Read blog')}
                   </Link>
                 </div>
               </article>
@@ -94,13 +105,11 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
       </Splide>
 
       <div className='flex items-center justify-center mt-12'>
-        {/* <AppButton primary='bio' content='Arhiva blogova' /> */}
-
         <Link
           href={'/blog'}
           className='transition-all duration-300 ease-custom-ease-in-out flex items-center justify-center px-5 py-[0.6rem] rounded-appButtonBase lg:text-base text-sm cursor-pointer bg-dinko-plava hover:bg-dinko-tamnoplava text-white'
         >
-          Arhiva blogova
+          {langTriage('Arhiva blogova', 'Blog archive')}
         </Link>
       </div>
     </section>

@@ -35,7 +35,7 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
   );
 
   const contentShorthand = content.data.allStatistike.edges;
-  // console.log('CONTENT', contentShorthand);
+
   const operacijeRefCount = useCountUp({
     start: 0,
     end: 300,
@@ -121,7 +121,7 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
         <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center  gap-y-20 gap-x-20'>
           <div className='grid items-center grid-cols-1 xl:gap-6 lg:gap-4 gap-3'>
             <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center leading-none'>
-              Klinički rad
+              {langTriage('Klinički rad', 'Clinical Work')}
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8   lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
@@ -144,7 +144,7 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
           </div>
           <div className='grid items-center grid-cols-1 xl:gap-6 lg:gap-4 gap-3'>
             <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center  leading-none'>
-              Akademsko djelovanje
+              {langTriage('Akademsko djelovanje', 'Academic Activity')}
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8  lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image
@@ -167,7 +167,7 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
           </div>
           <div className='grid items-center grid-cols-1 xl:gap-6 lg:gap-4 gap-3'>
             <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center'>
-              Stručna društva
+              {langTriage('Stručna društva', 'Professional Societies')}
             </h2>
             <div className='flex xl:gap-16 lg:gap-12 md:gap-8 gap-8  lg:flex-nowrap flex-wrap items-center justify-center'>
               <Image

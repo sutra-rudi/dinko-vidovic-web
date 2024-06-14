@@ -6,7 +6,17 @@ import Image from 'next/image';
 import AppButton from '../components/AppButton';
 import dinkoBannerBg from '../img/heros/dinko-vidovic-pre-footer-social-bg.png';
 import { BannerLayer, ParallaxBanner } from 'react-scroll-parallax';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 const BannerSekcija = () => {
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
+
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
+
   const background: BannerLayer = {
     translateY: [0, 60],
     shouldAlwaysCompleteAnimation: true,
@@ -33,7 +43,10 @@ const BannerSekcija = () => {
       >
         <div className='flex z-10  xl:gap-24 lg:gap-20 md:gap-16 gap-12 place-items-center justify-center lg:flex-nowrap flex-wrap'>
           <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-tamnoplava lg:max-w-[637px] text-balance whitespace-pre-wrap lg:text-left text-center'>
-            {`Aktivnosti prof. Vidovića možete pratiti i na društvenim mrežama`}
+            {langTriage(
+              `Aktivnosti prof. Vidovića možete pratiti i na društvenim mrežama`,
+              `You can follow Prof. Vidović's activities on social media`
+            )}
           </h2>
           <div className='grid grid-cols-2  gap-6 '>
             <AppButton primary='prim' content='INSTAGRAM' />
