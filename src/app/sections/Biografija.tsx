@@ -26,7 +26,7 @@ const Biografija = ({ content }: DinkoBiography) => {
   );
 
   return (
-    <section className='relative 2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 pb-28'>
+    <section id='biografija' className='relative 2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 pb-28'>
       <div className='flex lg:items-start items-center lg:justify-start justify-center max-w-max-container my-0 mx-auto lg:gap-24 md:gap-20 gap-16 lg:flex-nowrap flex-wrap 2xl:p-0 px-6 '>
         <StickyBox
           offsetTop={200}

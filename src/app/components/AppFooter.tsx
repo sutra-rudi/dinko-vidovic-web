@@ -13,6 +13,7 @@ import {
 import { useSearchParams } from 'next/navigation';
 import dinkoFooterPattern from '../img/svg/dinko-promo-traka-pattern.svg';
 import { UserLanguage } from '../types/appState';
+import { Link } from 'react-scroll';
 const AppFooter = () => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
@@ -23,15 +24,13 @@ const AppFooter = () => {
   const footerLinks = [
     {
       content: langTriage('Biografija', 'Biography'),
-      href: '/#biografija',
+      href: 'biografija',
+      isAnchor: true,
     },
     {
       content: langTriage('Iskustva Pacijenata', 'Patient Experiences'),
-      href: '/#iskustva-pacijenata',
-    },
-    {
-      content: langTriage('Iz Medija', 'In the Media'),
-      href: '/',
+      href: 'iskustva-pacijenata',
+      isAnchor: true,
     },
     {
       content: langTriage('Najčešća Pitanja', 'FAQ'),
@@ -82,15 +81,31 @@ const AppFooter = () => {
               className='object-contain object-center block aspect-video'
             />
             <div className='grid grid-cols-2 items-center gap-x-4 lg:w-auto  w-max'>
-              {footerLinks.map((lin, ind) => (
-                <a
-                  href={`${lin.href}?lang=${checkParams}`}
-                  key={ind}
-                  className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
-                >
-                  {lin.content}
-                </a>
-              ))}
+              {footerLinks.map((lin, ind) => {
+                if (lin.isAnchor) {
+                  return (
+                    <Link
+                      to={lin.href}
+                      key={lin.href}
+                      smooth
+                      duration={500}
+                      className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out cursor-pointer'
+                    >
+                      {lin.content}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    href={`${lin.href}?lang=${checkParams}`}
+                    key={ind}
+                    className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out'
+                  >
+                    {lin.content}
+                  </a>
+                );
+              })}
             </div>
             <AppButton primary='blue-bg' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
           </div>
