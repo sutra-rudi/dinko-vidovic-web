@@ -42,7 +42,7 @@ const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
           alt='hero'
           quality={100}
         />
-        <div className='absolute bottom-0 left-0 w-full flex items-center justify-end 2xl:pr-20 xl:pr-16 lg:pr-12 pr-8'>
+        <div className='absolute  bottom-0 left-0 w-full  items-center justify-end 2xl:pr-20 xl:pr-16 lg:pr-12 pr-8 hidden'>
           <h2 className='2xl:text-operationsHeroLarge xl:text-9xl lg:text-8xl md:text-7xl text-6xl lg:text-white/30 text-white/15 z-20 capitalize leading-none'>
             {pageTitle}
           </h2>

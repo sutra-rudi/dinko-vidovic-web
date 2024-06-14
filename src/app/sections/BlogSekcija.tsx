@@ -54,7 +54,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
   );
 
   const contentShorthand = blogList.data.allVidovicBlog.edges;
-  console.log('KONTENT', contentShorthand);
+
   return (
     <section className='w-full relative xl:pb-24 lg:pb-20 pb-16'>
       <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-32 lg:pt-24 md:pt-20 pt-16 pb-4 text-center'>
@@ -65,7 +65,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
           return (
             <SplideSlide key={blo.node.id}>
               <article
-                className={` w-full flex 2xl:flex-nowrap place-items-stretch flex-wrap 2xl:gap-7 xl:gap-3 lg:gap-2 gap-1 bg-[#f1f1f1] `}
+                className={` w-full flex place-items-stretch flex-wrap 2xl:gap-7 xl:gap-3 lg:gap-2 gap-1 bg-[#f1f1f1] `}
               >
                 <Image
                   src={blo.node.dinkoBlog.slikaThumbBlog.node.sourceUrl}
@@ -76,7 +76,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                   quality={100}
                   className='w-full h-full block  2xl:aspect-square aspect-video  object-cover object-center max-h-[284px]'
                 />
-                <div className='2xl:py-2 py-1 xl:pr-4 lg:pr-3 pr-2 2xl:pl-0 pl-2 flex flex-col items-start w-full h-full gap-3'>
+                <div className='pt-2 pb-3 xl:px-5 lg:px-4 px-3 flex flex-col items-start w-full h-full gap-3'>
                   <h2 className='text-dinko-tamnoplava lg:text-2xl md:text-xl text-lg leading-baseLineHeight font-medium '>
                     {langTriage(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, blo.node.dinkoBlog.engleskiJezik.naslovEng)}
                   </h2>
