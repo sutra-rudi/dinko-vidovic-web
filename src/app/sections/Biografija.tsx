@@ -31,7 +31,7 @@ const Biografija = ({ content }: DinkoBiography) => {
         <StickyBox
           offsetTop={200}
           offsetBottom={100}
-          className='max-lg:!relative max-lg:!top-0 w-full h-full  lg:min-h-[700px] md:min-h-[600px] min-h-[500px] lg:max-w-[795px] '
+          className='max-lg:!relative max-lg:!top-0 w-full h-full  lg:min-h-[700px] md:min-h-[600px] min-h-[500px] lg:max-w-[795px]'
         >
           <div className='lg:block hidden'>
             <Image

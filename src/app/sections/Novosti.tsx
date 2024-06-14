@@ -62,8 +62,6 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
 
   const novostiShorthand = novostiList.data.allNovosti.edges;
 
-  console.log('NOVOSTI LISTA', novostiShorthand);
-
   return (
     <section className='2xl:mt-28 xl:mt-24 lg:mt-20 mt-16 relative z-10 overflow-x-hidden'>
       <Image
@@ -81,8 +79,6 @@ const Novosti = ({ novostiList }: DinkoNovosti) => {
         className='max-w-max-container my-0 mx-auto lg:gap-9 md:gap-6 gap-3 mt-16 2xl:p-0 px-3 cursor-grab'
       >
         {novostiShorthand.map((nov: any, index: number) => {
-          // console.log(nov);
-
           const novShorthand = nov.node.novostiFields;
           return (
             <SplideSlide key={index}>

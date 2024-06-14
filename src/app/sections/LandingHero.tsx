@@ -9,8 +9,12 @@ import AppButton from '../components/AppButton';
 import { useParallax } from 'react-scroll-parallax';
 import dinkoLottie from '../img/lottie/novi-lottie-hero.json';
 import Lottie from 'lottie-react';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 
 const LandingHero = () => {
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
   const linesMove = useParallax<HTMLDivElement>({
     translateX: [0, -10],
     translateY: [0, 15],
@@ -21,6 +25,10 @@ const LandingHero = () => {
     translateY: [0, 45],
     easing: 'easeOut',
   });
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
 
   return (
     <section className='w-full h-full relative overflow-hidden lg:min-h-fit min-h-iframes-images-lg'>
@@ -61,10 +69,13 @@ const LandingHero = () => {
 
         <div className='flex items-start flex-col justify-start gap-6 mt-3 '>
           <p className='text-base text-dinko-tamnoplava text-balance leading-snug'>
-            {`Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
-          zahvata iz područja kirurgije koljena i kuka.`}
+            {langTriage(
+              `Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
+          zahvata iz područja kirurgije koljena i kuka.`,
+              `Prof. Dinko Vidović, PhD, MD, is a specialist in orthopedics and traumatology. He performs 300 surgical procedures annually in the field of knee and hip surgery.`
+            )}
           </p>
-          <AppButton primary='hero' content='Dogovorite pregled' />
+          <AppButton primary='hero' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
         </div>
       </div>
       {/* tablet / mobile */}
@@ -75,7 +86,7 @@ const LandingHero = () => {
             {`Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
           zahvata iz područja kirurgije koljena i kuka.`}
           </p>
-          <AppButton primary='blue-bg' content='Dogovorite pregled' />
+          <AppButton primary='blue-bg' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
         </div>
       </div>
     </section>

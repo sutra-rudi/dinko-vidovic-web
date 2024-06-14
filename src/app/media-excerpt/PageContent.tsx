@@ -10,8 +10,6 @@ import parse from 'html-react-parser';
 import Link from 'next/link';
 
 const PageContent = ({ content }: DinkoIzdvojenoIzMedija) => {
-  console.log('CONTENT', content);
-
   return (
     <section className='w-full h-full '>
       <div className='w-full relative  h-[420px]'>

@@ -10,7 +10,6 @@ interface DinkoVidovicFAQ {
 }
 
 const PageContent = ({ content, heroImg }: DinkoVidovicFAQ) => {
-  console.log('HERO IMG', heroImg);
   return (
     <article className='py-6 w-full'>
       <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[320px] pb-12'>

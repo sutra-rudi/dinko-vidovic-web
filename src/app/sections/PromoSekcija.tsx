@@ -14,11 +14,28 @@ import log8 from '../img/logos/oMeniLogoi/oMeni-08.png';
 import { useCountUp } from 'react-countup';
 import { motion } from 'framer-motion';
 import dinkoPromoTrakaPattern from '../img/svg/dinko-promo-traka-pattern.svg';
-const PromoSekcija = () => {
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
+
+interface PromoSekcija {
+  content: any;
+}
+
+const PromoSekcija = ({ content }: PromoSekcija) => {
   const operacijeRef = React.useRef(null);
   const godineRef = React.useRef(null);
   const edukacijeRef = React.useRef(null);
 
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
+
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
+
+  const contentShorthand = content.data.allStatistike.edges;
+  // console.log('CONTENT', contentShorthand);
   const operacijeRefCount = useCountUp({
     start: 0,
     end: 300,
@@ -79,27 +96,24 @@ const PromoSekcija = () => {
           className='object-cover object-center block'
         />
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-20 gap-8 lg:flex-nowrap flex-wrap'>
-          <div className='grid grid-cols-1 place-items-center'>
-            <h1
-              ref={operacijeRef}
-              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
-            ></h1>
-            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>operacija godišnje</p>
-          </div>
-          <div className='grid grid-cols-1 place-items-center'>
-            <h1
-              ref={godineRef}
-              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
-            ></h1>
-            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>godina iskustva</p>
-          </div>
-          <div className='grid grid-cols-1 place-items-center'>
-            <h1
-              ref={edukacijeRef}
-              className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
-            ></h1>
-            <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>održanih edukacija</p>
-          </div>
+          {contentShorthand
+            .map((contentBlock: any, index: number) => {
+              return (
+                <div key={contentBlock.node.id} className='grid grid-cols-1 place-items-center'>
+                  <h1
+                    ref={index === 0 ? edukacijeRef : index === 1 ? godineRef : operacijeRef}
+                    className='text-dinko-tamnoplava 2xl:text-[99px] xl:text-[80px] lg:text-6xl text-5xl leading-baseLineHeight font-medium'
+                  ></h1>
+                  <p className='lg:text-2xl text-lg text-dinko-tamnoplava font-medium'>
+                    {langTriage(
+                      contentBlock.node.statistikeFields.statistika.naslovStatistikeHr,
+                      contentBlock.node.statistikeFields.statistika.naslovStatistikeEn
+                    )}
+                  </p>
+                </div>
+              );
+            })
+            .reverse()}
         </div>
       </div>
 

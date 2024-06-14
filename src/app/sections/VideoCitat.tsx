@@ -10,15 +10,24 @@ import 'yet-another-react-lightbox/styles.css';
 import Lightbox from 'yet-another-react-lightbox';
 import ReactPlayer from 'react-player';
 import Loading from '../loading';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 const VideoCitat = () => {
   const [open, setOpen] = React.useState(false);
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang');
+
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
   return (
     <section className='w-full 2xl:mt-14 xl:mt-10 lg:mt-6 mt-2'>
       <div
         style={{ backgroundImage: `url(${dinkoVideoPatternBg.src})` }}
         className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center'
       >
-        <div className='max-w-max-container my-0 mx-auto relative 2xl:py-24 pt-20 pb-0'>
+        <div className='max-w-max-container my-0 mx-auto relative 2xl:py-24 py-20 '>
           <div className='w-full flex place-items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap relative xl:gap-0 gap-8'>
             <p className='text-alt-bila leading-tight md:text-3xl sm:text-2xl 2xl:pb-0 pb-4  text-lg z-10 text-balance xl:max-w-[613px] w-full relative shrink-1 md:pl-12 pl-16 pr-4 max-w-[40ch]'>
               <Image
@@ -26,8 +35,11 @@ const VideoCitat = () => {
                 alt='decorative quote pattern'
                 className='absolute 2xl:-left-[7%] xl:-left-6 lg:left-2 left-1 -top-[30%] 2xl:w-24 2xl:h-24 xl:w-20 xl:h-20 lg:w-16 lg:h-16 w-14 h-14'
               />
-              Kretanje je nužno za zdrav, kvalitetan i ispunjen život. Pritom je važno da se krećemo u punom opsegu
-              kretnji, bez bolova i ograničenja. Važno je da se krećemo s lakoćom.
+              {langTriage(
+                `Kretanje je nužno za zdrav, kvalitetan i ispunjen život. Pritom je važno da se krećemo u punom opsegu
+              kretnji, bez bolova i ograničenja. Važno je da se krećemo s lakoćom.`,
+                `Movement is essential for a healthy, quality, and fulfilling life. It is important to move with a full range of motion, without pain and limitations. It is crucial to move with ease.`
+              )}
             </p>
 
             <div className='relative w-full aspect-video '>

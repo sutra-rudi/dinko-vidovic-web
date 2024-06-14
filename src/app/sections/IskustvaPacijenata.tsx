@@ -7,11 +7,19 @@ import ReactPlayer from 'react-player';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import dinkoPattern from '../img/heros/dinko-vidovic-bijeli-pattern.svg';
+import { useSearchParams } from 'next/navigation';
+import { UserLanguage } from '../types/appState';
 interface DinkoVidovicIskustvaPacijenata {
   iskustvaList: any;
 }
 
 const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) => {
+  const paramsControler = useSearchParams();
+  const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
   const splideOptions: any = {
     perPage: 1,
     type: 'slide',
@@ -27,29 +35,35 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
     // rewind: true,
   };
 
+  const iskustvaShorthand = iskustvaList.data.allIskustvaPacijenata.edges;
+
   return (
     <section className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-8 '>
       <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-28 xl:pb-16 lg:pt-24 lg:pb-12 md:pt-20 md:pb-8 pt-14 pb-8 text-center'>
-        Iskustva pacijenata
+        {langTriage('Iskustva pacijenata', `Patient Experiences`)}
       </h1>
 
       <Splide options={splideOptions} className='max-w-max-container mx-auto my-0'>
-        {iskustvaList.data.allIskustvaPacijenata.edges.map((isk: any) => {
+        {iskustvaShorthand.map((isk: any) => {
+          const nodeShorthand = isk.node.iskustvaPacijenataInputFields;
           return (
             <SplideSlide className='2xl:p-0 px-6' key={isk.node.iskustvaPacijenataId}>
               <article className='flex items-center justify-center  lg:flex-nowrap flex-wrap lg:gap-6 gap-10'>
                 <div className='lg:max-w-[620px] w-full flex flex-col items-start gap-5'>
                   <div className=''>
                     <h2 className='text-dinko-tamnoplava xl:text-2xl lg:text-xl text-lg leading-baseLineHeight font-medium'>
-                      {isk.node.iskustvaPacijenataInputFields.imeIPrezimePacijenta}
+                      {nodeShorthand.imeIPrezimePacijenta}
                     </h2>
                     <p className='text-dinko-tamnoplava text-base leading-normal font-normal text-balance'>
-                      {isk.node.iskustvaPacijenataInputFields.vrstaZahvata}
+                      {nodeShorthand.vrstaZahvata}
                     </p>
                   </div>
 
                   <p className='text-dinko-tamnoplava xl:text-lg text-base leading-normal font-normal text-balance'>
-                    {isk.node.iskustvaPacijenataInputFields.testimonialsHrvatskiJezik.tekstTestimoniala}
+                    {langTriage(
+                      nodeShorthand.testimonialsHrvatskiJezik.tekstTestimoniala,
+                      nodeShorthand.testimonialsEngleskiJezik.tekstTestimoniala
+                    )}
                   </p>
                 </div>
 

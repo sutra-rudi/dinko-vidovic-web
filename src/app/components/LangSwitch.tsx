@@ -25,7 +25,6 @@ const LanguageSwitch = () => {
         checkParams === UserLanguage.hr ? UserLanguage.hr : UserLanguage.en
       );
     } else if (checkLocalStorage && typeof checkParams !== 'string') {
-      console.log('ALO vamo');
       dispatch({ type: ActionTypes.SET_USER_LANG, payload: checkLocalStorage });
       const newUrlParams = new URLSearchParams(window.location.search);
       newUrlParams.set('lang', checkLocalStorage);

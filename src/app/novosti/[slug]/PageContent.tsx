@@ -11,7 +11,6 @@ interface DinkoSingleNewsData {
 }
 
 const PageContent = ({ content }: DinkoSingleNewsData) => {
-  console.log('KONTENT', content);
   return (
     <article className='relative max-w-full mx-auto my-0 overflow-hidden min-h-dvh'>
       <Image

@@ -30,6 +30,11 @@ const AppHeader = () => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
 
+  const langTriage = React.useCallback(
+    (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
+    [checkParams]
+  );
+
   const [isMobileOpen, setIsMobileOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -168,7 +173,7 @@ const AppHeader = () => {
             </div>
 
             <div className='md:block hidden'>
-              <AppButton primary='prim' content='Dogovorite pregled' />
+              <AppButton primary='prim' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
             </div>
             <div className='xl:hidden block z-50'>
               <Hamburger

@@ -51,8 +51,6 @@ export default async function OperacijePage({
   const preparePageTitle = () => prepareDataForClient[0].node.operacijeTekstoviPodstranica.odaberiKategoriju;
   const prepareHeroUrl = () => prepareDataForClient[0].node.operacijeTekstoviPodstranica.naslovnaSlikaHeroImage;
 
-  console.log('PREP', prepareHeroUrl());
-
   return (
     <Suspense>
       <AppHeader />

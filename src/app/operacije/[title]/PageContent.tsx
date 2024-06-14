@@ -14,8 +14,6 @@ import { UserLanguage } from '@/app/types/appState';
 import { parseSimpleString } from '@/app/utils/parseByLang';
 
 const PageContent = ({ content, pageTitle, heroImage }: DinkoOperacije) => {
-  console.log('CONTENT', content, pageTitle, heroImage);
-
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
 

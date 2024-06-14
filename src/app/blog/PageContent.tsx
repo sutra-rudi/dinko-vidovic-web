@@ -11,8 +11,6 @@ interface DinkoBlogList {
   isBlogPage?: boolean;
 }
 const PageContent = ({ blogList }: DinkoBlogList) => {
-  console.log('BLOG LISTA', blogList);
-
   const slugifyOptions = {
     strict: true,
     replacement: '-',
