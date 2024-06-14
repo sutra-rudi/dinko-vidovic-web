@@ -1,27 +1,27 @@
 export const getDinkoNovostiQuery = `query NewQuery {
-  novosti {
+  allNovosti {
     edges {
       node {
         databaseId
-        novosti {
-          datumBlog
+        novostiFields {
+          datumNovosti
           engleskiJezik {
-            kratkiTekstZaKarticuNovostiDo200ZnakovaEng
-            naslovNovostiEng
-            novostiTekstEng
+            naslov
+            sadrzaj
+            uvod
           }
           hrvatskiJezik {
-            kratkiTekstZaKarticuNovostiDo200ZnakovaHr
-            nASLOVNOVOSTIHR
-            novostiTekstHr
+            naslov
+            sadrzaj
+            uvod
           }
-          seoTekstovi {
-            seoNovostiTekstEng
-            seoNovostiTekstHr
+          seo {
+            seoEn
+            seoHr
           }
-          slikaHeroBlog {
+          slikaHero {
             node {
-              sizes
+              srcSet
               sourceUrl
             }
           }

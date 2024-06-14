@@ -1,27 +1,26 @@
 export const getSingleNovostiQuery = (id: string) => {
   return `query NewQuery {
-  news(id: "${id}", idType: DATABASE_ID) {
-    id
-    novosti {
-      datumBlog
-      engleskiJezik {
-        kratkiTekstZaKarticuNovostiDo200ZnakovaEng
-        naslovNovostiEng
-        novostiTekstEng
-      }
+  novosti(id: ${id}, idType: DATABASE_ID) {
+    novostiFields {
+      datumNovosti
       hrvatskiJezik {
-        kratkiTekstZaKarticuNovostiDo200ZnakovaHr
-        nASLOVNOVOSTIHR
-        novostiTekstHr
+        naslov
+        sadrzaj
+        uvod
       }
-      seoTekstovi {
-        seoNovostiTekstEng
-        seoNovostiTekstHr
+      engleskiJezik {
+        sadrzaj
+        naslov
+        uvod
       }
-      slikaHeroBlog {
+      seo {
+        seoEn
+        seoHr
+      }
+      slikaHero {
         node {
-          sizes
           sourceUrl
+          srcSet
         }
       }
     }

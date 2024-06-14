@@ -14,6 +14,7 @@ import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
 import dynamic from 'next/dynamic';
 import Loading from './loading';
+import { getDinkoBiographyQuery } from './queries/getDinkoBiography';
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -55,6 +56,19 @@ export default async function Home() {
 
   const parseIskustvaData = await getDinkoIskustva.json();
 
+  const getDinkoBiography = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: getDinkoBiographyQuery,
+    }),
+    cache: 'no-store',
+  });
+
+  const parseBiographyData = await getDinkoBiography.json();
+
   const LazyIskustva = dynamic(() => import('./sections/IskustvaPacijenata'), {
     ssr: false,
     loading: () => <Loading />,
@@ -67,7 +81,7 @@ export default async function Home() {
         <LandingHero />
         <Operacije />
         <Novosti novostiList={parseNovostiData} />
-        <Biografija />
+        <Biografija content={parseBiographyData} />
         <VideoCitat />
         <LazyIskustva iskustvaList={parseIskustvaData} />
         <PromoSekcija />

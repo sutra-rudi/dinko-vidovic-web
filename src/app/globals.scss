@@ -131,9 +131,9 @@ body {
   display: grid;
   -ms-grid-columns: 1fr;
   grid-template-columns: repeat(1, 1fr);
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  place-items: start;
+  // -webkit-box-align: start;
+  // -ms-flex-align: start;
+  // place-items: start;
   gap: 0.75rem;
 
   .wp-video {
@@ -244,8 +244,17 @@ body {
     margin-left: 1rem;
   }
 
-  .aligncenter,
-  .alignnone {
+  .aligncenter {
     place-self: center;
+  }
+
+  .alignnone {
+    place-self: unset;
+  }
+}
+
+.dinko-bio {
+  span {
+    font-family: inherit !important;
   }
 }

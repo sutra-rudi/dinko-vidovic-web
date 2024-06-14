@@ -7,7 +7,7 @@ const clientW = typeof window !== 'undefined' && window ? window.innerWidth : 10
 
 const CookiesConsent = () => (
   <CookieConsent
-    debug
+    // debug
     buttonText={'Razumijem'}
     style={{
       background: '#17AEC2',

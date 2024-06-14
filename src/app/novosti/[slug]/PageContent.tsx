@@ -8,12 +8,10 @@ import blogSvg from '../../img/svg/dinko-vidovic-blog-bg-svg.svg';
 
 interface DinkoSingleNewsData {
   content: any;
-  date: any;
-  heroImg: any;
-  title: any;
 }
 
-const PageContent = ({ content, date, heroImg, title }: DinkoSingleNewsData) => {
+const PageContent = ({ content }: DinkoSingleNewsData) => {
+  console.log('KONTENT', content);
   return (
     <article className='relative max-w-full mx-auto my-0 overflow-hidden min-h-dvh'>
       <Image
@@ -34,8 +32,7 @@ const PageContent = ({ content, date, heroImg, title }: DinkoSingleNewsData) => 
 
       <div className='relative w-full 2xl:h-[619px] xl:h-[420px] h-[320px]'>
         <Image
-          src={heroImg.node.sourceUrl}
-          sizes={heroImg.node.sizes}
+          src={content.heroImage.sourceUrl}
           className='aspect-video object-cover object-center block'
           fill
           quality={100}
@@ -43,13 +40,13 @@ const PageContent = ({ content, date, heroImg, title }: DinkoSingleNewsData) => 
         />
       </div>
       <div className='text-dinko-plava mx-auto my-0 max-w-[1024px] mt-24 xl:p-0 px-4'>
-        {dayjs(date).format('DD.MM.YYYY')}
+        {dayjs(content.newsDate).format('DD.MM.YYYY')}
       </div>
       <h2 className='text-dinko-tamnoplava mx-auto my-0 max-w-[1024px] pb-8 text-4xl leading-[112%] xl:px-0 px-4 '>
-        {title}
+        {content.newsTitle}
       </h2>
 
-      <div className='inner-cont-custom'>{parse(content)}</div>
+      <div className='inner-cont-custom'>{parse(content.pageContent)}</div>
     </article>
   );
 };
