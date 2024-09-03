@@ -92,15 +92,33 @@ export default async function Home() {
     <Suspense>
       <AppHeader />
       <main className='min-h-dvh bg-white'>
-        <LandingHero />
-        <Operacije />
-        <Novosti novostiList={parseNovostiData} />
-        <Biografija content={parseBiographyData} />
-        <VideoCitat />
-        <LazyIskustva iskustvaList={parseIskustvaData} />
-        <PromoSekcija content={parseStatsData} />
-        <BlogSekcija blogList={parseData} isBlogPage />
-        <BannerSekcija />
+        <Suspense>
+          <LandingHero />
+        </Suspense>
+        <Suspense>
+          <Operacije />
+        </Suspense>
+        <Suspense>
+          <Novosti novostiList={parseNovostiData} />
+        </Suspense>
+        <Suspense>
+          <Biografija content={parseBiographyData} />
+        </Suspense>
+        <Suspense>
+          <VideoCitat />
+        </Suspense>
+        <Suspense>
+          <LazyIskustva iskustvaList={parseIskustvaData} />
+        </Suspense>
+        <Suspense>
+          <PromoSekcija content={parseStatsData} />
+        </Suspense>
+        <Suspense>
+          <BlogSekcija blogList={parseData} isBlogPage />
+        </Suspense>
+        <Suspense>
+          <BannerSekcija />
+        </Suspense>
       </main>
       <AppFooter />
     </Suspense>
