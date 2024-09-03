@@ -40,20 +40,20 @@ const Operacije = () => {
     [checkParams]
   );
   return (
-    <section className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 `}>
+    <section className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 relative `}>
+      <Image
+        src={dinkoBackgroundOperacije.src}
+        blurDataURL={dinkoBackgroundOperacije.blurDataURL}
+        fill
+        alt='operations image animation'
+        className='object-cover block w-full h-full object-center'
+      />
       <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
         {langTriage('Operacije', 'Surgeries')}
       </h1>
       <div className='2xl:max-w-max-container max-w-operations-cont mx-auto my-0 xl:px-20 lg:px-16 md:px-8 px-2'>
         {/* TABLET/MOBILE */}
         <div className='2xl:hidden grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 items-start justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2 relative'>
-          <Image
-            src={dinkoBackgroundOperacije.src}
-            blurDataURL={dinkoBackgroundOperacije.blurDataURL}
-            fill
-            alt='operations image animation'
-            className='object-cover block w-full h-full'
-          />
           <div className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
             {operacijeByKat.slice(0, 2).map((operacija, index) => {
               return (
@@ -125,13 +125,6 @@ const Operacije = () => {
         </div>
         {/* DESKTOP */}
         <div className='2xl:grid hidden  2xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start justify-items-center justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2 relative'>
-          <Image
-            src={dinkoBackgroundOperacije.src}
-            blurDataURL={dinkoBackgroundOperacije.blurDataURL}
-            fill
-            alt='operations image animation'
-            className='object-cover block w-full h-full'
-          />
           <div ref={ref} className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
             {inView &&
               operacijeByKat.slice(0, 1).map((operacija, index) => {
