@@ -93,7 +93,7 @@ const BlogSekcija = ({ blogList, isBlogPage }: DinkoBlogList) => {
                       langTriage(blo.node.dinkoBlog.hrvatskiJezik.nASLOVHR, blo.node.dinkoBlog.engleskiJezik.naslovEng),
                       slugifyOptions
                     )}-${blo.node.vidovicBlogId}?lang=${checkParams}`}
-                    className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4'
+                    className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4 transition-all ease-in-out hover:text-dinko-tamnoplava'
                   >
                     {langTriage('Pročitaj blog', 'Read blog')}
                   </Link>

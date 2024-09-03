@@ -57,7 +57,7 @@ const PageContent = ({ content }: DinkoIzdvojenoIzMedija) => {
 
                   <Link
                     href={blog.node.izdvojenoIzMedijaFields.poveznica}
-                    className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4'
+                    className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4 transition-all ease-in-out hover:text-dinko-tamnoplava'
                   >
                     Pročitaj članak
                   </Link>

@@ -74,7 +74,7 @@ const PageContent = ({ blogList }: DinkoBlogList) => {
                     href={`/blog/${slugify(blog.nASLOVHR ?? blog.naslovEng, slugifyOptions)}-${
                       blog.blogId
                     }?lang=${checkParams}`}
-                    className='text-dinko-plava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4'
+                    className='text-dinko-plava transition-all ease-in-out hover:text-dinko-tamnoplava font-medium self-end  xl:text-lg lg:text-base text-sm pt-4'
                   >
                     Pročitaj blog
                   </Link>
