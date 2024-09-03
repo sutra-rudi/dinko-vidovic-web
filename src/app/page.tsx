@@ -21,6 +21,7 @@ const PromoSekcija = lazy(() => import('./sections/PromoSekcija'));
 const BlogSekcija = lazy(() => import('./sections/BlogSekcija'));
 const BannerSekcija = lazy(() => import('./sections/BannerSekcija'));
 const AppFooter = lazy(() => import('./components/AppFooter'));
+const IskustvaPacijenata = lazy(() => import('./sections/IskustvaPacijenata'));
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -83,10 +84,10 @@ export default async function Home() {
 
   const parseStatsData = await getDinkoStats.json();
 
-  const LazyIskustva = dynamic(() => import('./sections/IskustvaPacijenata'), {
-    ssr: false,
-    loading: () => <Loading />,
-  });
+  // const LazyIskustva = dynamic(() => import('./sections/IskustvaPacijenata'), {
+  //   ssr: false,
+  //   loading: () => <Loading />,
+  // });
 
   return (
     <Suspense>
@@ -107,9 +108,7 @@ export default async function Home() {
         <Suspense>
           <VideoCitat />
         </Suspense>
-        <Suspense>
-          <LazyIskustva iskustvaList={parseIskustvaData} />
-        </Suspense>
+        <Suspense>{parseIskustvaData.data && <IskustvaPacijenata iskustvaList={parseIskustvaData} />}</Suspense>
         <Suspense>
           <PromoSekcija content={parseStatsData} />
         </Suspense>
