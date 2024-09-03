@@ -139,7 +139,9 @@ body {
   .wp-video {
     max-width: 100%;
     width: 100% !important;
-    display: block;
+    display: flex;
+    place-items: center;
+    justify-content: center;
 
     video {
       display: block;
@@ -245,7 +247,11 @@ body {
   }
 
   .aligncenter {
-    place-self: center;
+    place-self: center !important;
+    figcaption {
+      text-wrap: balance;
+      max-width: 25ch;
+    }
   }
 
   .alignnone {

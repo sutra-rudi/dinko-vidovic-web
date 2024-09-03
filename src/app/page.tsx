@@ -4,8 +4,6 @@ import { lazy, Suspense } from 'react';
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
-import dynamic from 'next/dynamic';
-import Loading from './loading';
 import { getDinkoBiographyQuery } from './queries/getDinkoBiography';
 import { getDinkoStatsQuery } from './queries/getDinkoStats';
 
@@ -83,11 +81,6 @@ export default async function Home() {
   });
 
   const parseStatsData = await getDinkoStats.json();
-
-  // const LazyIskustva = dynamic(() => import('./sections/IskustvaPacijenata'), {
-  //   ssr: false,
-  //   loading: () => <Loading />,
-  // });
 
   return (
     <Suspense>
