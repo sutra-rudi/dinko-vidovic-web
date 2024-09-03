@@ -40,10 +40,7 @@ const Operacije = () => {
     [checkParams]
   );
   return (
-    <section
-      // style={{ backgroundImage: `url(${dinkoBackgroundOperacije.src})` }}
-      className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 bg-cover bg-no-repeat bg-center `}
-    >
+    <section className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 `}>
       <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
         {langTriage('Operacije', 'Surgeries')}
       </h1>
