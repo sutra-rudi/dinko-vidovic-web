@@ -1,8 +1,9 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { getDinkoMediaExcerpt } from '../queries/getDinkoMediaExcerpt';
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
-import PageContent from './PageContent';
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export default async function IzdvojenoIzMedija({}) {
   const getDinkoMediaExcerptQuery = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -13,7 +14,6 @@ export default async function IzdvojenoIzMedija({}) {
     body: JSON.stringify({
       query: getDinkoMediaExcerpt,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoMediaExcerptQuery.json();

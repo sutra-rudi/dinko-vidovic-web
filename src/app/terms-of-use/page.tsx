@@ -13,7 +13,6 @@ export default async function TermsOfUse({ searchParams }: { searchParams: { lan
     body: JSON.stringify({
       query: getDinkoUvjetiQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoUvjeti.json();

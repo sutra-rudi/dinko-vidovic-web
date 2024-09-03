@@ -8,6 +8,7 @@ import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { GlobalContextProvider } from './contexts/store';
 import LanguageSwitch from './components/LangSwitch';
 import { Suspense } from 'react';
+import 'yet-another-react-lightbox/styles.css';
 
 export const viewport: Viewport = {
   width: 'device-width',

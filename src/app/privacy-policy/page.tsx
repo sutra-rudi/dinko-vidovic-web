@@ -1,9 +1,11 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { getDinkoPravilaQuery } from '../queries/getDInkoPravila';
-import PageContent from './PageContent';
+
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
 import { UserLanguage } from '../types/appState';
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export default async function PrivacyPolicy({ searchParams }: { searchParams: { lang: string } }) {
   const getDinkoPravila = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -14,7 +16,6 @@ export default async function PrivacyPolicy({ searchParams }: { searchParams: { 
     body: JSON.stringify({
       query: getDinkoPravilaQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoPravila.json();

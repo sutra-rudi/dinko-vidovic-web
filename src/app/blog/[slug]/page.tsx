@@ -1,11 +1,12 @@
 import AppFooter from '@/app/components/AppFooter';
 import AppHeader from '@/app/components/AppHeader';
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 import BlogSekcija from '@/app/sections/BlogSekcija';
 import { getAllBlogsQuery } from '@/app/queries/getDinkoBlogs';
 import { getSingleBlogQuery } from '@/app/queries/getSingleBlog';
-import PageContent from './PageContent';
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export async function generateMetadata({
   params,

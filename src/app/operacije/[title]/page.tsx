@@ -1,11 +1,13 @@
 import AppFooter from '@/app/components/AppFooter';
 import AppHeader from '@/app/components/AppHeader';
 import { getDinkoOperacijeQuery } from '@/app/queries/getDinkoOperacije';
-import { Suspense } from 'react';
-import PageContent from './PageContent';
+import { lazy, Suspense } from 'react';
+
 import { UserLanguage } from '@/app/types/appState';
 import slugify from 'slugify';
 import Operacije from '@/app/sections/Operacije';
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export default async function OperacijePage({
   searchParams,

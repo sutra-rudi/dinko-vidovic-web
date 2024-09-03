@@ -1,9 +1,11 @@
 import { getSingleNovostiQuery } from '@/app/queries/getSingleNovosti';
-import { Suspense } from 'react';
-import PageContent from './PageContent';
+import { lazy, Suspense } from 'react';
+
 import AppFooter from '@/app/components/AppFooter';
 import AppHeader from '@/app/components/AppHeader';
 import { UserLanguage } from '@/app/types/appState';
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export default async function NovostiPage({
   params,
@@ -56,21 +58,7 @@ export default async function NovostiPage({
     <Suspense>
       <AppHeader />
       <main className='min-h-screen bg-white'>
-        <PageContent
-          content={prepareDataForClient()}
-          // content={
-          //   searchParams.lang === UserLanguage.en
-          //     ? parseData.data.news.novosti.engleskiJezik.novostiTekstEng
-          //     : parseData.data.news.novosti.hrvatskiJezik.novostiTekstHr
-          // }
-          // date={parseData.data.news.novosti.datumBlog}
-          // heroImg={parseData.data.news.novosti.slikaHeroBlog}
-          // title={
-          //   searchParams.lang === UserLanguage.en
-          //     ? parseData.data.news.novosti.engleskiJezik.naslovNovostiEng
-          //     : parseData.data.news.novosti.hrvatskiJezik.nASLOVNOVOSTIHR
-          // }
-        />
+        <PageContent content={prepareDataForClient()} />
       </main>
       <AppFooter />
     </Suspense>

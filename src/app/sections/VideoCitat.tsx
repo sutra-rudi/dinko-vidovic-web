@@ -6,7 +6,6 @@ import dinkoVideoPatternBg from '../img/heros/dinko-vidovic-bg-video-citat.svg';
 import videoPatternQuote from '../img/svg/dinko-vidovic-video-pattern-effect.svg';
 import imageOfDinkoThumb from '../img/heros/image-of-dinko-bg-for-video.png';
 import playButton from '../img/svg/dinko-vidovic-video-play-button.svg';
-import 'yet-another-react-lightbox/styles.css';
 import Lightbox from 'yet-another-react-lightbox';
 import ReactPlayer from 'react-player';
 import Loading from '../loading';

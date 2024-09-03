@@ -1,9 +1,12 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
-import PageContent from './PageContent';
 import { getAllBlogsQuery } from '../queries/getDinkoBlogs';
 import { UserLanguage } from '../types/appState';
+
+export const revalidate = 3600;
+
+const PageContent = lazy(() => import('./PageContent'));
 
 export default async function BlogArchive({ searchParams }: { searchParams: { lang: string } }) {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -14,7 +17,6 @@ export default async function BlogArchive({ searchParams }: { searchParams: { la
     body: JSON.stringify({
       query: getAllBlogsQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoBlogs.json();

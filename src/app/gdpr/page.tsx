@@ -9,7 +9,6 @@ export default async function GdprConsent({}) {
     body: JSON.stringify({
       query: getDinkoGDPR,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoGDPRQuery.json();
