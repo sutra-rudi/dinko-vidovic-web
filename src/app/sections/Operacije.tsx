@@ -46,7 +46,7 @@ const Operacije = () => {
         blurDataURL={dinkoBackgroundOperacije.blurDataURL}
         fill
         alt='operations image animation'
-        className='object-cover block w-full h-full object-center'
+        className='object-cover block w-full h-full object-center aspect-auto'
       />
       <h1 className='text-dinko-tamnoplava 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center'>
         {langTriage('Operacije', 'Surgeries')}
