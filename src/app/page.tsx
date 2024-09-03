@@ -1,14 +1,6 @@
 import AppHeader from './components/AppHeader';
-import { Suspense } from 'react';
-import LandingHero from './sections/LandingHero';
-import Operacije from './sections/Operacije';
-import Novosti from './sections/Novosti';
-import Biografija from './sections/Biografija';
-import VideoCitat from './sections/VideoCitat';
-import PromoSekcija from './sections/PromoSekcija';
-import BlogSekcija from './sections/BlogSekcija';
-import BannerSekcija from './sections/BannerSekcija';
-import AppFooter from './components/AppFooter';
+import { lazy, Suspense } from 'react';
+
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
@@ -16,6 +8,19 @@ import dynamic from 'next/dynamic';
 import Loading from './loading';
 import { getDinkoBiographyQuery } from './queries/getDinkoBiography';
 import { getDinkoStatsQuery } from './queries/getDinkoStats';
+
+export const maxDuration = 60;
+export const revalidate = 3600; // revalidate at most every hour
+
+const LandingHero = lazy(() => import('./sections/LandingHero'));
+const Operacije = lazy(() => import('./sections/Operacije'));
+const Novosti = lazy(() => import('./sections/Novosti'));
+const Biografija = lazy(() => import('./sections/Biografija'));
+const VideoCitat = lazy(() => import('./sections/VideoCitat'));
+const PromoSekcija = lazy(() => import('./sections/PromoSekcija'));
+const BlogSekcija = lazy(() => import('./sections/BlogSekcija'));
+const BannerSekcija = lazy(() => import('./sections/BannerSekcija'));
+const AppFooter = lazy(() => import('./components/AppFooter'));
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -26,7 +31,6 @@ export default async function Home() {
     body: JSON.stringify({
       query: getAllBlogsQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseData = await getDinkoBlogs.json();
@@ -39,7 +43,6 @@ export default async function Home() {
     body: JSON.stringify({
       query: getDinkoNovostiQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseNovostiData = await getDinkoNovosti.json();
@@ -52,7 +55,6 @@ export default async function Home() {
     body: JSON.stringify({
       query: getDinkoIskustvaQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseIskustvaData = await getDinkoIskustva.json();
@@ -65,7 +67,6 @@ export default async function Home() {
     body: JSON.stringify({
       query: getDinkoBiographyQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseBiographyData = await getDinkoBiography.json();
@@ -78,7 +79,6 @@ export default async function Home() {
     body: JSON.stringify({
       query: getDinkoStatsQuery,
     }),
-    cache: 'no-store',
   });
 
   const parseStatsData = await getDinkoStats.json();
@@ -89,9 +89,9 @@ export default async function Home() {
   });
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense>
       <AppHeader />
-      <main className='min-h-screen bg-white'>
+      <main className='min-h-dvh bg-white'>
         <LandingHero />
         <Operacije />
         <Novosti novostiList={parseNovostiData} />

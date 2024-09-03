@@ -8,7 +8,6 @@ import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { GlobalContextProvider } from './contexts/store';
 import LanguageSwitch from './components/LangSwitch';
 import { Suspense } from 'react';
-import Loading from './loading';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -38,7 +37,7 @@ const Firs = localFont({
   ],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -49,7 +48,7 @@ export default function RootLayout({
       className='w-full h-full bg-white scrollbar scrollbar-thumb-dinko-plava scrollbar-track-alt-bila'
     >
       <body className={`${Firs.className} w-full h-full bg-white max-w-[1920px] mx-auto my-0`}>
-        <Suspense fallback={<Loading />}>
+        <Suspense>
           <GlobalContextProvider>
             <Providers>
               {children}
