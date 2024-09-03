@@ -7,6 +7,8 @@ import { navLinks } from '../staticWebData/navLinks';
 import AppButton from './AppButton';
 import { Sling as Hamburger } from 'hamburger-react';
 import Link from 'next/link';
+import { animateScroll as scroll, scrollSpy, Link as ScrollLink } from 'react-scroll';
+
 import {
   SlSocialLinkedin as LinkedInIcon,
   SlSocialInstagram as InstagramIcon,
@@ -157,6 +159,19 @@ const AppHeader = () => {
                         })}
                       </div>
                     </div>
+                  );
+                }
+
+                if (link.title === 'About me' || link.title === 'O meni') {
+                  return (
+                    <ScrollLink
+                      to={'biografija'}
+                      key={link.title}
+                      smooth
+                      className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                    >
+                      {link.title}
+                    </ScrollLink>
                   );
                 }
 
