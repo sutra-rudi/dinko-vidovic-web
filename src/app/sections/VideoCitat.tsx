@@ -70,6 +70,7 @@ const VideoCitat = () => {
                 render={{
                   slide: () => (
                     <ReactPlayer
+                      light
                       url={'/dinko-vidovic-video.mov'}
                       config={{
                         file: {

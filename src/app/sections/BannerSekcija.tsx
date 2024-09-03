@@ -27,7 +27,6 @@ const BannerSekcija = () => {
         fill
         className='object-cover object-center block  aspect-video'
         placeholder='blur'
-        quality={100}
       />
     ),
   };
