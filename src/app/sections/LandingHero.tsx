@@ -34,23 +34,17 @@ const LandingHero = () => {
     <section className='w-full h-full relative overflow-hidden lg:min-h-fit min-h-iframes-images-lg'>
       <Image
         className='md:block hidden'
-        src={landingHeroDinko}
+        src={landingHeroDinko.src}
         alt='picture of Dinko Vidovic'
-        loading='eager'
-        placeholder='blur'
-        priority
-        quality={100}
+        blurDataURL={landingHeroDinko.blurDataURL}
         width={1920}
         height={967}
       />
       <Image
         className='md:hidden block w-full'
-        src={landingHeroDinkoMobile}
+        src={landingHeroDinkoMobile.src}
         alt='picture of Dinko Vidovic'
-        loading='eager'
-        placeholder='blur'
-        priority
-        quality={100}
+        blurDataURL={landingHeroDinkoMobile.blurDataURL}
         width={374}
         height={405}
       />
