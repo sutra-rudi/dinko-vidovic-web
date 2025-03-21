@@ -55,18 +55,18 @@ const LandingHero = () => {
 
       <div
         ref={heroBlockMove.ref as any}
-        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] xl:bottom-[24%] bottom-[20%] 2xl:right-[10%] xl:right-[7%] lg:right-[5%] max-w-[407px]  lg:bg-transparent motion-preset-fade motion-duration-300'
+        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] xl:bottom-[24%] bottom-[20%] 2xl:right-[10%] xl:right-[7%] lg:right-[5%] w-full max-w-[407px]  lg:bg-transparent motion-preset-fade motion-duration-300'
       >
-        <h1 className='text-heroText leading-baseLineHeight text-dinko-tamnoplava motion-preset-fade  motion-ease-spring-smooth block'>
+        <h1 className='text-heroText leading-baseLineHeight text-dinko-tamnoplava motion-preset-fade  motion-ease-spring-smooth block text-balance'>
           {langTriage('Kreći se s lakoćom!', 'Move with ease!')}
         </h1>
 
-        <div className='flex items-start flex-col justify-start gap-6 mt-3 '>
-          <p className='text-base text-dinko-tamnoplava text-balance leading-snug motion-preset-fade motion-delay-300  '>
+        <div className='flex items-start flex-col justify-start gap-6 mt-3 w-full'>
+          <p className='text-base text-dinko-tamnoplava  leading-snug motion-preset-fade motion-delay-300  '>
             {langTriage(
-              `Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
-          zahvata iz područja kirurgije koljena i kuka.`,
-              `Prof. Dinko Vidović, PhD, MD, is a specialist in orthopedics and traumatology. He performs 300 surgical procedures annually in the field of knee and hip surgery.`
+              `Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi oko 300 operacijskih
+          zahvata.`,
+              `Prof. Dinko Vidović, PhD, MD, is a specialist in orthopedics and traumatology. He performs around 300 surgical procedures annually.`
             )}
           </p>
           <div className='motion-preset-fade motion-ease-spring-smooth motion-delay-500'>

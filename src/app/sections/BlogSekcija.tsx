@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import AppButton from '../components/AppButton';
 
 import Link from 'next/link';
 interface DinkoBlogList {
