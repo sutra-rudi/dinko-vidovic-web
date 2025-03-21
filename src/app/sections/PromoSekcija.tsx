@@ -4,7 +4,7 @@ import React from 'react';
 import { promoTrakaSlike } from '../staticWebData/promoSekcijaTraka';
 import Image from 'next/image';
 import log1 from '../img/logos/oMeniLogoi/oMeni-01.png';
-import log2 from '../img/logos/oMeniLogoi/oMeni-02.png';
+
 import log3 from '../img/logos/oMeniLogoi/oMeni-03.png';
 import log4 from '../img/logos/oMeniLogoi/oMeni-04.png';
 import log5 from '../img/logos/oMeniLogoi/oMeni-05.png';
@@ -12,7 +12,8 @@ import log6 from '../img/logos/oMeniLogoi/oMeni-06.png';
 import log7 from '../img/logos/oMeniLogoi/oMeni-07.png';
 import log8 from '../img/logos/oMeniLogoi/oMeni-08.png';
 import { useCountUp } from 'react-countup';
-import { motion } from 'framer-motion';
+import { Marquee } from '@devnomic/marquee';
+import '@devnomic/marquee/dist/index.css';
 import dinkoPromoTrakaPattern from '../img/svg/dinko-promo-traka-pattern.svg';
 import { useSearchParams } from 'next/navigation';
 import { UserLanguage } from '../types/appState';
@@ -63,29 +64,20 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
   return (
     <section className='relative w-full'>
       <div className='relative w-full overflow-hidden'>
-        <motion.div
-          className='flex'
-          animate={{
-            x: ['-100%', '0%'],
-            transition: {
-              ease: 'linear',
-              duration: 25,
-              repeat: Infinity,
-            },
-          }}
-        >
-          {[...promoTrakaSlike, ...promoTrakaSlike].map((slik, ind) => {
+        <Marquee className='[--duration:50s]' innerClassName='custom-marq'>
+          {[...promoTrakaSlike, ...promoTrakaSlike].map((slik) => {
             return (
-              <Image
-                src={slik.src}
-                key={ind}
-                alt='Operation thumbnail'
-                placeholder='blur'
-                className='object-cover will-change-transform object-center w-[385px] aspect-square  xl:h-[330px] h-[350px]'
-              />
+              <picture key={slik.src.src}>
+                <img
+                  src={slik.src.src}
+                  alt='Operation thumbnail'
+                  loading='lazy'
+                  className='object-cover object-center w-full aspect-auto  xl:h-[330px] h-[350px] block'
+                />
+              </picture>
             );
           })}
-        </motion.div>
+        </Marquee>
       </div>
 
       <div className='w-full relative bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[300px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
@@ -127,14 +119,6 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
               <Image
                 className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
                 src={log1}
-                alt='institution logo'
-                width={120}
-                height={120}
-                quality={100}
-              />
-              <Image
-                className='lg:w-32 md:w-20 w-16 lg:h-20 md:h-20 h-16 object-contain object-center'
-                src={log2}
                 alt='institution logo'
                 width={120}
                 height={120}
