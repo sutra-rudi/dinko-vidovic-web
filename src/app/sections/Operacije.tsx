@@ -6,10 +6,10 @@ import dinkoBackgroundOperacije from '../img/heros/dinko-vidovic-operacije-bg.pn
 import { Roboto_Condensed } from 'next/font/google';
 import Link from 'next/link';
 import slugify from 'slugify';
-import { useInView } from 'react-intersection-observer';
 import { useSearchParams } from 'next/navigation';
 import { UserLanguage } from '../types/appState';
 import Image from 'next/image';
+import { useIntersectionObserver } from 'usehooks-ts';
 
 const Roboto = Roboto_Condensed({ weight: '700', subsets: ['latin'] });
 
@@ -22,11 +22,17 @@ const Operacije = () => {
     lower: true,
   };
 
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-    triggerOnce: true,
+  const { isIntersecting, ref } = useIntersectionObserver({
+    threshold: 0.5,
   });
+
+  const [iV, setIv] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (isIntersecting) {
+      setIv(true);
+    }
+  }, [isIntersecting]);
 
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
@@ -126,7 +132,7 @@ const Operacije = () => {
         {/* DESKTOP */}
         <div className='2xl:grid hidden  2xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start justify-items-center justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2 relative'>
           <div ref={ref} className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
-            {inView &&
+            {iV &&
               operacijeByKat.slice(0, 1).map((operacija, index) => {
                 return (
                   <div className='grid grid-cols-1 items-start gap-2' key={index}>
