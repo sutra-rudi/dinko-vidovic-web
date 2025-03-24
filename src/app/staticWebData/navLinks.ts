@@ -6,6 +6,7 @@ export const navLinks = {
     { title: 'FAQ', href: '/faq', tablet: true },
     { title: 'News', href: '/novosti' },
     { title: 'Blog', href: '/blog' },
+    { title: 'From media', href: '/media-excerpt', tablet: false },
     { title: 'Contact', href: '/', tablet: true },
   ],
   hr: [
@@ -15,6 +16,7 @@ export const navLinks = {
     { title: 'FAQ', href: '/faq', tablet: true },
     { title: 'Novosti', href: '/novosti' },
     { title: 'Blog', href: '/blog' },
+    { title: 'Iz medija', href: '/media-excerpt', tablet: false },
     { title: 'Kontakt', href: '/', tablet: true },
   ],
 };

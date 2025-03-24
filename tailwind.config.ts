@@ -48,6 +48,7 @@ const config: Config = {
         '3xl': '1700px',
         '2k': '1920px',
         blogListCustom: '880px',
+        dinkoCustom: '1200px',
       },
       fontSize: {
         xs: '0.75rem', // 0.75rem * 16px/rem = 12px

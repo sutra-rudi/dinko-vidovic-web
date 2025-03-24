@@ -34,7 +34,7 @@ const VideoCitat = () => {
 
       <div className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center xl:min-h-[1063px]'>
         <div className='w-full  my-0 mx-auto relative 2xl:py-24 py-20 md:px-8'>
-          <div className='w-full flex place-items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap-reverse relative xl:gap-[116px] md:gap-[81px] gap-[42px]'>
+          <div className='w-full flex place-items-center lg:justify-between justify-center lg:flex-nowrap flex-wrap-reverse relative xl:gap-[116px] md:gap-[81px] gap-[42px]'>
             <picture>
               <img
                 src={videoPatternQuote.src}
