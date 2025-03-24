@@ -119,7 +119,7 @@ const AppHeader = () => {
                               key={index}
                               className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-2 border border-dinko-tamnoplava/5'
                             >
-                              <span className='flex items-center gap-1 group px-4 '>
+                              <span className='flex items-center gap-3 group px-4 '>
                                 <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
                                 <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
                                   {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
