@@ -21,11 +21,18 @@ const VideoCitat = () => {
     [checkParams]
   );
   return (
-    <section className='w-full 2xl:mt-14 xl:mt-10 lg:mt-6 mt-2'>
-      <div
-        style={{ backgroundImage: `url(${dinkoVideoPatternBg.src})` }}
-        className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center xl:min-h-[1063px]'
-      >
+    <section className='w-full 2xl:mt-14 xl:mt-10 lg:mt-6 mt-2 relative bg-dinko-tamnoplava'>
+      <picture className='block w-full h-full'>
+        <img
+          src={dinkoVideoPatternBg.src}
+          alt='svg pattern'
+          width={1920}
+          height={867}
+          className='absolute inset-0 py-[80px] w-full h-full object-cover object-center'
+        />
+      </picture>
+
+      <div className='relative w-full h-full  flex items-center justify-center bg-cover bg-no-repeat bg-center xl:min-h-[1063px]'>
         <div className='w-full  my-0 mx-auto relative 2xl:py-24 py-20 md:px-8'>
           <div className='w-full flex place-items-center xl:justify-between justify-center xl:flex-nowrap flex-wrap-reverse relative xl:gap-[116px] md:gap-[81px] gap-[42px]'>
             <picture>
