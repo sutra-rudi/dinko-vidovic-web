@@ -10,13 +10,15 @@ import {
   SlSocialFacebook as FacebookIcon,
   SlSocialYoutube as YoutubeIcon,
 } from 'react-icons/sl';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import dinkoFooterPattern from '../img/svg/dinko-promo-traka-pattern.svg';
 import { UserLanguage } from '../types/appState';
-import { Link } from 'react-scroll';
+
 const AppFooter = () => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
+  const currentPath = usePathname();
+  const router = useRouter();
   const langTriage = React.useCallback(
     (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
     [checkParams]
@@ -84,15 +86,23 @@ const AppFooter = () => {
               {footerLinks.map((lin, ind) => {
                 if (lin.isAnchor) {
                   return (
-                    <Link
-                      to={lin.href}
+                    <span
+                      onClick={() => {
+                        const elem = document.getElementById(lin.href);
+
+                        if (currentPath !== '/') {
+                          router.push(`/?lang=${checkParams}#${lin.href}`);
+                        }
+
+                        if (elem) {
+                          elem.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                       key={lin.href}
-                      smooth
-                      duration={500}
                       className='relative block before:absolute before:-left-2 text-white before:bg-dinko-tamnoplava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-tamnoplava transition-all ease-custom-ease-in-out cursor-pointer'
                     >
                       {lin.content}
-                    </Link>
+                    </span>
                   );
                 }
 

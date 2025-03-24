@@ -7,7 +7,6 @@ import { navLinks } from '../staticWebData/navLinks';
 import AppButton from './AppButton';
 import { Sling as Hamburger } from 'hamburger-react';
 import Link from 'next/link';
-import { animateScroll as scroll, scrollSpy, Link as ScrollLink } from 'react-scroll';
 
 import {
   SlSocialLinkedin as LinkedInIcon,
@@ -25,12 +24,14 @@ import { UserLanguage } from '../types/appState';
 import { operacijeByKat } from '../staticWebData/operacijeDemo';
 
 import { useOnClickOutside } from 'usehooks-ts';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import slugify from 'slugify';
 
 const AppHeader = () => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang') ?? UserLanguage.hr;
+  const currentPath = usePathname();
+  const router = useRouter();
 
   const langTriage = React.useCallback(
     (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
@@ -54,10 +55,7 @@ const AppHeader = () => {
   const [isMobileDropdownActive, setIsMobileDropdownActive] = React.useState<boolean>(false);
   const [activeOperationsListIndex, setActiveOperationsListIndex] = React.useState<number | null>(null);
 
-  const handleClickOutsideOfContainer = () => {
-    setIsDropdown(false);
-    // setIsMobileDropdownActive(false);
-  };
+  const handleClickOutsideOfContainer = () => setIsDropdown(false);
 
   useOnClickOutside(containerRef, handleClickOutsideOfContainer);
 
@@ -68,8 +66,6 @@ const AppHeader = () => {
     locale: 'en',
     lower: true,
   };
-
-  //cleanup
 
   React.useEffect(() => {
     return () => {
@@ -87,7 +83,7 @@ const AppHeader = () => {
             <Image src={dinkoLogo} alt='header logo signiature' />
           </Link>
           <div className='w-full flex items-center justify-end 2xl:gap-16  gap-8 '>
-            <div className='xl:flex hidden items-center 3xl:gap-11 gap-6'>
+            <div className='dinkoCustom:flex hidden items-center 3xl:gap-11 gap-6'>
               {getCurrentLangLinks().map((link) => {
                 if (link.isMenu) {
                   return (
@@ -119,7 +115,7 @@ const AppHeader = () => {
                               key={index}
                               className='relative cursor-pointer group transition-all duration-300 ease-custom-ease-in-out py-2 border border-dinko-tamnoplava/5'
                             >
-                              <span className='flex items-center gap-1 group px-4 '>
+                              <span className='flex items-center gap-3 group px-4 '>
                                 <PlusIcon className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava group-hover:rotate-45' />
                                 <span className='transition-all duration-300 ease-custom-ease-in-out group-hover:text-dinko-plava'>
                                   {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
@@ -164,14 +160,23 @@ const AppHeader = () => {
 
                 if (link.title === 'About me' || link.title === 'O meni') {
                   return (
-                    <ScrollLink
-                      to={'biografija'}
+                    <span
                       key={link.title}
-                      smooth
+                      onClick={() => {
+                        const elem = document.getElementById('biografija');
+
+                        if (currentPath !== '/') {
+                          router.push(`/?lang=${checkParams}#biografija`);
+                        }
+
+                        if (elem) {
+                          elem.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                       className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
                     >
                       {link.title}
-                    </ScrollLink>
+                    </span>
                   );
                 }
 
@@ -187,10 +192,48 @@ const AppHeader = () => {
               })}
             </div>
 
-            <div className='md:block hidden'>
+            <div className='dinkoCustom:!hidden md:!flex hidden items-center 3xl:gap-11 gap-6'>
+              {getCurrentLangLinks()
+                .filter((item) => item.tablet === true)
+                .map((lin) => {
+                  if (lin.title === 'About me' || lin.title === 'O meni') {
+                    return (
+                      <span
+                        onClick={() => {
+                          const elem = document.getElementById('biografija');
+
+                          if (currentPath !== '/') {
+                            router.push(`/?lang=${checkParams}#biografija`);
+                          }
+
+                          if (elem) {
+                            elem.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        key={lin.title}
+                        className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                      >
+                        {lin.title}
+                      </span>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      href={`${lin.href}/?lang=${checkParams}`}
+                      key={lin.title}
+                      className='transition-all relative uppercase cursor-pointer text-dinko-tamnoplava hover:text-dinko-plava text-base'
+                    >
+                      {lin.title}
+                    </Link>
+                  );
+                })}
+            </div>
+
+            <div className='md:hidden hidden'>
               <AppButton primary='prim' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
             </div>
-            <div className='xl:hidden block z-50'>
+            <div className='dinkoCustom:hidden block z-50'>
               <Hamburger
                 color={isMobileOpen ? '#F5FAFF' : '#092A4C'}
                 onToggle={() => {

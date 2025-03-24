@@ -1,25 +1,27 @@
-import AppHeader from './components/AppHeader';
-import { lazy, Suspense } from 'react';
+export const maxDuration = 60;
+export const revalidate = 3600; // revalidate at most every hour
+
+import { Suspense } from 'react';
 
 import { getAllBlogsQuery } from './queries/getDinkoBlogs';
 import { getDinkoNovostiQuery } from './queries/getDinkoNovosti';
 import { getDinkoIskustvaQuery } from './queries/getDinkoIskustva';
 import { getDinkoBiographyQuery } from './queries/getDinkoBiography';
 import { getDinkoStatsQuery } from './queries/getDinkoStats';
+import dynamic from 'next/dynamic';
+import Loading from './loading';
 
-export const maxDuration = 60;
-export const revalidate = 3600; // revalidate at most every hour
-
-const LandingHero = lazy(() => import('./sections/LandingHero'));
-const Operacije = lazy(() => import('./sections/Operacije'));
-const Novosti = lazy(() => import('./sections/Novosti'));
-const Biografija = lazy(() => import('./sections/Biografija'));
-const VideoCitat = lazy(() => import('./sections/VideoCitat'));
-const PromoSekcija = lazy(() => import('./sections/PromoSekcija'));
-const BlogSekcija = lazy(() => import('./sections/BlogSekcija'));
-const BannerSekcija = lazy(() => import('./sections/BannerSekcija'));
-const AppFooter = lazy(() => import('./components/AppFooter'));
-const IskustvaPacijenata = lazy(() => import('./sections/IskustvaPacijenata'));
+const AppHeader = dynamic(() => import('./components/AppHeader'), { loading: () => <Loading /> });
+const LandingHero = dynamic(() => import('./sections/LandingHero'), { loading: () => <Loading /> });
+const Operacije = dynamic(() => import('./sections/Operacije'), { loading: () => <Loading /> });
+const Novosti = dynamic(() => import('./sections/Novosti'), { loading: () => <Loading /> });
+const Biografija = dynamic(() => import('./sections/Biografija'), { loading: () => <Loading /> });
+const VideoCitat = dynamic(() => import('./sections/VideoCitat'), { loading: () => <Loading /> });
+const PromoSekcija = dynamic(() => import('./sections/PromoSekcija'), { loading: () => <Loading /> });
+const BlogSekcija = dynamic(() => import('./sections/BlogSekcija'), { loading: () => <Loading /> });
+const BannerSekcija = dynamic(() => import('./sections/BannerSekcija'), { loading: () => <Loading /> });
+const AppFooter = dynamic(() => import('./components/AppFooter'), { loading: () => <Loading /> });
+const IskustvaPacijenata = dynamic(() => import('./sections/IskustvaPacijenata'), { loading: () => <Loading /> });
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {

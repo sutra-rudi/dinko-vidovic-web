@@ -2,8 +2,8 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -48,6 +48,7 @@ const config: Config = {
         '3xl': '1700px',
         '2k': '1920px',
         blogListCustom: '880px',
+        dinkoCustom: '1200px',
       },
       fontSize: {
         xs: '0.75rem', // 0.75rem * 16px/rem = 12px
@@ -80,6 +81,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar'), require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('tailwind-scrollbar'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-motion'),
+  ],
 };
 export default config;

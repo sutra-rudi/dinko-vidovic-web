@@ -7,8 +7,6 @@ import landingHeroDinkoMobile from '../img/heros/dinko-vidovic-hero-mobile.png';
 import dinkoLinijeEfekt from '../img/svg/dinko-vidovic-linije-efekt.svg';
 import AppButton from '../components/AppButton';
 import { useParallax } from 'react-scroll-parallax';
-import dinkoLottie from '../img/lottie/novi-lottie-hero.json';
-import Lottie from 'lottie-react';
 import { useSearchParams } from 'next/navigation';
 import { UserLanguage } from '../types/appState';
 
@@ -18,12 +16,12 @@ const LandingHero = () => {
   const linesMove = useParallax<HTMLDivElement>({
     translateX: [0, -10],
     translateY: [0, 15],
-    easing: 'easeOut',
+    easing: 'easeInOut',
   });
 
   const heroBlockMove = useParallax<HTMLDivElement>({
-    translateY: [0, 45],
-    easing: 'easeOut',
+    translateY: [0, 25],
+    easing: 'easeInOut',
   });
   const langTriage = React.useCallback(
     (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
@@ -57,19 +55,23 @@ const LandingHero = () => {
 
       <div
         ref={heroBlockMove.ref as any}
-        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] xl:bottom-[24%] bottom-[20%] 2xl:right-[10%] xl:right-[7%] lg:right-[5%] max-w-[407px]  lg:bg-transparent'
+        className='lg:block hidden absolute 3xl:bottom-[30%] 2xl:bottom-[22%] xl:bottom-[24%] bottom-[20%] 2xl:right-[10%] xl:right-[7%] lg:right-[5%] w-full max-w-[407px]  lg:bg-transparent motion-preset-fade motion-duration-300'
       >
-        <Lottie animationData={dinkoLottie} className='xl:w-full xl:h-full w-2/3 h-2/3' loop={false} />
+        <h1 className='text-heroText leading-baseLineHeight text-dinko-tamnoplava motion-preset-fade  motion-ease-spring-smooth block text-balance'>
+          {langTriage('Kreći se s lakoćom!', 'Move with ease!')}
+        </h1>
 
-        <div className='flex items-start flex-col justify-start gap-6 mt-3 '>
-          <p className='text-base text-dinko-tamnoplava text-balance leading-snug'>
+        <div className='flex items-start flex-col justify-start gap-6 mt-3 w-full'>
+          <p className='text-base text-dinko-tamnoplava  leading-snug motion-preset-fade motion-delay-300  '>
             {langTriage(
-              `Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi 300 operacijskih
-          zahvata iz područja kirurgije koljena i kuka.`,
-              `Prof. Dinko Vidović, PhD, MD, is a specialist in orthopedics and traumatology. He performs 300 surgical procedures annually in the field of knee and hip surgery.`
+              `Prof. dr. sc. Dinko Vidović specijalist je ortopedije i traumatologije. Godišnje obavi oko 300 operacijskih
+          zahvata.`,
+              `Prof. Dinko Vidović, PhD, MD, is a specialist in orthopedics and traumatology. He performs around 300 surgical procedures annually.`
             )}
           </p>
-          <AppButton primary='hero' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
+          <div className='motion-preset-fade motion-ease-spring-smooth motion-delay-500'>
+            <AppButton primary='hero' content={langTriage('Dogovorite pregled', 'Schedule an Appointment')} />
+          </div>
         </div>
       </div>
       {/* tablet / mobile */}
