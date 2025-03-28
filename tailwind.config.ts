@@ -11,7 +11,7 @@ const config: Config = {
       maxWidth: {
         'max-nav': '1660px',
         'max-container': '1440px',
-        'operations-cont': '1200px',
+        'operations-cont': '1300px',
         'articles-cont': '1024px',
       },
       backgroundImage: {
