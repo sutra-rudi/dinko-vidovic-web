@@ -28,7 +28,7 @@ const VideoCitat = () => {
           alt='svg pattern'
           width={1920}
           height={867}
-          className='absolute inset-0 py-[80px] w-full h-full object-cover object-center'
+          className='absolute inset-0 w-full h-full object-cover object-center opacity-50'
         />
       </picture>
 
