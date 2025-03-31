@@ -79,185 +79,11 @@ const Operacije = () => {
         </h1>
       )}
       <div className='2xl:max-w-max-container w-full max-w-operations-cont mx-auto my-0 xl:px-20 lg:px-16 md:px-8 px-2 '>
-        {/* TABLET/MOBILE */}
-        <div className='2xl:hidden hidden xl:grid-cols-2 md:grid-cols-2 grid-cols-1 items-start justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2 relative'>
-          <div className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
-            {operacijeByKat.slice(0, 2).map((operacija, index) => {
-              return (
-                <div className='grid grid-cols-1 items-start gap-2' key={index}>
-                  <h2
-                    className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
-                  >
-                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                  </h2>
-                  <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {checkParams === UserLanguage.hr
-                      ? operacija.contentHr.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))
-                      : operacija.contentEn.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
-            {operacijeByKat.slice(2, 7).map((operacija, index) => {
-              return (
-                <div className='grid grid-cols-1 items-start gap-2' key={index}>
-                  <h2
-                    className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
-                  >
-                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                  </h2>
-                  <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {checkParams === UserLanguage.hr
-                      ? operacija.contentHr.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))
-                      : operacija.contentEn.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  xl:whitespace-nowrap'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        {/* DESKTOP */}
-        <div className='2xl:hidden hidden  2xl:grid-cols-3 md:grid-cols-2 grid-cols-1 items-start justify-items-center justify-center w-full  xl:bg-dinko-operacije xl:backdrop-blur-sm py-11 xl:gap-32 gap-8 md:px-8 px-2 relative'>
-          <div ref={ref} className='grid grid-cols-1 items-start gap-6 w-full min-w-0'>
-            {iV &&
-              operacijeByKat.slice(0, 1).map((operacija, index) => {
-                return (
-                  <div className='grid grid-cols-1 items-start gap-2' key={index}>
-                    <h2
-                      className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
-                    >
-                      {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                    </h2>
-                    <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                      {checkParams === UserLanguage.hr
-                        ? operacija.contentHr.map((content, index) => (
-                            <div
-                              className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
-                              key={content}
-                            >
-                              <Link href={parseOperationsLinks(operacija, content)}>{content}</Link>
-                            </div>
-                          ))
-                        : operacija.contentEn.map((content, index) => (
-                            <div
-                              className=' text-dinko-tamnoplava xl:text-lg text-base xl:leading-blogParaLineHeight leading-none font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out  text-balance'
-                              key={content}
-                            >
-                              <Link href={parseOperationsLinks(operacija, content)}>{content}</Link>
-                            </div>
-                          ))}
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-          <div className='grid grid-cols-1 items-start gap-6 w-full  min-w-0'>
-            {operacijeByKat.slice(1, 4).map((operacija, index) => {
-              return (
-                <div className='grid grid-cols-1 items-start gap-2' key={index}>
-                  <h2
-                    className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
-                  >
-                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                  </h2>
-                  <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {checkParams === UserLanguage.hr
-                      ? operacija.contentHr.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))
-                      : operacija.contentEn.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className='grid grid-cols-1 items-start gap-6 w-full  min-w-0'>
-            {operacijeByKat.slice(4, 7).map((operacija, index) => {
-              return (
-                <div className='grid grid-cols-1 items-start gap-2' key={index}>
-                  <h2
-                    className={`text-dinko-tamnoplava xl:text-xl lg:text-lg text-base leading-baseLineHeight font-bold uppercase ${Roboto.className}`}
-                  >
-                    {checkParams === UserLanguage.hr ? operacija.titleHr : operacija.titleEn}
-                  </h2>
-                  <div className='grid grid-cols-1 xl:gap-0 gap-2'>
-                    {checkParams === UserLanguage.hr
-                      ? operacija.contentHr.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))
-                      : operacija.contentEn.map((content) => (
-                          <Link
-                            href={parseOperationsLinks(operacija, content)}
-                            className='text-dinko-tamnoplava xl:text-lg text-base leading-blogParaLineHeight font-normal block relative before:absolute before:-left-2 before:bg-dinko-plava before:h-full before:w-1 before:opacity-0 before:hover:opacity-100 before:transition-all before:ease-custom-ease-in-out hover:translate-x-1 hover:text-dinko-plava transition-all ease-custom-ease-in-out text-balance'
-                            key={content}
-                          >
-                            {content}
-                          </Link>
-                        ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* NOVO */}
 
-        <div className='grid w-full  xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center place-items-center relative pb-5 '>
+        <div
+          className={`grid w-full xl:max-w-[903px] md:max-w-max   mx-auto xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center place-items-center relative pb-5 transition-all ease-custom-ease-in-out duration-500 `}
+        >
           {operacijeByKat.map((op, index) => {
             const isLastOdd = operacijeByKat.length % 3 === 1 && index === operacijeByKat.length - 1;
 
@@ -268,14 +94,21 @@ const Operacije = () => {
                   setMa(true);
                 }}
                 key={isHr ? op.titleHr : op.titleEn}
-                className={`w-[260px] bg-alt-bila text-dinko-tamnoplava flex items-center justify-start gap-4 py-4 px-7 rounded-[10px] cursor-pointer ${
-                  isLastOdd ? 'xl:col-span-3' : ''
-                }`}
+                className={`w-[260px] bg-alt-bila text-dinko-tamnoplava flex items-center justify-start gap-4 py-4 px-7 rounded-[10px] cursor-pointer group hover:bg-dinko-plava hover:text-alt-bila ${
+                  mA && 'opacity-0'
+                } ${isLastOdd ? 'xl:col-span-3' : ''}`}
               >
-                <svg width='24' height='23' viewBox='0 0 24 23' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <svg
+                  width='24'
+                  height='23'
+                  viewBox='0 0 24 23'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                  className=' fill-dinko-tamnoplava group-hover:fill-alt-bila'
+                >
                   <path
                     d='M21.5833 0H2.41667C1.90833 0 1.42082 0.201934 1.06138 0.561379C0.701934 0.920823 0.5 1.40833 0.5 1.91667V21.0833C0.5 21.5917 0.701934 22.0792 1.06138 22.4386C1.42082 22.7981 1.90833 23 2.41667 23H21.5833C22.0917 23 22.5792 22.7981 22.9386 22.4386C23.2981 22.0792 23.5 21.5917 23.5 21.0833V1.91667C23.5 1.40833 23.2981 0.920823 22.9386 0.561379C22.5792 0.201934 22.0917 0 21.5833 0ZM18.7083 12.4583H12.9583V18.2083C12.9583 18.4625 12.8574 18.7063 12.6776 18.886C12.4979 19.0657 12.2542 19.1667 12 19.1667C11.7458 19.1667 11.5021 19.0657 11.3224 18.886C11.1426 18.7063 11.0417 18.4625 11.0417 18.2083V12.4583H5.29167C5.0375 12.4583 4.79375 12.3574 4.61402 12.1776C4.4343 11.9979 4.33333 11.7542 4.33333 11.5C4.33333 11.2458 4.4343 11.0021 4.61402 10.8224C4.79375 10.6426 5.0375 10.5417 5.29167 10.5417H11.0417V4.79167C11.0417 4.5375 11.1426 4.29375 11.3224 4.11402C11.5021 3.9343 11.7458 3.83333 12 3.83333C12.2542 3.83333 12.4979 3.9343 12.6776 4.11402C12.8574 4.29375 12.9583 4.5375 12.9583 4.79167V10.5417H18.7083C18.9625 10.5417 19.2063 10.6426 19.386 10.8224C19.5657 11.0021 19.6667 11.2458 19.6667 11.5C19.6667 11.7542 19.5657 11.9979 19.386 12.1776C19.2063 12.3574 18.9625 12.4583 18.7083 12.4583Z'
-                    fill='#092A4C'
+                    fill='currentColor'
                   />
                 </svg>
                 <span>{isHr ? op.titleHr : op.titleEn}</span>
@@ -286,8 +119,8 @@ const Operacije = () => {
           {/* MODAL */}
 
           <div
-            className={`absolute inset-0  w-full xl:min-h-[525px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4 ${
-              mA ? 'block motion-preset-slide-up motion-ease-spring-smooth motion-duration-300' : 'hidden'
+            className={`absolute inset-0  md:w-[120%] w-full left-1/2 -translate-x-1/2 md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4 ${
+              mA ? 'block motion-preset-slide-up motion-ease-spring-smooth' : 'hidden'
             }`}
           >
             <h1 className='text-alt-bila 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11'>
@@ -306,7 +139,7 @@ const Operacije = () => {
                       <a
                         href={`/operacije/${slugify(item, slugifyOptions)}/?lang=${checkParams}`}
                         key={item}
-                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
+                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
                       >
                         {item}
                       </a>
@@ -317,7 +150,7 @@ const Operacije = () => {
                       <a
                         href={`/operacije/${slugify(item, slugifyOptions)}/?lang=${checkParams}`}
                         key={item}
-                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
+                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
                       >
                         {item}
                       </a>
