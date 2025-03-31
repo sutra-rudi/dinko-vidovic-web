@@ -40,9 +40,9 @@ const IskustvaPacijenata = ({ iskustvaList }: DinkoVidovicIskustvaPacijenata) =>
   return (
     <section
       id='iskustva-pacijenata'
-      className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-8 '
+      className='bg-overlayIskustva bg-center bg-cover 2xl:pb-24 xl:pb-20 lg:pb-16 pb-12 '
     >
-      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-28 xl:pb-16 lg:pt-24 lg:pb-12 md:pt-20 md:pb-8 pt-14 pb-8 text-center'>
+      <h1 className='2xl:text-heroText xl:text-5xl lg:text-4xl text-subHeading text-dinko-tamnoplava text-balance leading-tight whitespace-pre-wrap xl:pt-28 xl:pb-16 lg:pt-24 lg:pb-12 md:pt-20 md:pb-8 pt-16 pb-8 text-center'>
         {langTriage('Iskustva pacijenata', `Patient Experiences`)}
       </h1>
 

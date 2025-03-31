@@ -36,7 +36,7 @@ const BannerSekcija = () => {
       <div className='w-full relative 2xl:h-[961px] lg:h-[450px] h-[400px]'>
         <ParallaxBanner layers={[background]} className='w-full relative 2xl:h-full lg:h-[450px] h-[400px]' />
       </div>
-      <div className='w-full  relative flex items-center justify-center min-h-[340px] 2xl:p-0 px-6 bg-no-repeat xl:bg-center bg-right bg-cover'>
+      <div className='w-full  relative flex items-center justify-center min-h-[360px] 2xl:p-0 px-6 bg-no-repeat xl:bg-center bg-right bg-cover'>
         <Image
           src={dinkoBannerBg.src}
           blurDataURL={dinkoBannerBg.blurDataURL}
