@@ -80,7 +80,7 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
         </Marquee>
       </div>
 
-      <div className='w-full relative bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[300px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
+      <div className='w-full relative bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[350px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
         <Image
           src={dinkoPromoTrakaPattern}
           fill
@@ -109,8 +109,8 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
         </div>
       </div>
 
-      <div className='lg:py-20 md:py-16 py-14 px-3 bg-dinko-tamnoplava flex items-center justify-center'>
-        <div className='flex flex-row flex-wrap w-full max-w-max-container justify-center  place-items-center  gap-y-20 gap-x-20'>
+      <div className='lg:py-20 md:py-16 py-16 px-3 bg-dinko-tamnoplava flex items-center justify-center'>
+        <div className='flex flex-row flex-wrap w-full max-w-screen-dinkoCustom justify-center  place-items-center  gap-y-20 gap-x-20'>
           <div className='grid items-center grid-cols-1 xl:gap-6 lg:gap-4 gap-3'>
             <h2 className='xl:text-4xl lg:text-3xl md:text-2xl text-xl text-dinko-plava text-center leading-none'>
               {langTriage('Klinički rad', 'Clinical Work')}
