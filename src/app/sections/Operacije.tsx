@@ -60,9 +60,7 @@ const Operacije = () => {
 
   const findOpToActive = (opId: number) => operacijeByKat.find((item) => item.id === opId);
   return (
-    <section
-      className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 relative bg-dinko-tamnoplava min-h-[823px]`}
-    >
+    <section className={`2xl:pt-28 2xl:pb-20 xl:pt-24 xl:pb-16 lg:pt-20 lg:pb-12 pt-16 pb-8 relative  min-h-[823px]`}>
       <Image
         src={dinkoBackgroundOperacije.src}
         blurDataURL={dinkoBackgroundOperacije.blurDataURL}
@@ -70,19 +68,22 @@ const Operacije = () => {
         alt='operations image animation'
         className='object-cover block w-full h-full object-center aspect-auto pointer-events-none select-none'
       />
-      {activeOp === null && (
-        <h1 className='text-alt-bila 2xl:text-heroText xl:text-5xl pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center motion-preset-fade'>
+
+      <div className='2xl:max-w-max-container w-full max-w-operations-cont mx-auto my-0 xl:px-20 lg:px-16 md:px-8 px-2 flex-col items-center justify-center bg-dinko-tamnoplava/85 rounded-3xl relative'>
+        {/* NOVO */}
+
+        <h1
+          className={`text-alt-bila 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11 pb-14 ${
+            activeOp && 'opacity-0'
+          }`}
+        >
           {`${langTriage('Operacije', 'Surgeries')} ${
-            //@ts-ignore
             activeOp ? `/ ${isHr ? activeOp.titleHr : activeOp.titleEn}` : ''
           }`}
         </h1>
-      )}
-      <div className='2xl:max-w-max-container w-full max-w-operations-cont mx-auto my-0 xl:px-20 lg:px-16 md:px-8 px-2 '>
-        {/* NOVO */}
 
         <div
-          className={`grid w-full xl:max-w-[903px] md:max-w-max   mx-auto xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center place-items-center relative pb-5 transition-all ease-custom-ease-in-out duration-500 `}
+          className={`grid w-full xl:max-w-[903px] md:max-w-max pb-[112px]   mx-auto xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center place-items-center transition-all ease-custom-ease-in-out duration-500 `}
         >
           {operacijeByKat.map((op, index) => {
             const isLastOdd = operacijeByKat.length % 3 === 1 && index === operacijeByKat.length - 1;
@@ -119,11 +120,13 @@ const Operacije = () => {
           {/* MODAL */}
 
           <div
-            className={`absolute inset-0  md:w-[120%] w-full left-1/2 -translate-x-1/2 md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4 ${
-              mA ? 'block motion-preset-slide-up motion-ease-spring-smooth' : 'hidden'
+            className={`absolute inset-0   w-full  md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4  ${
+              mA
+                ? 'block motion-preset-slide-up motion-ease-spring-smooth motion-duration-700 pointer-events-auto select-auto'
+                : 'hidden motion-preset-slide-down motion-ease-spring-smooth  pointer-events-none select-none opacity-0'
             }`}
           >
-            <h1 className='text-alt-bila 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11'>
+            <h1 className='text-alt-bila 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11 pb-9'>
               {`${langTriage('Operacije', 'Surgeries')} ${
                 activeOp ? `/ ${isHr ? activeOp.titleHr : activeOp.titleEn}` : ''
               }`}
