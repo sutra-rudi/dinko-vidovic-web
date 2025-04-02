@@ -80,13 +80,13 @@ const PromoSekcija = ({ content }: PromoSekcija) => {
         </Marquee>
       </div>
 
-      <div className='w-full relative bg-overlayPromoTraka lg:min-h-[450px] md:min-h-[400px] min-h-[350px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
-        <Image
+      <div className='w-full relative bg-overlayPromoTraka bg-no-repeat bg-center bg-cover lg:min-h-[450px] md:min-h-[400px] min-h-[350px] flex items-center justify-center lg:py-12 md:py-10 py-8 px-3'>
+        {/* <Image
           src={dinkoPromoTrakaPattern}
           fill
           alt='svg pattern dinko vidovic'
           className='object-cover object-center block'
-        />
+        /> */}
         <div className='max-w-max-container w-full my-0 mx-auto flex items-center justify-center xl:gap-40 lg:gap-32 md:gap-20 gap-8 lg:flex-nowrap flex-wrap'>
           {contentShorthand
             .map((contentBlock: any, index: number) => {
