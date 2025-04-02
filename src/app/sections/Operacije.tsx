@@ -73,7 +73,7 @@ const Operacije = () => {
         {/* NOVO */}
 
         <h1
-          className={`text-alt-bila 2xl:text-heroText xl:text-5xl xl:pb-6 lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11 pb-14 ${
+          className={`text-alt-bila 2xl:text-heroText xl:text-5xl  lg:text-4xl text-subHeading leading-baseLineHeight mx-auto my-0 w-full text-center pt-11 pb-14 ${
             activeOp && 'opacity-0'
           }`}
         >
