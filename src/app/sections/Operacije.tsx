@@ -3,15 +3,11 @@
 import React from 'react';
 import { operacijeByKat } from '../staticWebData/operacijeDemo';
 import dinkoBackgroundOperacije from '../img/heros/dinko-vidovic-operacije-bg.png';
-import { Roboto_Condensed } from 'next/font/google';
-import Link from 'next/link';
 import slugify from 'slugify';
 import { useSearchParams } from 'next/navigation';
 import { UserLanguage } from '../types/appState';
 import Image from 'next/image';
 import { useIntersectionObserver } from 'usehooks-ts';
-
-const Roboto = Roboto_Condensed({ weight: '700', subsets: ['latin'] });
 
 const Operacije = () => {
   const slugifyOptions = {
@@ -37,10 +33,6 @@ const Operacije = () => {
   const paramsControler = useSearchParams();
   const checkParams = paramsControler.get('lang');
 
-  const parseOperationsLinks = (operacija: any, content: string) =>
-    checkParams === UserLanguage.hr
-      ? `/operacije/${slugify(content, slugifyOptions)}/?lang=${checkParams}`
-      : `/operacije/${slugify(content, slugifyOptions)}/?lang=${checkParams}`;
   const langTriage = React.useCallback(
     (hrString: string, enString: string) => (checkParams === UserLanguage.hr ? hrString : enString),
     [checkParams]
@@ -83,6 +75,7 @@ const Operacije = () => {
         </h1>
 
         <div
+          ref={ref}
           className={`grid w-full xl:max-w-[903px] md:max-w-max pb-[112px]   mx-auto xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center place-items-center transition-all ease-custom-ease-in-out duration-500 `}
         >
           {operacijeByKat.map((op, index) => {
@@ -90,14 +83,17 @@ const Operacije = () => {
 
             return (
               <p
+                style={{
+                  animationDelay: `${index * 250}ms`,
+                }}
                 onClick={() => {
                   setActiveOp(findOpToActive(op.id)!);
                   setMa(true);
                 }}
                 key={isHr ? op.titleHr : op.titleEn}
                 className={`w-[260px] bg-alt-bila text-dinko-tamnoplava flex items-center justify-start gap-4 py-4 px-7 rounded-[10px] cursor-pointer group hover:bg-dinko-plava hover:text-alt-bila ${
-                  mA && 'opacity-0'
-                } ${isLastOdd ? 'xl:col-span-3' : ''}`}
+                  iV ? 'motion-preset-slide-down motion-ease-spring-smooth' : 'opacity-0'
+                } ${mA && 'opacity-0'} ${isLastOdd ? 'xl:col-span-3' : ''}`}
               >
                 <svg
                   width='24'
@@ -120,9 +116,9 @@ const Operacije = () => {
           {/* MODAL */}
 
           <div
-            className={`absolute inset-0   w-full  md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4  ${
+            className={`absolute inset-0   w-full  md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4 py-4  z-[9999] ${
               mA
-                ? 'block motion-preset-slide-up motion-ease-spring-smooth motion-duration-700 pointer-events-auto select-auto'
+                ? 'lg:block flex items-center justify-center flex-col motion-preset-slide-up motion-ease-spring-smooth motion-duration-700 pointer-events-auto select-auto'
                 : 'hidden motion-preset-slide-down motion-ease-spring-smooth  pointer-events-none select-none opacity-0'
             }`}
           >
@@ -134,39 +130,43 @@ const Operacije = () => {
             <div
               className={`grid ${
                 activeOp?.contentHr.length! <= 4 ? 'grid-cols-1' : 'xl:grid-cols-3 md:grid-cols-2 grid-cols-1'
-              } items-center place-items-center mt-9 gap-y-7 text-alt-bila text-base mb-9`}
+              } items-center place-items-center mt-9 gap-4 text-alt-bila text-base mb-9`}
             >
               {isHr
-                ? activeOp?.contentHr.map((item) => {
+                ? activeOp?.contentHr.map((item, i) => {
                     return (
                       <a
                         href={`/operacije/${slugify(item, slugifyOptions)}/?lang=${checkParams}`}
                         key={item}
-                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
+                        style={{
+                          animationDelay: `${i * 200}ms`,
+                        }}
+                        className={`${
+                          activeOp ? 'motion-preset-expand motion-ease-spring-bouncy block' : 'hidden'
+                        } max-w-[290px] w-full relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:opacity-50 after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava md:mt-3`}
                       >
                         {item}
                       </a>
                     );
                   })
-                : activeOp?.contentEn.map((item) => {
+                : activeOp?.contentEn.map((item, i) => {
                     return (
                       <a
                         href={`/operacije/${slugify(item, slugifyOptions)}/?lang=${checkParams}`}
                         key={item}
-                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
+                        style={{
+                          animationDelay: `${i * 200}ms`,
+                        }}
+                        className={`${
+                          activeOp ? 'motion-preset-expand motion-ease-spring-bouncy block' : 'hidden'
+                        } max-w-[290px] w-full relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:opacity-50 after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava md:mt-3`}
                       >
                         {item}
                       </a>
                     );
                   })}
             </div>
-            <div
-              className={`${
-                activeOp?.contentHr.length! <= 4
-                  ? 'absolute bottom-6 left-0 w-full flex items-center justify-center xl:px-24 lg:px-20 md:px-16 px-12'
-                  : 'w-full flex items-center justify-center mt-12 mb-8'
-              }`}
-            >
+            <div className={` w-full flex items-center justify-center mt-12 mb-8 xl:px-24 lg:px-20 md:px-12 px-4`}>
               <p
                 onClick={() => {
                   setMa(false);
@@ -181,9 +181,7 @@ const Operacije = () => {
                     className='fill-alt-bila group-hover:fill-dinko-plava'
                   />
                 </svg>
-                <span className=''>
-                  {isHr ? 'Povratak na glavni izbornik OPERACIJA' : 'Return to the main SURGERIES menu.'}
-                </span>
+                <span className=''>{isHr ? 'Povratak na izbornik OPERACIJA' : 'Return to the SURGERIES menu.'}</span>
               </p>
             </div>
           </div>
