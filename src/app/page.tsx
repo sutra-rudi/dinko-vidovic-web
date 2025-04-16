@@ -21,7 +21,10 @@ const PromoSekcija = dynamic(() => import('./sections/PromoSekcija'), { loading:
 const BlogSekcija = dynamic(() => import('./sections/BlogSekcija'), { loading: () => <Loading /> });
 const BannerSekcija = dynamic(() => import('./sections/BannerSekcija'), { loading: () => <Loading /> });
 const AppFooter = dynamic(() => import('./components/AppFooter'), { loading: () => <Loading /> });
-const IskustvaPacijenata = dynamic(() => import('./sections/IskustvaPacijenata'), { loading: () => <Loading /> });
+const IskustvaPacijenata = dynamic(() => import('./sections/IskustvaPacijenata'), {
+  loading: () => <Loading />,
+  ssr: false,
+});
 
 export default async function Home() {
   const getDinkoBlogs = await fetch(`${process.env.DINKO_GRAPHQL_BASE_URL}`, {
@@ -104,9 +107,7 @@ export default async function Home() {
           <VideoCitat />
         </Suspense>
         <Suspense>{parseIskustvaData.data && <IskustvaPacijenata iskustvaList={parseIskustvaData} />}</Suspense>
-        <Suspense>
-          <PromoSekcija content={parseStatsData} />
-        </Suspense>
+        <Suspense>{parseStatsData.data && <PromoSekcija content={parseStatsData} />}</Suspense>
         <Suspense>
           <BlogSekcija blogList={parseData} isBlogPage />
         </Suspense>

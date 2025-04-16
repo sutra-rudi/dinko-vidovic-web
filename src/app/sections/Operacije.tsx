@@ -120,9 +120,9 @@ const Operacije = () => {
           {/* MODAL */}
 
           <div
-            className={`absolute inset-0   w-full  md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4  ${
+            className={`absolute inset-0   w-full  md:min-h-[550px] min-h-max h-full rounded-3xl  bg-dinko-tamnoplava xl:px-24 lg:px-16 md:px-12 px-4 py-4  z-[9999] ${
               mA
-                ? 'block motion-preset-slide-up motion-ease-spring-smooth motion-duration-700 pointer-events-auto select-auto'
+                ? 'lg:block flex items-center justify-center flex-col motion-preset-slide-up motion-ease-spring-smooth motion-duration-700 pointer-events-auto select-auto'
                 : 'hidden motion-preset-slide-down motion-ease-spring-smooth  pointer-events-none select-none opacity-0'
             }`}
           >
@@ -153,20 +153,14 @@ const Operacije = () => {
                       <a
                         href={`/operacije/${slugify(item, slugifyOptions)}/?lang=${checkParams}`}
                         key={item}
-                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
+                        className='max-w-[300px] w-full block relative group after:absolute after:bottom-[-11px] after:left-0 after:w-full after:h-px after:bg-alt-bila after:opacity-50 after:max-w-[189px] transition-all ease-in-out hover:translate-x-2 hover:text-dinko-plava hover:after:bg-dinko-plava'
                       >
                         {item}
                       </a>
                     );
                   })}
             </div>
-            <div
-              className={`${
-                activeOp?.contentHr.length! <= 4
-                  ? 'absolute bottom-6 left-0 w-full flex items-center justify-center xl:px-24 lg:px-20 md:px-16 px-12'
-                  : 'w-full flex items-center justify-center mt-12 mb-8'
-              }`}
-            >
+            <div className={` w-full flex items-center justify-center mt-12 mb-8 xl:px-24 lg:px-20 md:px-16 px-12`}>
               <p
                 onClick={() => {
                   setMa(false);
@@ -181,9 +175,7 @@ const Operacije = () => {
                     className='fill-alt-bila group-hover:fill-dinko-plava'
                   />
                 </svg>
-                <span className=''>
-                  {isHr ? 'Povratak na glavni izbornik OPERACIJA' : 'Return to the main SURGERIES menu.'}
-                </span>
+                <span className=''>{isHr ? 'Povratak na izbornik OPERACIJA' : 'Return to the SURGERIES menu.'}</span>
               </p>
             </div>
           </div>
